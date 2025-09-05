@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunity Details - Rep-Link</title>
+    <meta name="description" content="View detailed information about this sales opportunity and apply to work with the business.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <a href="../index.html" aria-label="Rep-Link Home">
+                        <svg class="logo" width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="8" width="24" height="16" rx="2" fill="var(--brand)"/>
+                            <path d="M8 12h8v8H8z" fill="var(--surface)"/>
+                            <text x="32" y="20" font-family="system-ui" font-size="16" font-weight="700" fill="var(--ink)">Rep-Link</text>
+                        </svg>
+                    </a>
+                </div>
+                
+                <nav class="header__nav" role="navigation" aria-label="Main navigation">
+                    <div class="header__ctas">
+                        <a href="opportunities.html" class="btn btn--secondary">Back to Opportunities</a>
+                        <a href="login.html" class="btn btn--tertiary">Log in</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <div class="page">
+            <div class="page__main">
+                <div class="container">
+                    <div class="opportunity-detail">
+                        <!-- Loading State -->
+                        <div id="loading-state" class="loading-state">
+                            <div class="loading"></div>
+                            <p>Loading opportunity details...</p>
+                        </div>
+                        
+                        <!-- Error State -->
+                        <div id="error-state" class="error-state" style="display: none;">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                            <h3>Opportunity Not Found</h3>
+                            <p>The opportunity you're looking for doesn't exist or has been removed.</p>
+                            <a href="opportunities.html" class="btn btn--primary">Browse Opportunities</a>
+                        </div>
+                        
+                        <!-- Opportunity Content -->
+                        <div id="opportunity-content" class="opportunity-content" style="display: none;">
+                            <div class="opportunity-header">
+                                <div class="opportunity-title-section">
+                                    <h1 id="opportunity-title" class="opportunity-title"></h1>
+                                    <div class="opportunity-meta">
+                                        <span id="opportunity-company" class="opportunity-company"></span>
+                                        <span class="meta-separator">•</span>
+                                        <span id="opportunity-category" class="opportunity-category"></span>
+                                        <span class="meta-separator">•</span>
+                                        <span id="opportunity-location" class="opportunity-location"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="opportunity-actions">
+                                    <div id="opportunity-commission" class="opportunity-commission"></div>
+                                    <button id="apply-button" class="btn btn--primary btn--large btn--apply" data-opportunity-id="">
+                                        Apply Now
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="opportunity-body">
+                                <div class="opportunity-main">
+                                    <div class="opportunity-section">
+                                        <h2>About This Opportunity</h2>
+                                        <div id="opportunity-description" class="opportunity-description"></div>
+                                    </div>
+                                    
+                                    <div class="opportunity-section">
+                                        <h2>Project Brief</h2>
+                                        <div id="opportunity-brief" class="opportunity-brief"></div>
+                                    </div>
+                                    
+                                    <div class="opportunity-section">
+                                        <h2>Commission Structure</h2>
+                                        <div id="commission-details" class="commission-details"></div>
+                                    </div>
+                                    
+                                    <div class="opportunity-section">
+                                        <h2>Requirements</h2>
+                                        <ul id="opportunity-requirements" class="requirements-list"></ul>
+                                    </div>
+                                    
+                                    <div class="opportunity-section">
+                                        <h2>Skills & Tags</h2>
+                                        <div id="opportunity-tags" class="opportunity-tags"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="opportunity-sidebar">
+                                    <div class="sidebar-card">
+                                        <h3>Company Information</h3>
+                                        <div id="company-info" class="company-info"></div>
+                                    </div>
+                                    
+                                    <div class="sidebar-card">
+                                        <h3>Opportunity Details</h3>
+                                        <div id="opportunity-details" class="opportunity-details"></div>
+                                    </div>
+                                    
+                                    <div class="sidebar-card">
+                                        <h3>Application Stats</h3>
+                                        <div id="application-stats" class="application-stats"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <div class="footer__contact">
+                        <p>📱 +65 9123 4567</p>
+                        <p>✉️ hello@rep-link.sg</p>
+                        <p>📷 @replinksg</p>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Support</h3>
+                    <nav class="footer__nav">
+                        <a href="faq.html">FAQ</a>
+                        <a href="help.html">Help Center</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </nav>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">About</h3>
+                    <p class="footer__description">
+                        Rep-Link connects freelance sales representatives with businesses in Singapore, 
+                        providing secure, milestone-based commission opportunities.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2024 Rep-Link. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/app.js"></script>
+    <script type="module">
+        import { API } from '../scripts/data/api.js';
+        
+        // Get opportunity ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const opportunityId = urlParams.get('id');
+        
+        if (!opportunityId) {
+            showErrorState();
+            return;
+        }
+        
+        // Load opportunity details
+        async function loadOpportunityDetails() {
+            try {
+                const api = new API();
+                await api.init();
+                
+                const response = await api.request(`opportunities/get/${opportunityId}`);
+                
+                if (response.success) {
+                    const opportunity = response.data;
+                    renderOpportunityDetails(opportunity);
+                } else {
+                    showErrorState();
+                }
+            } catch (error) {
+                console.error('Failed to load opportunity:', error);
+                showErrorState();
+            }
+        }
+        
+        function renderOpportunityDetails(opportunity) {
+            // Hide loading state
+            document.getElementById('loading-state').style.display = 'none';
+            
+            // Show content
+            const content = document.getElementById('opportunity-content');
+            content.style.display = 'block';
+            
+            // Populate data
+            document.getElementById('opportunity-title').textContent = opportunity.title;
+            document.getElementById('opportunity-company').textContent = opportunity.business?.name || 'Unknown Company';
+            document.getElementById('opportunity-category').textContent = opportunity.category;
+            document.getElementById('opportunity-location').textContent = opportunity.location;
+            document.getElementById('opportunity-description').innerHTML = opportunity.description;
+            document.getElementById('opportunity-brief').innerHTML = opportunity.brief;
+            
+            // Commission details
+            const commissionEl = document.getElementById('opportunity-commission');
+            const commissionDetails = document.getElementById('commission-details');
+            
+            if (opportunity.commissionType === 'fixed') {
+                commissionEl.innerHTML = `$${opportunity.commission.amount.toLocaleString()}`;
+                commissionDetails.innerHTML = `
+                    <div class="commission-type">
+                        <h4>Fixed Price</h4>
+                        <p>Total commission: <strong>$${opportunity.commission.amount.toLocaleString()}</strong></p>
+                        <p>Payment will be made upon successful completion of the project.</p>
+                    </div>
+                `;
+            } else if (opportunity.commissionType === 'milestone') {
+                const total = opportunity.commission.milestones.reduce((sum, m) => sum + m.amount, 0);
+                commissionEl.innerHTML = `$${total.toLocaleString()} total`;
+                commissionDetails.innerHTML = `
+                    <div class="commission-type">
+                        <h4>Milestone-based</h4>
+                        <p>Total value: <strong>$${total.toLocaleString()}</strong></p>
+                        <div class="milestones-list">
+                            ${opportunity.commission.milestones.map(milestone => `
+                                <div class="milestone-item">
+                                    <h5>${milestone.title}</h5>
+                                    <p>${milestone.description}</p>
+                                    <span class="milestone-amount">$${milestone.amount.toLocaleString()}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Requirements
+            const requirementsList = document.getElementById('opportunity-requirements');
+            requirementsList.innerHTML = opportunity.requirements.map(req => 
+                `<li>${req}</li>`
+            ).join('');
+            
+            // Tags
+            const tagsEl = document.getElementById('opportunity-tags');
+            tagsEl.innerHTML = opportunity.tags.map(tag => 
+                `<span class="tag">${tag}</span>`
+            ).join('');
+            
+            // Company info
+            const companyInfo = document.getElementById('company-info');
+            companyInfo.innerHTML = `
+                <div class="company-details">
+                    <h4>${opportunity.business?.name || 'Unknown Company'}</h4>
+                    <p>${opportunity.business?.description || 'No description available'}</p>
+                    <div class="company-meta">
+                        <span>Industry: ${opportunity.business?.industry || 'N/A'}</span>
+                        <span>Size: ${opportunity.business?.size || 'N/A'}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Opportunity details
+            const detailsEl = document.getElementById('opportunity-details');
+            detailsEl.innerHTML = `
+                <div class="detail-item">
+                    <label>Posted:</label>
+                    <span>${new Date(opportunity.createdAt).toLocaleDateString()}</span>
+                </div>
+                <div class="detail-item">
+                    <label>Type:</label>
+                    <span>${opportunity.commissionType}</span>
+                </div>
+                <div class="detail-item">
+                    <label>Remote:</label>
+                    <span>${opportunity.remote ? 'Yes' : 'No'}</span>
+                </div>
+                <div class="detail-item">
+                    <label>Status:</label>
+                    <span class="status-badge status--${opportunity.status}">${opportunity.status}</span>
+                </div>
+            `;
+            
+            // Application stats
+            const statsEl = document.getElementById('application-stats');
+            statsEl.innerHTML = `
+                <div class="stat-item">
+                    <span class="stat-number">${opportunity.applications || 0}</span>
+                    <span class="stat-label">Applications</span>
+                </div>
+            `;
+            
+            // Set apply button data
+            const applyButton = document.getElementById('apply-button');
+            applyButton.dataset.opportunityId = opportunity.id;
+        }
+        
+        function showErrorState() {
+            document.getElementById('loading-state').style.display = 'none';
+            document.getElementById('error-state').style.display = 'block';
+        }
+        
+        // Load opportunity details when page loads
+        document.addEventListener('DOMContentLoaded', loadOpportunityDetails);
+    </script>
+</body>
+</html>

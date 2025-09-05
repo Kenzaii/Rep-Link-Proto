@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Rep-Link</title>
+    <meta name="description" content="Join Rep-Link to start your freelance sales career or find talented sales representatives for your business.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <a href="../index.html" aria-label="Rep-Link Home">
+                        <svg class="logo" width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="8" width="24" height="16" rx="2" fill="var(--color-primary)"/>
+                            <path d="M8 12h8v8H8z" fill="var(--surface-0)"/>
+                            <text x="32" y="20" font-family="system-ui" font-size="16" font-weight="700" fill="var(--brand-navy-900)">Rep-Link</text>
+                        </svg>
+                    </a>
+                </div>
+                
+                <nav class="header__nav" role="navigation" aria-label="Main navigation">
+                    <div class="header__ctas">
+                        <a href="../index.html" class="btn btn--tertiary">Back to Home</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <div class="page">
+            <div class="page__header">
+                <div class="container">
+                    <h1 class="page__title">Create Account</h1>
+                    <p class="page__subtitle">Join Rep-Link and start your sales journey today.</p>
+                </div>
+            </div>
+            
+            <div class="page__main">
+                <div class="container">
+                    <div class="auth-container">
+                        <div class="auth-card">
+                            <!-- Prototype Notice -->
+                            <div class="prototype-notice">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                                <span>This is a prototype. No real authentication is implemented.</span>
+                            </div>
+                            
+                            <form id="signup-form" class="auth-form">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Full Name *</label>
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        name="name" 
+                                        class="form-input" 
+                                        placeholder="Enter your full name"
+                                        required
+                                        autocomplete="name"
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        class="form-input" 
+                                        placeholder="Enter your email address"
+                                        required
+                                        autocomplete="email"
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input 
+                                        type="tel" 
+                                        id="phone" 
+                                        name="phone" 
+                                        class="form-input" 
+                                        placeholder="+65 9123 4567"
+                                        required
+                                        autocomplete="tel"
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="role" class="form-label">Account Type *</label>
+                                    <select id="role" name="role" class="form-select" required>
+                                        <option value="">Select account type</option>
+                                        <option value="rep">Sales Rep</option>
+                                        <option value="business">Business</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="password" class="form-label">Password *</label>
+                                    <input 
+                                        type="password" 
+                                        id="password" 
+                                        name="password" 
+                                        class="form-input" 
+                                        placeholder="Create a strong password"
+                                        required
+                                        autocomplete="new-password"
+                                    >
+                                    <div class="form-help">Password must be at least 8 characters long</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="confirm-password" class="form-label">Confirm Password *</label>
+                                    <input 
+                                        type="password" 
+                                        id="confirm-password" 
+                                        name="confirmPassword" 
+                                        class="form-input" 
+                                        placeholder="Confirm your password"
+                                        required
+                                        autocomplete="new-password"
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="terms" id="terms" required>
+                                        <span class="checkmark"></span>
+                                        I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="newsletter" id="newsletter">
+                                        <span class="checkmark"></span>
+                                        Subscribe to our newsletter for updates and opportunities
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn--primary btn--large auth-submit">
+                                    Create Account
+                                </button>
+                            </form>
+                            
+                            
+                            <div class="auth-footer">
+                                <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="auth-info">
+                            <h3>Join thousands of successful sales professionals</h3>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-number">500+</div>
+                                    <div class="stat-label">Active Sales Reps</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">200+</div>
+                                    <div class="stat-label">Verified Businesses</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">$2M+</div>
+                                    <div class="stat-label">Commission Paid</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">4.8★</div>
+                                    <div class="stat-label">Average Rating</div>
+                                </div>
+                            </div>
+                            
+                            <div class="benefits-section">
+                                <h4>For Sales Reps:</h4>
+                                <ul class="benefit-list">
+                                    <li>Access to exclusive sales opportunities</li>
+                                    <li>Secure milestone-based payments</li>
+                                    <li>Build your professional reputation</li>
+                                    <li>Connect with top Singapore businesses</li>
+                                </ul>
+                                
+                                <h4>For Businesses:</h4>
+                                <ul class="benefit-list">
+                                    <li>Find qualified sales professionals</li>
+                                    <li>Pay only for results achieved</li>
+                                    <li>Flexible engagement models</li>
+                                    <li>Built-in dispute resolution</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <div class="footer__contact">
+                        <p>📱 +65 9123 4567</p>
+                        <p>✉️ hello@rep-link.sg</p>
+                        <p>📷 @replinksg</p>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Support</h3>
+                    <nav class="footer__nav">
+                        <a href="faq.html">FAQ</a>
+                        <a href="help.html">Help Center</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </nav>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">About</h3>
+                    <p class="footer__description">
+                        Rep-Link connects freelance sales representatives with businesses in Singapore, 
+                        providing secure, milestone-based commission opportunities.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2024 Rep-Link. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/app.js"></script>
+    <script type="module">
+        import { Auth } from '../scripts/features/auth.js';
+        import { FormValidator, ValidationRules } from '../scripts/ui/forms.js';
+        
+        // Initialize form validation
+        const validator = new FormValidator('#signup-form');
+        validator.addRule('name', ValidationRules.required('Full name is required'));
+        validator.addRule('email', ValidationRules.email());
+        validator.addRule('phone', ValidationRules.phone());
+        validator.addRule('role', ValidationRules.required('Please select an account type'));
+        validator.addRule('password', ValidationRules.minLength(8, 'Password must be at least 8 characters'));
+        validator.addRule('confirmPassword', ValidationRules.confirm('password', 'Passwords do not match'));
+        validator.addRule('terms', ValidationRules.required('You must agree to the terms and conditions'));
+        
+        // Handle form submission
+        document.getElementById('signup-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            if (!validator.validateForm()) {
+                return;
+            }
+            
+            const formData = new FormData(event.target);
+            const signupData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                role: formData.get('role'),
+                password: formData.get('password'),
+                newsletter: formData.get('newsletter') === 'on'
+            };
+            
+            // Get auth instance from global app
+            const auth = window.app?.auth;
+            if (auth) {
+                const result = await auth.register(signupData);
+                if (result.success) {
+                    // Redirect to complete profile page
+                    window.location.href = 'complete-profile.html';
+                }
+            }
+        });
+        
+    </script>
+</body>
+</html>

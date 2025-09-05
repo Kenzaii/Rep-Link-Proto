@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Opportunities - Rep-Link</title>
+    <meta name="description" content="Browse and apply for sales opportunities from verified businesses in Singapore. Find your next commission-based project.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <a href="../index.html" aria-label="Rep-Link Home">
+                        <svg class="logo" width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="8" width="24" height="16" rx="2" fill="var(--brand)"/>
+                            <path d="M8 12h8v8H8z" fill="var(--surface)"/>
+                            <text x="32" y="20" font-family="system-ui" font-size="16" font-weight="700" fill="var(--ink)">Rep-Link</text>
+                        </svg>
+                    </a>
+                </div>
+                
+                <nav class="header__nav" role="navigation" aria-label="Main navigation">
+                    <div class="header__ctas">
+                        <a href="post-opportunity.html" class="btn btn--primary">Post Opportunity</a>
+                        <a href="login.html" class="btn btn--tertiary">Log in</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <div class="page">
+            <div class="page__header">
+                <div class="container">
+                    <h1 class="page__title">Sales Opportunities</h1>
+                    <p class="page__subtitle">Find your next commission-based sales opportunity</p>
+                </div>
+            </div>
+            
+            <div class="page__main">
+                <div class="container">
+                    <!-- Search and Filters -->
+                    <div class="search-filters-section">
+                        <div class="search-bar">
+                            <svg class="search-bar__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="M21 21l-4.35-4.35"></path>
+                            </svg>
+                            <input 
+                                type="text" 
+                                class="search-bar__input" 
+                                placeholder="Search opportunities by title, company, or skills..."
+                                aria-label="Search opportunities"
+                            >
+                        </div>
+                        
+                        <div class="filters">
+                            <div class="filter-group">
+                                <label class="filter-label">Category</label>
+                                <select name="category" class="filter-select">
+                                    <option value="">All Categories</option>
+                                    <option value="Technology">Technology</option>
+                                    <option value="Consulting">Consulting</option>
+                                    <option value="Digital Marketing">Digital Marketing</option>
+                                    <option value="Enterprise Software">Enterprise Software</option>
+                                    <option value="Venture Capital">Venture Capital</option>
+                                    <option value="Business Services">Business Services</option>
+                                    <option value="CRM Software">CRM Software</option>
+                                    <option value="Innovation">Innovation</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label class="filter-label">Location</label>
+                                <select name="location" class="filter-select">
+                                    <option value="">All Locations</option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="Remote">Remote</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label class="filter-label">Commission Type</label>
+                                <select name="commissionType" class="filter-select">
+                                    <option value="">All Types</option>
+                                    <option value="fixed">Fixed Price</option>
+                                    <option value="milestone">Milestone-based</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label class="filter-label">Remote Work</label>
+                                <select name="remote" class="filter-select">
+                                    <option value="">All</option>
+                                    <option value="true">Remote Only</option>
+                                    <option value="false">On-site Only</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn--secondary btn--clear-filters">Clear Filters</button>
+                        </div>
+                        
+                        <div class="tags-section">
+                            <h3>Popular Skills</h3>
+                            <div class="tags-container">
+                                <span class="tag">B2B Sales</span>
+                                <span class="tag">Lead Generation</span>
+                                <span class="tag">Account Management</span>
+                                <span class="tag">CRM</span>
+                                <span class="tag">Enterprise Software</span>
+                                <span class="tag">Digital Marketing</span>
+                                <span class="tag">Business Development</span>
+                                <span class="tag">Consulting</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Results Section -->
+                    <div class="results-section">
+                        <div class="results-header">
+                            <div class="results-count">
+                                <span id="results-count">Loading opportunities...</span>
+                            </div>
+                            
+                            <div class="sort-controls">
+                                <label for="sort-select" class="sort-label">Sort by:</label>
+                                <select id="sort-select" class="sort-select">
+                                    <option value="relevance_desc">Most Relevant</option>
+                                    <option value="created_desc">Newest First</option>
+                                    <option value="created_asc">Oldest First</option>
+                                    <option value="commission_desc">Highest Commission</option>
+                                    <option value="applications_asc">Fewest Applications</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="opportunities-grid" id="opportunities-grid">
+                            <!-- Opportunities will be loaded here -->
+                        </div>
+                        
+                        <div class="pagination" id="pagination">
+                            <!-- Pagination will be generated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <div class="footer__contact">
+                        <p>📱 +65 9123 4567</p>
+                        <p>✉️ hello@rep-link.sg</p>
+                        <p>📷 @replinksg</p>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Support</h3>
+                    <nav class="footer__nav">
+                        <a href="faq.html">FAQ</a>
+                        <a href="help.html">Help Center</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </nav>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">About</h3>
+                    <p class="footer__description">
+                        Rep-Link connects freelance sales representatives with businesses in Singapore, 
+                        providing secure, milestone-based commission opportunities.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2024 Rep-Link. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/app.js"></script>
+    <script type="module">
+        import { OpportunitiesManager } from '../scripts/features/opportunities.js';
+        import { SearchFiltersManager } from '../scripts/features/searchFilters.js';
+        
+        // Initialize managers
+        let opportunitiesManager;
+        let searchFiltersManager;
+        
+        // Wait for app to be ready
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.app) {
+                opportunitiesManager = new OpportunitiesManager(
+                    window.app.api,
+                    window.app.store,
+                    window.app.eventBus
+                );
+                
+                searchFiltersManager = new SearchFiltersManager();
+                
+                // Listen for search updates
+                document.addEventListener('search:updated', (event) => {
+                    const { searchQuery, filters, sortBy, sortOrder } = event.detail;
+                    opportunitiesManager.searchQuery = searchQuery;
+                    opportunitiesManager.currentFilters = filters;
+                    opportunitiesManager.applyFilters();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

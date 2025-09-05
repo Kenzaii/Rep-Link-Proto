@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Rep-Link</title>
+    <meta name="description" content="Sign in to your Rep-Link account to access opportunities and manage your sales career.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <a href="../index.html" aria-label="Rep-Link Home">
+                        <svg class="logo" width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="8" width="24" height="16" rx="2" fill="var(--color-primary)"/>
+                            <path d="M8 12h8v8H8z" fill="var(--surface-0)"/>
+                            <text x="32" y="20" font-family="system-ui" font-size="16" font-weight="700" fill="var(--brand-navy-900)">Rep-Link</text>
+                        </svg>
+                    </a>
+                </div>
+                
+                <nav class="header__nav" role="navigation" aria-label="Main navigation">
+                    <div class="header__ctas">
+                        <a href="../index.html" class="btn btn--tertiary">Back to Home</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <div class="page">
+            <div class="page__header">
+                <div class="container">
+                    <h1 class="page__title">Sign In</h1>
+                    <p class="page__subtitle">Welcome back! Sign in to your Rep-Link account.</p>
+                </div>
+            </div>
+            
+            <div class="page__main">
+                <div class="container">
+                    <div class="auth-container">
+                        <div class="auth-card">
+                            <!-- Prototype Notice -->
+                            <div class="prototype-notice">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                                <span>This is a prototype. No real authentication is implemented.</span>
+                            </div>
+                            
+                            <form id="login-form" class="auth-form">
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        class="form-input" 
+                                        placeholder="Enter your email address"
+                                        required
+                                        autocomplete="email"
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="password" class="form-label">Password *</label>
+                                    <input 
+                                        type="password" 
+                                        id="password" 
+                                        name="password" 
+                                        class="form-input" 
+                                        placeholder="Enter your password"
+                                        required
+                                        autocomplete="current-password"
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="role" class="form-label">Account Type *</label>
+                                    <select id="role" name="role" class="form-select" required>
+                                        <option value="">Select account type</option>
+                                        <option value="rep">Sales Rep</option>
+                                        <option value="business">Business</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="remember" id="remember">
+                                        <span class="checkmark"></span>
+                                        Remember me
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn--primary btn--large auth-submit">
+                                    Sign In
+                                </button>
+                            </form>
+                            
+                            <div class="auth-divider">
+                                <span>or</span>
+                            </div>
+                            
+                            <button type="button" class="btn btn--secondary btn--large btn--singpass" id="singpass-login">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4"></path>
+                                    <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                                    <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
+                                    <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"></path>
+                                    <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"></path>
+                                </svg>
+                                Sign in with Singpass
+                            </button>
+                            
+                            <div class="auth-footer">
+                                <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+                                <p><a href="#" class="forgot-password">Forgot your password?</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="auth-info">
+                            <h3>Why choose Rep-Link?</h3>
+                            <ul class="feature-list">
+                                <li>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                    </svg>
+                                    Secure milestone-based payments
+                                </li>
+                                <li>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                    Connect with verified businesses
+                                </li>
+                                <li>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                    </svg>
+                                    Build your Rep-Link Success Score
+                                </li>
+                                <li>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                    24/7 support and dispute resolution
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <div class="footer__contact">
+                        <p>📱 +65 9123 4567</p>
+                        <p>✉️ hello@rep-link.sg</p>
+                        <p>📷 @replinksg</p>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Support</h3>
+                    <nav class="footer__nav">
+                        <a href="faq.html">FAQ</a>
+                        <a href="help.html">Help Center</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </nav>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">About</h3>
+                    <p class="footer__description">
+                        Rep-Link connects freelance sales representatives with businesses in Singapore, 
+                        providing secure, milestone-based commission opportunities.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2024 Rep-Link. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/app.js"></script>
+    <script type="module">
+        import { Auth } from '../scripts/features/auth.js';
+        import { FormValidator, ValidationRules } from '../scripts/ui/forms.js';
+        
+        // Initialize form validation
+        const validator = new FormValidator('#login-form');
+        validator.addRule('email', ValidationRules.email());
+        validator.addRule('password', ValidationRules.minLength(6, 'Password must be at least 6 characters'));
+        validator.addRule('role', ValidationRules.required('Please select an account type'));
+        
+        // Handle form submission
+        document.getElementById('login-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            if (!validator.validateForm()) {
+                return;
+            }
+            
+            const formData = new FormData(event.target);
+            const loginData = {
+                email: formData.get('email'),
+                password: formData.get('password'),
+                role: formData.get('role')
+            };
+            
+            // Get auth instance from global app
+            const auth = window.app?.auth;
+            if (auth) {
+                const result = await auth.login(loginData.email, loginData.password, loginData.role);
+                if (result.success) {
+                    // Redirect based on role
+                    if (loginData.role === 'rep') {
+                        window.location.href = 'rep-dashboard.html';
+                    } else if (loginData.role === 'business') {
+                        window.location.href = 'business-dashboard.html';
+                    }
+                }
+            }
+        });
+        
+        // Handle Singpass login
+        document.getElementById('singpass-login').addEventListener('click', async () => {
+            const auth = window.app?.auth;
+            if (auth) {
+                await auth.signInWithSingpass();
+            }
+        });
+    </script>
+</body>
+</html>

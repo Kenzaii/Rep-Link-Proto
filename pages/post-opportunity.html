@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Opportunity - Rep-Link</title>
+    <meta name="description" content="Post a new sales opportunity on Rep-Link and connect with qualified sales representatives.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <a href="../index.html" aria-label="Rep-Link Home">
+                        <svg class="logo" width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="8" width="24" height="16" rx="2" fill="var(--brand)"/>
+                            <path d="M8 12h8v8H8z" fill="var(--surface)"/>
+                            <text x="32" y="20" font-family="system-ui" font-size="16" font-weight="700" fill="var(--ink)">Rep-Link</text>
+                        </svg>
+                    </a>
+                </div>
+                
+                <nav class="header__nav" role="navigation" aria-label="Main navigation">
+                    <div class="header__ctas">
+                        <a href="opportunities.html" class="btn btn--secondary">Browse Opportunities</a>
+                        <a href="login.html" class="btn btn--tertiary">Log in</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <div class="page">
+            <div class="page__header">
+                <div class="container">
+                    <h1 class="page__title">Post New Opportunity</h1>
+                    <p class="page__subtitle">Create a new sales opportunity and connect with qualified reps</p>
+                </div>
+            </div>
+            
+            <div class="page__main">
+                <div class="container">
+                    <div class="post-opportunity-container">
+                        <!-- Stepper -->
+                        <div class="stepper">
+                            <div class="stepper__progress">
+                                <div class="stepper__progress-bar" id="stepper-progress"></div>
+                            </div>
+                            <div class="stepper__steps">
+                                <div class="stepper__step stepper__step--active" data-step="1">
+                                    <div class="stepper__step-number">1</div>
+                                    <div class="stepper__step-label">Details</div>
+                                </div>
+                                <div class="stepper__step" data-step="2">
+                                    <div class="stepper__step-number">2</div>
+                                    <div class="stepper__step-label">Commission</div>
+                                </div>
+                                <div class="stepper__step" data-step="3">
+                                    <div class="stepper__step-number">3</div>
+                                    <div class="stepper__step-label">Requirements</div>
+                                </div>
+                                <div class="stepper__step" data-step="4">
+                                    <div class="stepper__step-number">4</div>
+                                    <div class="stepper__step-label">Preview</div>
+                                </div>
+                                <div class="stepper__step" data-step="5">
+                                    <div class="stepper__step-number">5</div>
+                                    <div class="stepper__step-label">Publish</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Steps -->
+                        <form id="post-opportunity-form" class="opportunity-form">
+                            <!-- Step 1: Details -->
+                            <div class="form-step form-step--active" data-step="1">
+                                <h2>Opportunity Details</h2>
+                                
+                                <div class="form-group">
+                                    <label for="title" class="form-label">Opportunity Title *</label>
+                                    <input 
+                                        type="text" 
+                                        id="title" 
+                                        name="title" 
+                                        class="form-input" 
+                                        placeholder="e.g., B2B Sales Representative for SaaS Platform"
+                                        required
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="category" class="form-label">Category *</label>
+                                    <select id="category" name="category" class="form-select" required>
+                                        <option value="">Select a category</option>
+                                        <option value="Technology">Technology</option>
+                                        <option value="Consulting">Consulting</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Enterprise Software">Enterprise Software</option>
+                                        <option value="Venture Capital">Venture Capital</option>
+                                        <option value="Business Services">Business Services</option>
+                                        <option value="CRM Software">CRM Software</option>
+                                        <option value="Innovation">Innovation</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="description" class="form-label">Description *</label>
+                                    <textarea 
+                                        id="description" 
+                                        name="description" 
+                                        class="form-textarea" 
+                                        rows="4" 
+                                        placeholder="Provide a detailed description of the opportunity..."
+                                        required
+                                    ></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="brief" class="form-label">Project Brief *</label>
+                                    <textarea 
+                                        id="brief" 
+                                        name="brief" 
+                                        class="form-textarea" 
+                                        rows="6" 
+                                        placeholder="Describe the specific project, goals, and expected outcomes..."
+                                        required
+                                    ></textarea>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="location" class="form-label">Location *</label>
+                                        <select id="location" name="location" class="form-select" required>
+                                            <option value="">Select location</option>
+                                            <option value="Singapore">Singapore</option>
+                                            <option value="Remote">Remote</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="remote" id="remote">
+                                            <span class="checkmark"></span>
+                                            Remote work allowed
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2: Commission & Terms -->
+                            <div class="form-step" data-step="2">
+                                <h2>Commission & Terms</h2>
+                                <p class="step-description">Choose how you want to compensate the sales representative for their work.</p>
+                                
+                                <div class="commission-types">
+                                    <div class="commission-type-card">
+                                        <input type="radio" id="commission-fixed" name="commissionType" value="fixed" required>
+                                        <label for="commission-fixed" class="commission-type-label">
+                                            <div class="commission-type-header">
+                                                <h3>Fixed Commission</h3>
+                                                <span class="commission-badge">One-time payment</span>
+                                            </div>
+                                            <p>Pay a fixed amount when the sales representative completes the project or achieves specific goals. Best for well-defined projects with clear deliverables.</p>
+                                            <div class="commission-input" data-type="fixed">
+                                                <label for="fixed-amount">Total Amount *</label>
+                                                <div class="input-group">
+                                                    <span class="input-prefix">$</span>
+                                                    <input type="number" id="fixed-amount" name="fixedAmount" class="form-input" placeholder="5000" min="100">
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="commission-type-card">
+                                        <input type="radio" id="commission-milestone" name="commissionType" value="milestone" required>
+                                        <label for="commission-milestone" class="commission-type-label">
+                                            <div class="commission-type-header">
+                                                <h3>Milestone-based</h3>
+                                                <span class="commission-badge">Pay per deliverable</span>
+                                            </div>
+                                            <p>Break down the project into milestones and pay for each completed milestone. Best for long-term projects with multiple phases and clear checkpoints.</p>
+                                            <div class="commission-input" data-type="milestone">
+                                                <div class="milestones-container">
+                                                    <div class="milestone-item">
+                                                        <input type="text" name="milestoneTitle[]" class="form-input" placeholder="Milestone title">
+                                                        <textarea name="milestoneDescription[]" class="form-textarea" rows="2" placeholder="Description"></textarea>
+                                                        <div class="input-group">
+                                                            <span class="input-prefix">$</span>
+                                                            <input type="number" name="milestoneAmount[]" class="form-input" placeholder="1000" min="100">
+                                                        </div>
+                                                        <button type="button" class="btn btn--danger btn--small remove-milestone">Remove</button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn--secondary add-milestone">Add Milestone</button>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="commission-info">
+                                    <h3>Commission Information</h3>
+                                    <div class="info-cards">
+                                        <div class="info-card">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <polyline points="12,6 12,12 16,14"></polyline>
+                                            </svg>
+                                            <div>
+                                                <h4>14-Day Auto-Release</h4>
+                                                <p>Payments are automatically released 14 days after milestone completion unless disputed.</p>
+                                            </div>
+                                        </div>
+                                        <div class="info-card">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                            </svg>
+                                            <div>
+                                                <h4>Platform Fees</h4>
+                                                <p>3% platform fee on total project value. No hidden costs.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3: Requirements -->
+                            <div class="form-step" data-step="3">
+                                <h2>Requirements & Skills</h2>
+                                
+                                <div class="form-group">
+                                    <label for="requirements" class="form-label">Requirements *</label>
+                                    <div class="requirements-container">
+                                        <div class="requirement-item">
+                                            <input type="text" name="requirements[]" class="form-input" placeholder="e.g., 3+ years B2B sales experience" required>
+                                            <button type="button" class="btn btn--danger btn--small remove-requirement">Remove</button>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn--secondary add-requirement">Add Requirement</button>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="skills" class="form-label">Required Skills</label>
+                                    <div class="skills-container">
+                                        <input type="text" id="skills-input" class="form-input" placeholder="Type a skill and press Enter">
+                                        <div class="skills-tags" id="skills-tags"></div>
+                                    </div>
+                                    <div class="form-help">Press Enter to add each skill</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="experience-level" class="form-label">Experience Level</label>
+                                    <select id="experience-level" name="experienceLevel" class="form-select">
+                                        <option value="">Select experience level</option>
+                                        <option value="entry">Entry Level (0-2 years)</option>
+                                        <option value="mid">Mid Level (2-5 years)</option>
+                                        <option value="senior">Senior Level (5+ years)</option>
+                                        <option value="expert">Expert Level (10+ years)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="timeline" class="form-label">Project Timeline</label>
+                                    <select id="timeline" name="timeline" class="form-select">
+                                        <option value="">Select timeline</option>
+                                        <option value="1-2 weeks">1-2 weeks</option>
+                                        <option value="1 month">1 month</option>
+                                        <option value="2-3 months">2-3 months</option>
+                                        <option value="3-6 months">3-6 months</option>
+                                        <option value="6+ months">6+ months</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4: Preview -->
+                            <div class="form-step" data-step="4">
+                                <h2>Preview Your Opportunity</h2>
+                                
+                                <div class="preview-container">
+                                    <div class="opportunity-preview">
+                                        <div class="preview-header">
+                                            <h3 id="preview-title">Opportunity Title</h3>
+                                            <div class="preview-meta">
+                                                <span id="preview-category">Category</span>
+                                                <span class="meta-separator">•</span>
+                                                <span id="preview-location">Location</span>
+                                                <span class="meta-separator">•</span>
+                                                <span id="preview-commission">Commission</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="preview-content">
+                                            <h4>Description</h4>
+                                            <p id="preview-description">Description will appear here...</p>
+                                            
+                                            <h4>Project Brief</h4>
+                                            <p id="preview-brief">Project brief will appear here...</p>
+                                            
+                                            <h4>Requirements</h4>
+                                            <ul id="preview-requirements"></ul>
+                                            
+                                            <h4>Skills</h4>
+                                            <div id="preview-skills" class="preview-skills"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 5: Publish -->
+                            <div class="form-step" data-step="5">
+                                <h2>Publish Opportunity</h2>
+                                
+                                <div class="publish-summary">
+                                    <div class="summary-card">
+                                        <h3>Ready to Publish</h3>
+                                        <p>Your opportunity is ready to go live. Once published, it will be visible to all sales representatives on the platform.</p>
+                                        
+                                        <div class="summary-details">
+                                            <div class="summary-item">
+                                                <label>Title:</label>
+                                                <span id="summary-title">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <label>Category:</label>
+                                                <span id="summary-category">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <label>Commission Type:</label>
+                                                <span id="summary-commission-type">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <label>Total Value:</label>
+                                                <span id="summary-total-value">-</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="publish-options">
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" name="notifyReps" id="notify-reps" checked>
+                                                <span class="checkmark"></span>
+                                                Notify relevant sales reps about this opportunity
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" name="featured" id="featured">
+                                                <span class="checkmark"></span>
+                                                Feature this opportunity (additional fee applies)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Buttons -->
+                            <div class="form-navigation">
+                                <button type="button" class="btn btn--secondary" id="prev-step" style="display: none;">
+                                    Previous
+                                </button>
+                                <button type="button" class="btn btn--primary" id="next-step">
+                                    Next
+                                </button>
+                                <button type="submit" class="btn btn--primary" id="publish-btn" style="display: none;">
+                                    Publish Opportunity
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <div class="footer__contact">
+                        <p>📱 +65 9123 4567</p>
+                        <p>✉️ hello@rep-link.sg</p>
+                        <p>📷 @replinksg</p>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Support</h3>
+                    <nav class="footer__nav">
+                        <a href="faq.html">FAQ</a>
+                        <a href="help.html">Help Center</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </nav>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">About</h3>
+                    <p class="footer__description">
+                        Rep-Link connects freelance sales representatives with businesses in Singapore, 
+                        providing secure, milestone-based commission opportunities.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2024 Rep-Link. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/app.js"></script>
+    <script type="module">
+        import { Stepper } from '../scripts/ui/components.js';
+        import { FormValidator, ValidationRules } from '../scripts/ui/forms.js';
+        import { Toast } from '../scripts/ui/components.js';
+        
+        // Check authentication and role
+        if (window.app) {
+            if (!window.app.requireAuthRole('business')) {
+                // Redirect will happen automatically
+                throw new Error('Authentication required');
+            }
+        }
+        
+        class PostOpportunityManager {
+            constructor() {
+                this.currentStep = 1;
+                this.totalSteps = 5;
+                this.formData = {};
+                this.toast = new Toast();
+                this.init();
+            }
+            
+            init() {
+                this.setupStepper();
+                this.setupFormHandlers();
+                this.setupValidation();
+            }
+            
+            setupStepper() {
+                this.stepper = new Stepper('.stepper', this.totalSteps);
+            }
+            
+            setupFormHandlers() {
+                // Step navigation
+                document.getElementById('next-step').addEventListener('click', () => {
+                    if (this.validateCurrentStep()) {
+                        this.nextStep();
+                    }
+                });
+                
+                document.getElementById('prev-step').addEventListener('click', () => {
+                    this.prevStep();
+                });
+                
+                // Commission type changes
+                document.querySelectorAll('input[name="commissionType"]').forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        this.updateCommissionInputs();
+                    });
+                });
+                
+                // Add/remove milestones
+                document.querySelector('.add-milestone').addEventListener('click', () => {
+                    this.addMilestone();
+                });
+                
+                // Add/remove requirements
+                document.querySelector('.add-requirement').addEventListener('click', () => {
+                    this.addRequirement();
+                });
+                
+                // Skills input
+                document.getElementById('skills-input').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        this.addSkill();
+                    }
+                });
+                
+                // Form submission
+                document.getElementById('post-opportunity-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.publishOpportunity();
+                });
+            }
+            
+            setupValidation() {
+                this.validator = new FormValidator('#post-opportunity-form');
+                this.validator.addRule('title', ValidationRules.required('Title is required'));
+                this.validator.addRule('category', ValidationRules.required('Category is required'));
+                this.validator.addRule('description', ValidationRules.required('Description is required'));
+                this.validator.addRule('brief', ValidationRules.required('Project brief is required'));
+                this.validator.addRule('location', ValidationRules.required('Location is required'));
+            }
+            
+            validateCurrentStep() {
+                const currentStepEl = document.querySelector(`.form-step[data-step="${this.currentStep}"]`);
+                const requiredFields = currentStepEl.querySelectorAll('[required]');
+                
+                for (let field of requiredFields) {
+                    if (!field.value.trim()) {
+                        field.focus();
+                        this.toast.show(`${field.previousElementSibling.textContent} is required`, 'error');
+                        return false;
+                    }
+                }
+                
+                // Special validation for commission step
+                if (this.currentStep === 2) {
+                    const commissionType = document.querySelector('input[name="commissionType"]:checked');
+                    if (!commissionType) {
+                        this.toast.show('Please select a commission type', 'error');
+                        return false;
+                    }
+                    
+                    if (commissionType.value === 'fixed') {
+                        const amount = document.getElementById('fixed-amount').value;
+                        if (!amount || amount < 100) {
+                            this.toast.show('Fixed amount must be at least $100', 'error');
+                            return false;
+                        }
+                    }
+                }
+                
+                return true;
+            }
+            
+            nextStep() {
+                if (this.currentStep < this.totalSteps) {
+                    this.currentStep++;
+                    this.updateStepDisplay();
+                    this.updatePreview();
+                }
+            }
+            
+            prevStep() {
+                if (this.currentStep > 1) {
+                    this.currentStep--;
+                    this.updateStepDisplay();
+                }
+            }
+            
+            updateStepDisplay() {
+                // Update stepper
+                this.stepper.goToStep(this.currentStep);
+                
+                // Show/hide steps
+                document.querySelectorAll('.form-step').forEach(step => {
+                    step.classList.remove('form-step--active');
+                });
+                document.querySelector(`.form-step[data-step="${this.currentStep}"]`).classList.add('form-step--active');
+                
+                // Update navigation buttons
+                const prevBtn = document.getElementById('prev-step');
+                const nextBtn = document.getElementById('next-step');
+                const publishBtn = document.getElementById('publish-btn');
+                
+                prevBtn.style.display = this.currentStep > 1 ? 'block' : 'none';
+                nextBtn.style.display = this.currentStep < this.totalSteps ? 'block' : 'none';
+                publishBtn.style.display = this.currentStep === this.totalSteps ? 'block' : 'none';
+            }
+            
+            updateCommissionInputs() {
+                const selectedType = document.querySelector('input[name="commissionType"]:checked').value;
+                
+                document.querySelectorAll('.commission-input').forEach(input => {
+                    input.style.display = 'none';
+                });
+                
+                document.querySelector(`.commission-input[data-type="${selectedType}"]`).style.display = 'block';
+            }
+            
+            addMilestone() {
+                const container = document.querySelector('.milestones-container');
+                const milestoneEl = document.createElement('div');
+                milestoneEl.className = 'milestone-item';
+                milestoneEl.innerHTML = `
+                    <input type="text" name="milestoneTitle[]" class="form-input" placeholder="Milestone title">
+                    <textarea name="milestoneDescription[]" class="form-textarea" rows="2" placeholder="Description"></textarea>
+                    <div class="input-group">
+                        <span class="input-prefix">$</span>
+                        <input type="number" name="milestoneAmount[]" class="form-input" placeholder="1000" min="100">
+                    </div>
+                    <button type="button" class="btn btn--danger btn--small remove-milestone">Remove</button>
+                `;
+                
+                container.appendChild(milestoneEl);
+                
+                // Add remove handler
+                milestoneEl.querySelector('.remove-milestone').addEventListener('click', () => {
+                    milestoneEl.remove();
+                });
+            }
+            
+            addRequirement() {
+                const container = document.querySelector('.requirements-container');
+                const reqEl = document.createElement('div');
+                reqEl.className = 'requirement-item';
+                reqEl.innerHTML = `
+                    <input type="text" name="requirements[]" class="form-input" placeholder="e.g., 3+ years B2B sales experience">
+                    <button type="button" class="btn btn--danger btn--small remove-requirement">Remove</button>
+                `;
+                
+                container.appendChild(reqEl);
+                
+                // Add remove handler
+                reqEl.querySelector('.remove-requirement').addEventListener('click', () => {
+                    reqEl.remove();
+                });
+            }
+            
+            addSkill() {
+                const input = document.getElementById('skills-input');
+                const skill = input.value.trim();
+                
+                if (skill && !document.querySelector(`[data-skill="${skill}"]`)) {
+                    const tagsContainer = document.getElementById('skills-tags');
+                    const tagEl = document.createElement('span');
+                    tagEl.className = 'tag';
+                    tagEl.textContent = skill;
+                    tagEl.dataset.skill = skill;
+                    
+                    const removeBtn = document.createElement('button');
+                    removeBtn.innerHTML = '×';
+                    removeBtn.className = 'tag-remove';
+                    removeBtn.addEventListener('click', () => {
+                        tagEl.remove();
+                    });
+                    
+                    tagEl.appendChild(removeBtn);
+                    tagsContainer.appendChild(tagEl);
+                    input.value = '';
+                }
+            }
+            
+            updatePreview() {
+                if (this.currentStep === 4) {
+                    // Update preview with form data
+                    document.getElementById('preview-title').textContent = 
+                        document.getElementById('title').value || 'Opportunity Title';
+                    document.getElementById('preview-category').textContent = 
+                        document.getElementById('category').value || 'Category';
+                    document.getElementById('preview-location').textContent = 
+                        document.getElementById('location').value || 'Location';
+                    document.getElementById('preview-description').textContent = 
+                        document.getElementById('description').value || 'Description will appear here...';
+                    document.getElementById('preview-brief').textContent = 
+                        document.getElementById('brief').value || 'Project brief will appear here...';
+                    
+                    // Update requirements
+                    const requirementsList = document.getElementById('preview-requirements');
+                    requirementsList.innerHTML = '';
+                    document.querySelectorAll('input[name="requirements[]"]').forEach(input => {
+                        if (input.value.trim()) {
+                            const li = document.createElement('li');
+                            li.textContent = input.value;
+                            requirementsList.appendChild(li);
+                        }
+                    });
+                    
+                    // Update skills
+                    const skillsContainer = document.getElementById('preview-skills');
+                    skillsContainer.innerHTML = '';
+                    document.querySelectorAll('.tag[data-skill]').forEach(tag => {
+                        const skillTag = document.createElement('span');
+                        skillTag.className = 'tag';
+                        skillTag.textContent = tag.textContent.replace('×', '');
+                        skillsContainer.appendChild(skillTag);
+                    });
+                }
+            }
+            
+            async publishOpportunity() {
+                try {
+                    // Collect form data
+                    const formData = new FormData(document.getElementById('post-opportunity-form'));
+                    const opportunityData = {
+                        title: formData.get('title'),
+                        category: formData.get('category'),
+                        description: formData.get('description'),
+                        brief: formData.get('brief'),
+                        location: formData.get('location'),
+                        remote: formData.get('remote') === 'on',
+                        commissionType: formData.get('commissionType'),
+                        requirements: formData.getAll('requirements[]').filter(r => r.trim()),
+                        skills: Array.from(document.querySelectorAll('.tag[data-skill]')).map(tag => 
+                            tag.textContent.replace('×', '').trim()
+                        ),
+                        experienceLevel: formData.get('experienceLevel'),
+                        timeline: formData.get('timeline'),
+                        createdAt: new Date().toISOString(),
+                        status: 'active'
+                    };
+                    
+                    // Add commission data based on type
+                    if (opportunityData.commissionType === 'fixed') {
+                        opportunityData.commission = {
+                            structure: 'fixed',
+                            amount: parseInt(formData.get('fixedAmount'))
+                        };
+                    } else if (opportunityData.commissionType === 'milestone') {
+                        const titles = formData.getAll('milestoneTitle[]');
+                        const descriptions = formData.getAll('milestoneDescription[]');
+                        const amounts = formData.getAll('milestoneAmount[]');
+                        
+                        opportunityData.commission = {
+                            structure: 'milestone',
+                            milestones: titles.map((title, index) => ({
+                                id: `milestone-${index + 1}`,
+                                title: title,
+                                description: descriptions[index],
+                                amount: parseInt(amounts[index]),
+                                status: 'pending'
+                            }))
+                        };
+                    }
+                    
+                    // Simulate API call
+                    this.toast.show('Publishing opportunity...', 'info');
+                    
+                    setTimeout(() => {
+                        this.toast.show('Opportunity published successfully!', 'success');
+                        // Redirect to opportunities page
+                        setTimeout(() => {
+                            window.location.href = 'opportunities.html';
+                        }, 2000);
+                    }, 1500);
+                    
+                } catch (error) {
+                    console.error('Failed to publish opportunity:', error);
+                    this.toast.show('Failed to publish opportunity. Please try again.', 'error');
+                }
+            }
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new PostOpportunityManager();
+        });
+    </script>
+</body>
+</html>
