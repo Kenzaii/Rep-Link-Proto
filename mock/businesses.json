@@ -1,0 +1,162 @@
+[
+  {
+    "id": "1",
+    "name": "TechCorp Singapore",
+    "logo": null,
+    "description": "Leading technology solutions provider specializing in enterprise software and digital transformation.",
+    "industry": "Technology",
+    "size": "50-200 employees",
+    "location": "Singapore",
+    "website": "https://techcorp.sg",
+    "contact": {
+      "email": "contact@techcorp.sg",
+      "phone": "+65 6123 4567"
+    },
+    "verified": true,
+    "rating": 4.7,
+    "totalOpportunities": 12,
+    "activeContracts": 5,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-20T10:30:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Growth Partners",
+    "logo": null,
+    "description": "Strategic business development and growth consulting firm helping companies scale in Southeast Asia.",
+    "industry": "Consulting",
+    "size": "10-50 employees",
+    "location": "Singapore",
+    "website": "https://growthpartners.sg",
+    "contact": {
+      "email": "hello@growthpartners.sg",
+      "phone": "+65 6234 5678"
+    },
+    "verified": true,
+    "rating": 4.9,
+    "totalOpportunities": 8,
+    "activeContracts": 3,
+    "createdAt": "2024-01-05T00:00:00Z",
+    "updatedAt": "2024-01-22T14:20:00Z"
+  },
+  {
+    "id": "3",
+    "name": "Digital Solutions Pte Ltd",
+    "logo": null,
+    "description": "Full-service digital agency providing web development, mobile apps, and digital marketing solutions.",
+    "industry": "Digital Marketing",
+    "size": "20-100 employees",
+    "location": "Singapore",
+    "website": "https://digitalsolutions.sg",
+    "contact": {
+      "email": "info@digitalsolutions.sg",
+      "phone": "+65 6345 6789"
+    },
+    "verified": true,
+    "rating": 4.5,
+    "totalOpportunities": 15,
+    "activeContracts": 7,
+    "createdAt": "2024-01-08T00:00:00Z",
+    "updatedAt": "2024-01-21T09:15:00Z"
+  },
+  {
+    "id": "4",
+    "name": "Enterprise Plus",
+    "logo": null,
+    "description": "Enterprise software solutions and business process optimization for large corporations.",
+    "industry": "Enterprise Software",
+    "size": "200+ employees",
+    "location": "Singapore",
+    "website": "https://enterpriseplus.sg",
+    "contact": {
+      "email": "sales@enterpriseplus.sg",
+      "phone": "+65 6456 7890"
+    },
+    "verified": true,
+    "rating": 4.6,
+    "totalOpportunities": 6,
+    "activeContracts": 4,
+    "createdAt": "2024-01-10T00:00:00Z",
+    "updatedAt": "2024-01-19T16:45:00Z"
+  },
+  {
+    "id": "5",
+    "name": "Startup Accelerator",
+    "logo": null,
+    "description": "Early-stage startup accelerator and venture capital firm focused on Southeast Asian markets.",
+    "industry": "Venture Capital",
+    "size": "10-50 employees",
+    "location": "Singapore",
+    "website": "https://startupaccelerator.sg",
+    "contact": {
+      "email": "contact@startupaccelerator.sg",
+      "phone": "+65 6567 8901"
+    },
+    "verified": true,
+    "rating": 4.8,
+    "totalOpportunities": 10,
+    "activeContracts": 6,
+    "createdAt": "2024-01-12T00:00:00Z",
+    "updatedAt": "2024-01-23T12:00:00Z"
+  },
+  {
+    "id": "6",
+    "name": "Business Connect",
+    "logo": null,
+    "description": "B2B networking and business development platform connecting companies across Asia-Pacific.",
+    "industry": "Business Services",
+    "size": "50-200 employees",
+    "location": "Singapore",
+    "website": "https://businessconnect.sg",
+    "contact": {
+      "email": "hello@businessconnect.sg",
+      "phone": "+65 6678 9012"
+    },
+    "verified": true,
+    "rating": 4.4,
+    "totalOpportunities": 9,
+    "activeContracts": 2,
+    "createdAt": "2024-01-15T00:00:00Z",
+    "updatedAt": "2024-01-20T11:30:00Z"
+  },
+  {
+    "id": "7",
+    "name": "SalesForce SG",
+    "logo": null,
+    "description": "Regional office of global CRM leader, providing sales automation and customer relationship management solutions.",
+    "industry": "CRM Software",
+    "size": "200+ employees",
+    "location": "Singapore",
+    "website": "https://salesforce.com/sg",
+    "contact": {
+      "email": "sg@salesforce.com",
+      "phone": "+65 6789 0123"
+    },
+    "verified": true,
+    "rating": 4.9,
+    "totalOpportunities": 20,
+    "activeContracts": 12,
+    "createdAt": "2024-01-03T00:00:00Z",
+    "updatedAt": "2024-01-22T15:20:00Z"
+  },
+  {
+    "id": "8",
+    "name": "InnovateHub",
+    "logo": null,
+    "description": "Innovation consultancy and technology incubator fostering digital transformation in traditional industries.",
+    "industry": "Innovation",
+    "size": "20-100 employees",
+    "location": "Singapore",
+    "website": "https://innovatehub.sg",
+    "contact": {
+      "email": "info@innovatehub.sg",
+      "phone": "+65 6890 1234"
+    },
+    "verified": true,
+    "rating": 4.7,
+    "totalOpportunities": 7,
+    "activeContracts": 4,
+    "createdAt": "2024-01-18T00:00:00Z",
+    "updatedAt": "2024-01-23T08:45:00Z"
+  }
+]

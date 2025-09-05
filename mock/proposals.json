@@ -1,0 +1,262 @@
+[
+  {
+    "id": "1",
+    "oppId": "1",
+    "repId": "1",
+    "cover": "I have 5+ years of experience in enterprise software sales, specifically with CRM and ERP solutions. I've successfully closed deals with companies ranging from 100 to 1000+ employees in the finance and healthcare sectors. My approach focuses on understanding the client's specific needs and demonstrating clear ROI through detailed product demonstrations and case studies.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Full-time",
+      "startDate": "2024-02-01",
+      "estimatedDuration": "6 months"
+    },
+    "attachments": [
+      {
+        "name": "Sales Portfolio.pdf",
+        "type": "application/pdf",
+        "size": 2048576
+      },
+      {
+        "name": "References.docx",
+        "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "size": 512000
+      }
+    ],
+    "status": "pending",
+    "submittedAt": "2024-01-21T10:30:00Z",
+    "updatedAt": "2024-01-21T10:30:00Z"
+  },
+  {
+    "id": "2",
+    "oppId": "1",
+    "repId": "2",
+    "cover": "With 7+ years in B2B sales and a strong track record in enterprise software, I'm confident I can help TechCorp expand their market presence. I've consistently exceeded sales targets by 20% and have deep experience with the Singapore enterprise market. My approach includes thorough market research, personalized outreach, and building long-term relationships with key decision makers.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Full-time",
+      "startDate": "2024-02-01",
+      "estimatedDuration": "6 months"
+    },
+    "attachments": [
+      {
+        "name": "Sales Achievements.pdf",
+        "type": "application/pdf",
+        "size": 1536000
+      }
+    ],
+    "status": "accepted",
+    "submittedAt": "2024-01-20T14:15:00Z",
+    "updatedAt": "2024-01-22T09:45:00Z"
+  },
+  {
+    "id": "3",
+    "oppId": "2",
+    "repId": "1",
+    "cover": "I have extensive experience in business development across Southeast Asian markets, having worked with companies expanding into Singapore, Malaysia, and Thailand. My MBA in International Business and multilingual capabilities (English, Mandarin, Malay) make me well-suited for this consulting role. I've successfully helped 15+ companies establish operations in new markets.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Part-time",
+      "startDate": "2024-02-15",
+      "estimatedDuration": "3 months"
+    },
+    "attachments": [
+      {
+        "name": "Business Development Portfolio.pdf",
+        "type": "application/pdf",
+        "size": 3072000
+      },
+      {
+        "name": "Market Analysis Report.pdf",
+        "type": "application/pdf",
+        "size": 1024000
+      }
+    ],
+    "status": "pending",
+    "submittedAt": "2024-01-19T16:20:00Z",
+    "updatedAt": "2024-01-19T16:20:00Z"
+  },
+  {
+    "id": "4",
+    "oppId": "3",
+    "repId": "5",
+    "cover": "As a digital marketing specialist with 3+ years of experience, I've helped numerous SMBs establish their online presence and drive sales through digital channels. I'm well-versed in web development processes, SEO, social media marketing, and conversion optimization. My approach focuses on measurable results and ROI for clients.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Part-time",
+      "startDate": "2024-02-01",
+      "estimatedDuration": "4 months"
+    },
+    "attachments": [
+      {
+        "name": "Digital Marketing Case Studies.pdf",
+        "type": "application/pdf",
+        "size": 2560000
+      },
+      {
+        "name": "Certifications.pdf",
+        "type": "application/pdf",
+        "size": 768000
+      }
+    ],
+    "status": "pending",
+    "submittedAt": "2024-01-18T11:45:00Z",
+    "updatedAt": "2024-01-18T11:45:00Z"
+  },
+  {
+    "id": "5",
+    "oppId": "4",
+    "repId": "2",
+    "cover": "With 7+ years in enterprise account management, I've successfully managed portfolios worth over $5M annually. I specialize in account retention, upselling, and building strategic partnerships with large enterprise clients. My technical background allows me to understand complex software solutions and effectively communicate their value to C-level executives.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Full-time",
+      "startDate": "2024-02-01",
+      "estimatedDuration": "12 months"
+    },
+    "attachments": [
+      {
+        "name": "Account Management Portfolio.pdf",
+        "type": "application/pdf",
+        "size": 4096000
+      },
+      {
+        "name": "Client Testimonials.pdf",
+        "type": "application/pdf",
+        "size": 1024000
+      }
+    ],
+    "status": "accepted",
+    "submittedAt": "2024-01-17T13:30:00Z",
+    "updatedAt": "2024-01-19T10:15:00Z"
+  },
+  {
+    "id": "6",
+    "oppId": "5",
+    "repId": "1",
+    "cover": "I have a unique combination of startup experience and sales expertise, having worked with 10+ early-stage companies to develop their sales strategies and close their first major deals. I understand the challenges startups face and can provide both strategic guidance and hands-on sales support. My network includes VCs, accelerators, and successful entrepreneurs.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Part-time",
+      "startDate": "2024-02-01",
+      "estimatedDuration": "6 months"
+    },
+    "attachments": [
+      {
+        "name": "Startup Sales Strategy.pdf",
+        "type": "application/pdf",
+        "size": 2048000
+      }
+    ],
+    "status": "pending",
+    "submittedAt": "2024-01-16T15:20:00Z",
+    "updatedAt": "2024-01-16T15:20:00Z"
+  },
+  {
+    "id": "7",
+    "oppId": "6",
+    "repId": "2",
+    "cover": "I have 4+ years of experience in B2B membership and subscription sales, having worked with professional associations and business networks. I understand the value proposition of networking platforms and can effectively communicate the ROI to corporate decision makers. My network includes senior executives across various industries in Asia-Pacific.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Full-time",
+      "startDate": "2024-02-01",
+      "estimatedDuration": "8 months"
+    },
+    "attachments": [
+      {
+        "name": "Membership Sales Experience.pdf",
+        "type": "application/pdf",
+        "size": 1536000
+      },
+      {
+        "name": "Network Contacts.xlsx",
+        "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 256000
+      }
+    ],
+    "status": "pending",
+    "submittedAt": "2024-01-15T12:10:00Z",
+    "updatedAt": "2024-01-15T12:10:00Z"
+  },
+  {
+    "id": "8",
+    "oppId": "7",
+    "repId": "5",
+    "cover": "I'm a certified CRM implementation specialist with experience across multiple platforms including Salesforce, HubSpot, and Microsoft Dynamics. I've successfully implemented CRM systems for 20+ businesses, ranging from startups to enterprise clients. My approach focuses on user adoption, data migration, and ongoing optimization to ensure maximum ROI.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Part-time",
+      "startDate": "2024-02-01",
+      "estimatedDuration": "3 months"
+    },
+    "attachments": [
+      {
+        "name": "CRM Certifications.pdf",
+        "type": "application/pdf",
+        "size": 1024000
+      },
+      {
+        "name": "Implementation Case Studies.pdf",
+        "type": "application/pdf",
+        "size": 3072000
+      }
+    ],
+    "status": "accepted",
+    "submittedAt": "2024-01-14T09:30:00Z",
+    "updatedAt": "2024-01-16T14:20:00Z"
+  },
+  {
+    "id": "9",
+    "oppId": "8",
+    "repId": "1",
+    "cover": "With 6+ years in consulting sales and a deep understanding of digital transformation, I've helped traditional industries embrace innovation and modernize their operations. I have experience working with manufacturing, retail, and financial services companies, helping them understand the value of digital transformation and guiding them through their innovation journey.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Full-time",
+      "startDate": "2024-02-01",
+      "estimatedDuration": "9 months"
+    },
+    "attachments": [
+      {
+        "name": "Innovation Consulting Portfolio.pdf",
+        "type": "application/pdf",
+        "size": 5120000
+      },
+      {
+        "name": "Digital Transformation Case Studies.pdf",
+        "type": "application/pdf",
+        "size": 2048000
+      }
+    ],
+    "status": "pending",
+    "submittedAt": "2024-01-13T14:45:00Z",
+    "updatedAt": "2024-01-13T14:45:00Z"
+  },
+  {
+    "id": "10",
+    "oppId": "9",
+    "repId": "2",
+    "cover": "I have a strong technical background in software engineering combined with 5+ years of technical sales experience. I can effectively bridge the gap between technical complexity and business value, helping clients understand how our enterprise software solutions can solve their specific challenges. I've successfully supported deals worth over $2M in total value.",
+    "terms": {
+      "commissionAcceptance": true,
+      "availability": "Full-time",
+      "startDate": "2024-02-01",
+      "estimatedDuration": "6 months"
+    },
+    "attachments": [
+      {
+        "name": "Technical Sales Portfolio.pdf",
+        "type": "application/pdf",
+        "size": 3072000
+      },
+      {
+        "name": "Engineering Certifications.pdf",
+        "type": "application/pdf",
+        "size": 768000
+      }
+    ],
+    "status": "pending",
+    "submittedAt": "2024-01-12T11:20:00Z",
+    "updatedAt": "2024-01-12T11:20:00Z"
+  }
+]

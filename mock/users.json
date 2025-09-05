@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "+65 9123 4567",
+    "role": "rep",
+    "avatar": null,
+    "singpass": {
+      "name": "John Doe",
+      "uin_masked": "S1234567A"
+    },
+    "ratings": {
+      "average": 4.8,
+      "count": 15
+    },
+    "rss": 95,
+    "skills": ["Sales", "Lead Generation", "CRM"],
+    "experience": "5+ years",
+    "location": "Singapore",
+    "createdAt": "2024-01-15T08:00:00Z",
+    "updatedAt": "2024-01-20T10:30:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Sarah Chen",
+    "email": "sarah@example.com",
+    "phone": "+65 9876 5432",
+    "role": "rep",
+    "avatar": null,
+    "singpass": {
+      "name": "Sarah Chen",
+      "uin_masked": "S2345678B"
+    },
+    "ratings": {
+      "average": 4.9,
+      "count": 23
+    },
+    "rss": 98,
+    "skills": ["B2B Sales", "Account Management", "Negotiation"],
+    "experience": "7+ years",
+    "location": "Singapore",
+    "createdAt": "2024-01-10T09:15:00Z",
+    "updatedAt": "2024-01-22T14:20:00Z"
+  },
+  {
+    "id": "3",
+    "name": "Michael Tan",
+    "email": "michael@example.com",
+    "phone": "+65 8765 4321",
+    "role": "business",
+    "avatar": null,
+    "company": "TechCorp Singapore",
+    "position": "Sales Director",
+    "createdAt": "2024-01-05T11:00:00Z",
+    "updatedAt": "2024-01-18T16:45:00Z"
+  },
+  {
+    "id": "4",
+    "name": "Lisa Wong",
+    "email": "lisa@example.com",
+    "phone": "+65 7654 3210",
+    "role": "business",
+    "avatar": null,
+    "company": "Growth Partners",
+    "position": "Business Development Manager",
+    "createdAt": "2024-01-12T13:30:00Z",
+    "updatedAt": "2024-01-21T09:15:00Z"
+  },
+  {
+    "id": "5",
+    "name": "David Lim",
+    "email": "david@example.com",
+    "phone": "+65 6543 2109",
+    "role": "rep",
+    "avatar": null,
+    "singpass": {
+      "name": "David Lim",
+      "uin_masked": "S3456789C"
+    },
+    "ratings": {
+      "average": 4.6,
+      "count": 8
+    },
+    "rss": 87,
+    "skills": ["Digital Marketing", "Lead Qualification", "Sales Analytics"],
+    "experience": "3+ years",
+    "location": "Singapore",
+    "createdAt": "2024-01-20T07:45:00Z",
+    "updatedAt": "2024-01-23T12:00:00Z"
+  }
+]

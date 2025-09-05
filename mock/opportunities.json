@@ -1,0 +1,391 @@
+[
+  {
+    "id": "1",
+    "businessId": "1",
+    "title": "Enterprise Software Sales Representative",
+    "description": "We're looking for an experienced sales representative to help us expand our enterprise software solutions in the Singapore market. You'll be responsible for identifying and nurturing leads, conducting product demonstrations, and closing deals with mid to large-sized companies.",
+    "brief": "Drive sales of our enterprise software solutions to Singapore businesses. Target companies with 100+ employees in finance, healthcare, and manufacturing sectors.",
+    "commissionType": "milestone",
+    "commission": {
+      "structure": "milestone",
+      "milestones": [
+        {
+          "id": "m1",
+          "title": "Lead Generation",
+          "description": "Generate 50 qualified leads per month",
+          "amount": 2000,
+          "status": "pending"
+        },
+        {
+          "id": "m2",
+          "title": "Product Demo",
+          "description": "Conduct 20 product demonstrations per month",
+          "amount": 3000,
+          "status": "pending"
+        },
+        {
+          "id": "m3",
+          "title": "Sales Closure",
+          "description": "Close 3 deals per quarter",
+          "amount": 5000,
+          "status": "pending"
+        }
+      ]
+    },
+    "category": "Technology",
+    "location": "Singapore",
+    "remote": false,
+    "requirements": [
+      "Minimum 3 years B2B sales experience",
+      "Experience with enterprise software sales",
+      "Strong communication and presentation skills",
+      "CRM experience preferred"
+    ],
+    "tags": ["B2B Sales", "Enterprise Software", "Lead Generation", "CRM"],
+    "status": "active",
+    "applications": 12,
+    "createdAt": "2024-01-20T09:00:00Z",
+    "updatedAt": "2024-01-22T14:30:00Z"
+  },
+  {
+    "id": "2",
+    "businessId": "2",
+    "title": "Business Development Consultant",
+    "description": "Join our team as a business development consultant to help our clients expand into new markets across Southeast Asia. You'll work with established companies looking to scale their operations and enter new territories.",
+    "brief": "Provide strategic business development consulting to help companies expand into Southeast Asian markets.",
+    "commissionType": "fixed",
+    "commission": {
+      "structure": "fixed",
+      "amount": 8000,
+      "currency": "SGD"
+    },
+    "category": "Consulting",
+    "location": "Singapore",
+    "remote": true,
+    "requirements": [
+      "5+ years business development experience",
+      "Knowledge of Southeast Asian markets",
+      "MBA or equivalent business qualification",
+      "Multilingual capabilities preferred"
+    ],
+    "tags": ["Business Development", "Market Expansion", "Consulting", "Southeast Asia"],
+    "status": "active",
+    "applications": 8,
+    "createdAt": "2024-01-18T11:30:00Z",
+    "updatedAt": "2024-01-21T16:45:00Z"
+  },
+  {
+    "id": "3",
+    "businessId": "3",
+    "title": "Digital Marketing Sales Specialist",
+    "description": "We need a digital marketing sales specialist to promote our web development and digital marketing services to small and medium businesses. This role involves both inbound and outbound sales activities.",
+    "brief": "Sell digital marketing and web development services to SMBs in Singapore.",
+    "commissionType": "fixed",
+    "commission": {
+      "structure": "fixed",
+      "amount": 5000,
+      "currency": "SGD"
+    },
+    "category": "Digital Marketing",
+    "location": "Singapore",
+    "remote": true,
+    "requirements": [
+      "2+ years digital marketing sales experience",
+      "Understanding of web development and digital marketing",
+      "Experience with SMB sales cycles",
+      "Strong social media presence"
+    ],
+    "tags": ["Digital Marketing", "Web Development", "SMB Sales", "Social Media"],
+    "status": "active",
+    "applications": 15,
+    "createdAt": "2024-01-15T14:20:00Z",
+    "updatedAt": "2024-01-20T10:15:00Z"
+  },
+  {
+    "id": "4",
+    "businessId": "4",
+    "title": "Enterprise Account Manager",
+    "description": "Manage and grow relationships with our largest enterprise clients. You'll be responsible for account retention, upselling, and ensuring client satisfaction with our enterprise software solutions.",
+    "brief": "Manage enterprise accounts and drive revenue growth through upselling and relationship management.",
+    "commissionType": "milestone",
+    "commission": {
+      "structure": "milestone",
+      "milestones": [
+        {
+          "id": "m1",
+          "title": "Account Retention",
+          "description": "Maintain 95% account retention rate",
+          "amount": 4000,
+          "status": "pending"
+        },
+        {
+          "id": "m2",
+          "title": "Upselling",
+          "description": "Achieve 20% revenue growth from existing accounts",
+          "amount": 6000,
+          "status": "pending"
+        },
+        {
+          "id": "m3",
+          "title": "Client Satisfaction",
+          "description": "Maintain 4.5+ client satisfaction score",
+          "amount": 2000,
+          "status": "pending"
+        }
+      ]
+    },
+    "category": "Enterprise Software",
+    "location": "Singapore",
+    "remote": false,
+    "requirements": [
+      "5+ years enterprise account management experience",
+      "Experience with large enterprise clients",
+      "Strong relationship building skills",
+      "Technical background preferred"
+    ],
+    "tags": ["Account Management", "Enterprise Sales", "Client Relations", "Upselling"],
+    "status": "active",
+    "applications": 6,
+    "createdAt": "2024-01-12T08:45:00Z",
+    "updatedAt": "2024-01-19T13:20:00Z"
+  },
+  {
+    "id": "5",
+    "businessId": "5",
+    "title": "Startup Sales Representative",
+    "description": "Help our portfolio companies with their sales efforts. You'll work with early-stage startups to develop their sales strategies, identify target markets, and close their first major deals.",
+    "brief": "Provide sales support and strategy to early-stage startups in our portfolio.",
+    "commissionType": "fixed",
+    "commission": {
+      "structure": "fixed",
+      "amount": 6000,
+      "currency": "SGD"
+    },
+    "category": "Venture Capital",
+    "location": "Singapore",
+    "remote": true,
+    "requirements": [
+      "3+ years startup sales experience",
+      "Understanding of early-stage business challenges",
+      "Experience with multiple industries",
+      "Entrepreneurial mindset"
+    ],
+    "tags": ["Startup Sales", "Business Strategy", "Early Stage", "Portfolio Companies"],
+    "status": "active",
+    "applications": 10,
+    "createdAt": "2024-01-10T16:30:00Z",
+    "updatedAt": "2024-01-18T12:15:00Z"
+  },
+  {
+    "id": "6",
+    "businessId": "6",
+    "title": "B2B Networking Sales Manager",
+    "description": "Drive membership sales for our B2B networking platform. You'll be responsible for acquiring new corporate members and expanding our network across Asia-Pacific.",
+    "brief": "Sell B2B networking memberships and expand our corporate network in Asia-Pacific.",
+    "commissionType": "milestone",
+    "commission": {
+      "structure": "milestone",
+      "milestones": [
+        {
+          "id": "m1",
+          "title": "New Memberships",
+          "description": "Acquire 10 new corporate memberships per month",
+          "amount": 3000,
+          "status": "pending"
+        },
+        {
+          "id": "m2",
+          "title": "Revenue Target",
+          "description": "Achieve monthly revenue target of $50,000",
+          "amount": 4000,
+          "status": "pending"
+        }
+      ]
+    },
+    "category": "Business Services",
+    "location": "Singapore",
+    "remote": false,
+    "requirements": [
+      "4+ years B2B sales experience",
+      "Experience with membership/subscription sales",
+      "Network of corporate contacts in Asia-Pacific",
+      "Strong presentation skills"
+    ],
+    "tags": ["B2B Sales", "Membership Sales", "Networking", "Asia-Pacific"],
+    "status": "active",
+    "applications": 7,
+    "createdAt": "2024-01-08T13:15:00Z",
+    "updatedAt": "2024-01-17T09:30:00Z"
+  },
+  {
+    "id": "7",
+    "businessId": "7",
+    "title": "CRM Implementation Specialist",
+    "description": "Help businesses implement and optimize their CRM systems. You'll work with clients to understand their needs, configure the system, and provide training to ensure successful adoption.",
+    "brief": "Implement and optimize CRM systems for businesses of all sizes.",
+    "commissionType": "milestone",
+    "commission": {
+      "structure": "milestone",
+      "milestones": [
+        {
+          "id": "m1",
+          "title": "System Setup",
+          "description": "Complete CRM system setup and configuration",
+          "amount": 3000,
+          "status": "pending"
+        },
+        {
+          "id": "m2",
+          "title": "Data Migration",
+          "description": "Migrate existing data to new CRM system",
+          "amount": 2500,
+          "status": "pending"
+        },
+        {
+          "id": "m3",
+          "title": "Training & Support",
+          "description": "Provide training and ongoing support",
+          "amount": 2000,
+          "status": "pending"
+        }
+      ]
+    },
+    "category": "CRM Software",
+    "location": "Singapore",
+    "remote": true,
+    "requirements": [
+      "3+ years CRM implementation experience",
+      "Certification in major CRM platforms",
+      "Strong technical and communication skills",
+      "Experience with data migration"
+    ],
+    "tags": ["CRM Implementation", "System Configuration", "Training", "Data Migration"],
+    "status": "active",
+    "applications": 9,
+    "createdAt": "2024-01-05T10:00:00Z",
+    "updatedAt": "2024-01-16T14:45:00Z"
+  },
+  {
+    "id": "8",
+    "businessId": "8",
+    "title": "Innovation Sales Consultant",
+    "description": "Sell our innovation consulting services to traditional industries looking to embrace digital transformation. You'll help companies understand the value of innovation and guide them through their transformation journey.",
+    "brief": "Sell innovation consulting services to traditional industries seeking digital transformation.",
+    "commissionType": "fixed",
+    "commission": {
+      "structure": "fixed",
+      "amount": 10000,
+      "currency": "SGD"
+    },
+    "category": "Innovation",
+    "location": "Singapore",
+    "remote": false,
+    "requirements": [
+      "6+ years consulting sales experience",
+      "Understanding of digital transformation",
+      "Experience with traditional industries",
+      "Strong analytical and presentation skills"
+    ],
+    "tags": ["Innovation Consulting", "Digital Transformation", "Traditional Industries", "Strategic Sales"],
+    "status": "active",
+    "applications": 5,
+    "createdAt": "2024-01-03T15:20:00Z",
+    "updatedAt": "2024-01-15T11:10:00Z"
+  },
+  {
+    "id": "9",
+    "businessId": "1",
+    "title": "Technical Sales Engineer",
+    "description": "Combine technical expertise with sales skills to help clients understand and implement our enterprise software solutions. You'll work closely with the technical team to provide detailed product demonstrations and technical support.",
+    "brief": "Provide technical sales support for enterprise software solutions.",
+    "commissionType": "milestone",
+    "commission": {
+      "structure": "milestone",
+      "milestones": [
+        {
+          "id": "m1",
+          "title": "Technical Demos",
+          "description": "Conduct 15 technical demonstrations per month",
+          "amount": 2500,
+          "status": "pending"
+        },
+        {
+          "id": "m2",
+          "title": "Technical Proposals",
+          "description": "Prepare 10 technical proposals per month",
+          "amount": 2000,
+          "status": "pending"
+        },
+        {
+          "id": "m3",
+          "title": "Sales Support",
+          "description": "Support 5 major deals per quarter",
+          "amount": 4000,
+          "status": "pending"
+        }
+      ]
+    },
+    "category": "Technology",
+    "location": "Singapore",
+    "remote": false,
+    "requirements": [
+      "4+ years technical sales experience",
+      "Engineering or technical background",
+      "Experience with enterprise software",
+      "Strong problem-solving skills"
+    ],
+    "tags": ["Technical Sales", "Engineering", "Enterprise Software", "Product Demos"],
+    "status": "active",
+    "applications": 11,
+    "createdAt": "2024-01-22T12:00:00Z",
+    "updatedAt": "2024-01-23T16:30:00Z"
+  },
+  {
+    "id": "10",
+    "businessId": "3",
+    "title": "E-commerce Sales Manager",
+    "description": "Help businesses establish and grow their e-commerce presence. You'll work with clients to develop their online sales strategies, optimize their digital storefronts, and drive online revenue growth.",
+    "brief": "Develop and implement e-commerce sales strategies for businesses.",
+    "commissionType": "milestone",
+    "commission": {
+      "structure": "milestone",
+      "milestones": [
+        {
+          "id": "m1",
+          "title": "Strategy Development",
+          "description": "Develop comprehensive e-commerce strategy",
+          "amount": 4000,
+          "status": "pending"
+        },
+        {
+          "id": "m2",
+          "title": "Platform Setup",
+          "description": "Set up and optimize e-commerce platform",
+          "amount": 3500,
+          "status": "pending"
+        },
+        {
+          "id": "m3",
+          "title": "Revenue Growth",
+          "description": "Achieve 30% revenue growth in first quarter",
+          "amount": 5000,
+          "status": "pending"
+        }
+      ]
+    },
+    "category": "Digital Marketing",
+    "location": "Singapore",
+    "remote": true,
+    "requirements": [
+      "3+ years e-commerce sales experience",
+      "Understanding of online sales platforms",
+      "Experience with digital marketing tools",
+      "Analytical mindset"
+    ],
+    "tags": ["E-commerce", "Online Sales", "Digital Marketing", "Revenue Growth"],
+    "status": "active",
+    "applications": 13,
+    "createdAt": "2024-01-19T09:30:00Z",
+    "updatedAt": "2024-01-21T13:45:00Z"
+  }
+]

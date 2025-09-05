@@ -1,0 +1,15 @@
+{
+  "name": "John Doe",
+  "nric_masked": "S1234567A",
+  "dob": "1990-01-15",
+  "email": "john.doe@email.com",
+  "mobile": "+65 9123 4567",
+  "address": "123 Main Street, Singapore 123456",
+  "nationality": "Singaporean",
+  "sex": "Male",
+  "race": "Chinese",
+  "marital_status": "Single",
+  "occupation": "Sales Representative",
+  "employer_name": "Freelance",
+  "employment_status": "Self-employed"
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "category": "General",
+    "question": "What is Rep-Link?",
+    "answer": "Rep-Link is a marketplace connecting freelance sales representatives with businesses in Singapore. We provide a platform where businesses can post sales opportunities and sales reps can apply to work on commission-based projects."
+  },
+  {
+    "id": "2",
+    "category": "General",
+    "question": "How does Rep-Link work?",
+    "answer": "Businesses post sales opportunities with clear commission structures. Sales reps browse opportunities, submit proposals, and get matched with businesses. Once selected, reps work on commission-based projects with milestone-based payments and escrow protection."
+  },
+  {
+    "id": "3",
+    "category": "General",
+    "question": "Is Rep-Link free to use?",
+    "answer": "Yes, Rep-Link is free for sales reps to join and apply for opportunities. Businesses pay a small fee when they successfully hire a rep, but posting opportunities is free."
+  },
+  {
+    "id": "4",
+    "category": "For Sales Reps",
+    "question": "How do I become a sales rep on Rep-Link?",
+    "answer": "Simply sign up for an account, complete your profile with your sales experience and skills, and start browsing opportunities. You can apply to any opportunity that matches your expertise."
+  },
+  {
+    "id": "5",
+    "category": "For Sales Reps",
+    "question": "What types of sales opportunities are available?",
+    "answer": "We have opportunities across various industries including technology, consulting, digital marketing, enterprise software, and more. Opportunities can be fixed-price or milestone-based projects."
+  },
+  {
+    "id": "6",
+    "category": "For Sales Reps",
+    "question": "How do I get paid?",
+    "answer": "Payment is made through milestone-based escrow. When you complete a milestone, the client reviews your work. If approved, payment is released automatically after 14 days. This ensures both parties are protected."
+  },
+  {
+    "id": "7",
+    "category": "For Sales Reps",
+    "question": "What is the Rep-Link Success Score (RSS)?",
+    "answer": "The RSS is a score from 0-100 that reflects your performance on the platform. It's calculated based on client ratings, project completion rates, and other performance metrics. A higher RSS makes you more attractive to potential clients."
+  },
+  {
+    "id": "8",
+    "category": "For Sales Reps",
+    "question": "Can I work on multiple projects at once?",
+    "answer": "Yes, you can work on multiple projects simultaneously as long as you can deliver quality work and meet deadlines. However, we recommend being realistic about your capacity to avoid overcommitting."
+  },
+  {
+    "id": "9",
+    "category": "For Sales Reps",
+    "question": "How do I improve my chances of getting selected?",
+    "answer": "Create a compelling profile, write detailed proposals that address the client's specific needs, showcase relevant experience, and maintain a high RSS score. Respond quickly to client messages and be professional in all communications."
+  },
+  {
+    "id": "10",
+    "category": "For Sales Reps",
+    "question": "What if I have a dispute with a client?",
+    "answer": "We have a dispute resolution process. First, try to resolve the issue directly with the client. If that doesn't work, you can raise a dispute through our platform. We'll review the case and help find a fair resolution."
+  },
+  {
+    "id": "11",
+    "category": "For Businesses",
+    "question": "How do I post a sales opportunity?",
+    "answer": "Sign up for a business account, complete your company profile, and use our opportunity posting form. You'll need to provide details about the role, commission structure, requirements, and timeline."
+  },
+  {
+    "id": "12",
+    "category": "For Businesses",
+    "question": "What types of commission structures are supported?",
+    "answer": "We support two main types: Fixed-price (one-time payment) and Milestone-based (payments tied to specific deliverables). You can choose the structure that best fits your needs."
+  },
+  {
+    "id": "13",
+    "category": "For Businesses",
+    "question": "How do I choose the right sales rep?",
+    "answer": "Review proposals carefully, check the rep's RSS score and ratings, look at their portfolio and experience, and communicate with them to assess their understanding of your needs. Consider their communication style and availability."
+  },
+  {
+    "id": "14",
+    "category": "For Businesses",
+    "question": "How does the escrow system work?",
+    "answer": "When you hire a rep, you fund the milestone payments into escrow. The rep completes the work and submits it for review. You have 14 days to approve or request changes. If approved, payment is automatically released after the review period."
+  },
+  {
+    "id": "15",
+    "category": "For Businesses",
+    "question": "What if I'm not satisfied with the work?",
+    "answer": "You can request revisions within the 14-day review period. If you're still not satisfied, you can raise a dispute. We'll review the case and help find a fair resolution. The escrow system protects both parties."
+  },
+  {
+    "id": "16",
+    "category": "For Businesses",
+    "question": "Can I hire the same rep for multiple projects?",
+    "answer": "Yes, if you're satisfied with a rep's work, you can hire them for additional projects. Many successful partnerships develop into long-term relationships with multiple projects over time."
+  },
+  {
+    "id": "17",
+    "category": "Payment & Escrow",
+    "question": "How secure are payments?",
+    "answer": "All payments are processed through our secure escrow system. Funds are held safely until work is completed and approved. We use industry-standard encryption and security measures to protect your financial information."
+  },
+  {
+    "id": "18",
+    "category": "Payment & Escrow",
+    "question": "When do I get paid as a sales rep?",
+    "answer": "Payment is released automatically 14 days after your work is approved by the client. This gives the client time to review your work and ensures quality delivery. You can track payment status in your dashboard."
+  },
+  {
+    "id": "19",
+    "category": "Payment & Escrow",
+    "question": "What payment methods are supported?",
+    "answer": "We support bank transfers, PayPal, and other secure payment methods. All payments are processed in SGD (Singapore Dollars) to comply with local regulations."
+  },
+  {
+    "id": "20",
+    "category": "Payment & Escrow",
+    "question": "Are there any fees for payments?",
+    "answer": "Rep-Link charges a small platform fee (typically 3-5%) on successful transactions. This fee covers platform maintenance, escrow services, and dispute resolution. The exact fee is displayed before you confirm any transaction."
+  },
+  {
+    "id": "21",
+    "category": "Account & Profile",
+    "question": "How do I update my profile?",
+    "answer": "Go to your dashboard and click on 'Edit Profile'. You can update your personal information, skills, experience, portfolio, and other details. Keeping your profile up-to-date helps you get more opportunities."
+  },
+  {
+    "id": "22",
+    "category": "Account & Profile",
+    "question": "Can I change my account type?",
+    "answer": "Yes, you can switch between sales rep and business accounts. However, you'll need to complete the appropriate profile information for your new account type. Some features may be limited during the transition."
+  },
+  {
+    "id": "23",
+    "category": "Account & Profile",
+    "question": "How do I delete my account?",
+    "answer": "You can delete your account from the account settings page. Please note that this action is irreversible and will remove all your data, including active projects and payment history."
+  },
+  {
+    "id": "24",
+    "category": "Account & Profile",
+    "question": "What is Singpass integration?",
+    "answer": "Singpass integration allows us to verify your identity and pull relevant information for your profile. This helps build trust and ensures compliance with Singapore regulations. Your personal data is protected and only used for verification purposes."
+  },
+  {
+    "id": "25",
+    "category": "Technical Support",
+    "question": "How do I contact support?",
+    "answer": "You can contact our support team through the help center, email us at support@rep-link.sg, or call us at +65 6123 4567. We typically respond within 24 hours during business days."
+  },
+  {
+    "id": "26",
+    "category": "Technical Support",
+    "question": "What if I'm having technical issues?",
+    "answer": "Try refreshing your browser and clearing your cache first. If the issue persists, contact our technical support team with details about the problem, including your browser type and any error messages you're seeing."
+  },
+  {
+    "id": "27",
+    "category": "Technical Support",
+    "question": "Is there a mobile app?",
+    "answer": "Currently, Rep-Link is optimized for web browsers on desktop and mobile devices. We're working on a mobile app that will be available in the coming months. The web version works well on mobile browsers in the meantime."
+  },
+  {
+    "id": "28",
+    "category": "Privacy & Security",
+    "question": "How is my data protected?",
+    "answer": "We use industry-standard encryption and security measures to protect your data. We comply with Singapore's Personal Data Protection Act (PDPA) and never share your personal information with third parties without your consent."
+  },
+  {
+    "id": "29",
+    "category": "Privacy & Security",
+    "question": "Can I control who sees my information?",
+    "answer": "Yes, you have control over your privacy settings. You can choose what information is visible to other users and what remains private. You can update these settings at any time in your account preferences."
+  },
+  {
+    "id": "30",
+    "category": "Privacy & Security",
+    "question": "What happens to my data if I leave Rep-Link?",
+    "answer": "You can request a copy of your data before deleting your account. We retain certain information for legal and regulatory purposes, but we'll delete your personal information according to our privacy policy and applicable laws."
+  }
+]
