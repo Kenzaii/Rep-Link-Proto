@@ -21,7 +21,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- Header -->
-    <header class="header" role="banner">
+    <header class="header" role="banner" data-header>
         <div class="container">
             <div class="header__content">
                 <div class="header__logo">
@@ -202,5 +202,46 @@
 
     <!-- Scripts -->
     <script type="module" src="scripts/app.js"></script>
+    
+    <!-- Simple auth check for header -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if user is logged in and update header
+            const authData = localStorage.getItem('replink_state_v1');
+            if (authData) {
+                const state = JSON.parse(authData);
+                const auth = state.auth;
+                
+                if (auth?.isAuthed && auth.user) {
+                    // Update header to show logged in state
+                    const headerNav = document.querySelector('.header__ctas');
+                    if (headerNav) {
+                        const dashboardUrl = auth.user.role === 'business' 
+                            ? 'pages/business-dashboard.html' 
+                            : 'pages/rep-dashboard.html';
+                        
+                        headerNav.innerHTML = `
+                            <a href="pages/opportunities.html" class="btn btn--secondary">Browse Opportunities</a>
+                            <a href="${dashboardUrl}" class="btn btn--secondary">Dashboard</a>
+                            <div class="user-info">
+                                <span class="user-name">${auth.user.name || 'User'}</span>
+                                <span class="user-role">${auth.user.role === 'business' ? 'Business' : 'Sales Rep'}</span>
+                            </div>
+                            <button class="btn btn--tertiary" id="logout-btn">Logout</button>
+                        `;
+                        
+                        // Handle logout
+                        const logoutBtn = document.getElementById('logout-btn');
+                        if (logoutBtn) {
+                            logoutBtn.addEventListener('click', () => {
+                                localStorage.removeItem('replink_state_v1');
+                                location.reload();
+                            });
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
