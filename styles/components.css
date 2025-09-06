@@ -1,5 +1,39 @@
 /* Component Styles */
 
+/* Mock Login Section */
+.mock-login-section {
+    text-align: center;
+    margin: var(--space-6) 0;
+}
+
+.mock-login-section h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+}
+
+.mock-login-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.mock-login-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin: 0;
+}
+
+@media (min-width: 480px) {
+    .mock-login-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
 /* Navigation */
 .nav {
     display: flex;
