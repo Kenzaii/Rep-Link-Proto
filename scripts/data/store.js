@@ -1,400 +1,255 @@
 /**
  * Store
- * Local storage backed data store for the application
+ * Centralized state management with localStorage persistence
  */
 
 'use strict';
 
+const KEY = 'replink_state_v1';
+
+const DEFAULT_STATE = {
+    auth: { isAuthed: false, user: null, token: null },
+    users: [],
+    businesses: [],
+    opportunities: [],
+    proposals: [],
+    contracts: [],
+    messages: [],
+    faq: []
+};
+
 /**
  * Store Class
- * Manages application state with localStorage persistence
+ * Manages application state with localStorage persistence and auth event broadcasting
  */
 export class Store {
     constructor() {
-        this.data = new Map();
+        const raw = localStorage.getItem(KEY);
+        this.state = raw ? JSON.parse(raw) : DEFAULT_STATE;
         this.subscribers = new Map();
-        this.storageKey = 'rep-link-store';
-        this.autoSave = true;
-        this.saveDebounce = null;
     }
 
     /**
-     * Initialize the store
+     * Save state to localStorage
      */
-    async init() {
-        try {
-            // Load data from localStorage
-            await this.load();
-            
-            // Set up auto-save
-            if (this.autoSave) {
-                this.setupAutoSave();
-            }
-            
-            console.log('Store initialized successfully');
-        } catch (error) {
-            console.error('Failed to initialize store:', error);
-            throw error;
-        }
+    save() {
+        localStorage.setItem(KEY, JSON.stringify(this.state));
     }
 
     /**
-     * Set up auto-save functionality
+     * Get data from store
      */
-    setupAutoSave() {
-        // Debounced save function
-        this.saveDebounce = this.debounce(() => {
-            this.save();
-        }, 1000);
+    get(path) {
+        if (path === 'auth') return this.state.auth;
+        return this.state[path];
+    }
+
+    /**
+     * Set data in store
+     */
+    set(path, value) {
+        this.state[path] = value;
+        this.save();
         
-        // Listen for data changes
-        this.on('data:changed', this.saveDebounce);
-    }
-
-    /**
-     * Load data from localStorage
-     */
-    async load() {
-        try {
-            const stored = localStorage.getItem(this.storageKey);
-            if (stored) {
-                const parsed = JSON.parse(stored);
-                this.data = new Map(Object.entries(parsed));
-            }
-            
-            // Initialize default data if empty
-            if (this.data.size === 0) {
-                this.initializeDefaultData();
-            }
-            
-        } catch (error) {
-            console.error('Failed to load store data:', error);
-            this.initializeDefaultData();
+        // Broadcast auth changes
+        if (path === 'auth') {
+            window.dispatchEvent(new CustomEvent('auth:changed', { detail: value }));
         }
     }
 
     /**
-     * Save data to localStorage
+     * Set authentication state
      */
-    async save() {
-        try {
-            const serialized = Object.fromEntries(this.data);
-            localStorage.setItem(this.storageKey, JSON.stringify(serialized));
-            this.emit('store:saved');
-        } catch (error) {
-            console.error('Failed to save store data:', error);
-            this.emit('store:error', error);
-        }
+    setAuth(auth) {
+        this.set('auth', auth);
     }
 
     /**
-     * Initialize default data structure
+     * Clear authentication state
      */
-    initializeDefaultData() {
-        const defaultData = {
-            // Authentication
-            auth: {
-                token: null,
-                user: null,
-                isAuthenticated: false,
-                lastLogin: null
-            },
-            
-            // Users
-            users: [],
-            
-            // Businesses
-            businesses: [],
-            
-            // Opportunities
-            opportunities: [],
-            
-            // Proposals
-            proposals: [],
-            
-            // Contracts
-            contracts: [],
-            
-            // Messages
-            messages: [],
-            
-            // Application state
-            app: {
-                theme: 'light',
-                language: 'en',
-                notifications: true,
-                lastSync: null
-            },
-            
-            // UI state
-            ui: {
-                sidebarOpen: false,
-                currentPage: null,
-                filters: {},
-                searchQuery: ''
+    clearAuth() {
+        this.set('auth', { isAuthed: false, user: null, token: null });
+    }
+
+    /**
+     * Update user data
+     */
+    updateUser(patch) {
+        const auth = this.get('auth');
+        if (!auth?.user) return;
+        this.setAuth({ ...auth, user: { ...auth.user, ...patch } });
+    }
+
+    /**
+     * Subscribe to store changes
+     */
+    subscribe(path, callback) {
+        if (!this.subscribers.has(path)) {
+            this.subscribers.set(path, new Set());
+        }
+        this.subscribers.get(path).add(callback);
+        
+        // Return unsubscribe function
+        return () => {
+            const callbacks = this.subscribers.get(path);
+            if (callbacks) {
+                callbacks.delete(callback);
             }
         };
-        
-        Object.entries(defaultData).forEach(([key, value]) => {
-            this.data.set(key, value);
-        });
-        
-        this.emit('store:initialized');
     }
 
     /**
-     * Get data by key
-     * @param {string} key - Data key
-     * @param {any} defaultValue - Default value if key doesn't exist
-     * @returns {any}
+     * Initialize store (legacy compatibility)
      */
-    get(key, defaultValue = null) {
-        return this.data.has(key) ? this.data.get(key) : defaultValue;
+    async init() {
+        console.log('Store initialized successfully');
+        return Promise.resolve();
     }
 
     /**
-     * Set data by key
-     * @param {string} key - Data key
-     * @param {any} value - Value to set
+     * Load data from localStorage (legacy compatibility)
      */
-    set(key, value) {
-        const oldValue = this.data.get(key);
-        this.data.set(key, value);
-        
-        // Emit change event
-        this.emit('data:changed', { key, value, oldValue });
-        this.emit(`data:changed:${key}`, { value, oldValue });
+    async load() {
+        // Data is already loaded in constructor
+        return Promise.resolve();
     }
 
     /**
-     * Update data by key (merge with existing)
-     * @param {string} key - Data key
-     * @param {Object} updates - Updates to apply
+     * Save data to localStorage (legacy compatibility)
      */
-    update(key, updates) {
-        const currentValue = this.get(key, {});
-        const newValue = { ...currentValue, ...updates };
-        this.set(key, newValue);
+    async saveData() {
+        this.save();
+        return Promise.resolve();
     }
 
     /**
-     * Delete data by key
-     * @param {string} key - Data key
-     */
-    delete(key) {
-        if (this.data.has(key)) {
-            const oldValue = this.data.get(key);
-            this.data.delete(key);
-            
-            // Emit change event
-            this.emit('data:changed', { key, value: null, oldValue });
-            this.emit(`data:changed:${key}`, { value: null, oldValue });
-        }
-    }
-
-    /**
-     * Check if key exists
-     * @param {string} key - Data key
-     * @returns {boolean}
-     */
-    has(key) {
-        return this.data.has(key);
-    }
-
-    /**
-     * Get all data
-     * @returns {Object}
+     * Get all data (legacy compatibility)
      */
     getAll() {
-        return Object.fromEntries(this.data);
+        return this.state;
+    }
+
+    /**
+     * Set all data (legacy compatibility)
+     */
+    setAll(data) {
+        this.state = { ...DEFAULT_STATE, ...data };
+        this.save();
     }
 
     /**
      * Clear all data
      */
     clear() {
-        this.data.clear();
-        this.emit('store:cleared');
+        this.state = { ...DEFAULT_STATE };
+        this.save();
     }
 
     /**
-     * Subscribe to data changes
-     * @param {string} key - Data key to watch
-     * @param {Function} callback - Callback function
-     * @returns {Function} Unsubscribe function
+     * Check if store has data
      */
-    subscribe(key, callback) {
-        if (!this.subscribers.has(key)) {
-            this.subscribers.set(key, []);
-        }
-        
-        this.subscribers.get(key).push(callback);
-        
-        // Return unsubscribe function
-        return () => {
-            const callbacks = this.subscribers.get(key);
-            if (callbacks) {
-                const index = callbacks.indexOf(callback);
-                if (index > -1) {
-                    callbacks.splice(index, 1);
-                }
+    has(path) {
+        return this.state.hasOwnProperty(path);
+    }
+
+    /**
+     * Get store size
+     */
+    size() {
+        return Object.keys(this.state).length;
+    }
+
+    /**
+     * Get store keys
+     */
+    keys() {
+        return Object.keys(this.state);
+    }
+
+    /**
+     * Get store values
+     */
+    values() {
+        return Object.values(this.state);
+    }
+
+    /**
+     * Get store entries
+     */
+    entries() {
+        return Object.entries(this.state);
+    }
+
+    /**
+     * For each entry in store
+     */
+    forEach(callback) {
+        Object.entries(this.state).forEach(([key, value]) => {
+            callback(value, key, this.state);
+        });
+    }
+
+    /**
+     * Map over store entries
+     */
+    map(callback) {
+        return Object.entries(this.state).map(([key, value]) => {
+            return callback(value, key, this.state);
+        });
+    }
+
+    /**
+     * Filter store entries
+     */
+    filter(callback) {
+        const result = {};
+        Object.entries(this.state).forEach(([key, value]) => {
+            if (callback(value, key, this.state)) {
+                result[key] = value;
             }
-        };
+        });
+        return result;
     }
 
     /**
-     * Emit event to subscribers
-     * @param {string} event - Event name
-     * @param {any} data - Event data
+     * Reduce over store entries
      */
-    emit(event, data) {
-        // Global subscribers
-        const globalSubscribers = this.subscribers.get('*');
-        if (globalSubscribers) {
-            globalSubscribers.forEach(callback => {
-                try {
-                    callback(event, data);
-                } catch (error) {
-                    console.error('Store subscriber error:', error);
-                }
-            });
-        }
-        
-        // Specific key subscribers
-        const keySubscribers = this.subscribers.get(event);
-        if (keySubscribers) {
-            keySubscribers.forEach(callback => {
-                try {
-                    callback(data);
-                } catch (error) {
-                    console.error('Store subscriber error:', error);
-                }
-            });
-        }
+    reduce(callback, initialValue) {
+        return Object.entries(this.state).reduce((acc, [key, value]) => {
+            return callback(acc, value, key, this.state);
+        }, initialValue);
     }
 
     /**
-     * Create a namespaced store
-     * @param {string} namespace - Namespace prefix
-     * @returns {Object} Namespaced store methods
+     * Find entry in store
      */
-    namespace(namespace) {
-        return {
-            get: (key, defaultValue) => this.get(`${namespace}:${key}`, defaultValue),
-            set: (key, value) => this.set(`${namespace}:${key}`, value),
-            update: (key, updates) => this.update(`${namespace}:${key}`, updates),
-            delete: (key) => this.delete(`${namespace}:${key}`),
-            has: (key) => this.has(`${namespace}:${key}`),
-            subscribe: (key, callback) => this.subscribe(`${namespace}:${key}`, callback)
-        };
-    }
-
-    /**
-     * Get store statistics
-     * @returns {Object}
-     */
-    getStats() {
-        return {
-            size: this.data.size,
-            keys: Array.from(this.data.keys()),
-            subscribers: Array.from(this.subscribers.keys()).length,
-            lastSaved: localStorage.getItem(`${this.storageKey}:lastSaved`)
-        };
-    }
-
-    /**
-     * Export store data
-     * @returns {string} JSON string of store data
-     */
-    export() {
-        return JSON.stringify(this.getAll(), null, 2);
-    }
-
-    /**
-     * Import store data
-     * @param {string} jsonData - JSON string of store data
-     */
-    import(jsonData) {
-        try {
-            const imported = JSON.parse(jsonData);
-            this.data = new Map(Object.entries(imported));
-            this.emit('store:imported');
-            this.save();
-        } catch (error) {
-            console.error('Failed to import store data:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Debounce utility function
-     * @param {Function} func - Function to debounce
-     * @param {number} wait - Wait time in milliseconds
-     * @returns {Function}
-     */
-    debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func.apply(this, args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    /**
-     * Create a reactive computed value
-     * @param {Array} dependencies - Array of data keys to watch
-     * @param {Function} compute - Computation function
-     * @returns {Object} Reactive computed value
-     */
-    computed(dependencies, compute) {
-        let value = null;
-        let isDirty = true;
-        const subscribers = [];
-        
-        const update = () => {
-            if (isDirty) {
-                const deps = dependencies.map(dep => this.get(dep));
-                value = compute(...deps);
-                isDirty = false;
-                
-                // Notify subscribers
-                subscribers.forEach(callback => callback(value));
+    find(callback) {
+        for (const [key, value] of Object.entries(this.state)) {
+            if (callback(value, key, this.state)) {
+                return { key, value };
             }
-        };
-        
-        // Subscribe to dependencies
-        const unsubscribers = dependencies.map(dep => 
-            this.subscribe(`data:changed:${dep}`, () => {
-                isDirty = true;
-                update();
-            })
-        );
-        
-        // Initial computation
-        update();
-        
-        return {
-            get value() {
-                update();
-                return value;
-            },
-            subscribe: (callback) => {
-                subscribers.push(callback);
-                return () => {
-                    const index = subscribers.indexOf(callback);
-                    if (index > -1) {
-                        subscribers.splice(index, 1);
-                    }
-                };
-            },
-            destroy: () => {
-                unsubscribers.forEach(unsub => unsub());
-                subscribers.length = 0;
-            }
-        };
+        }
+        return null;
+    }
+
+    /**
+     * Check if any entry matches callback
+     */
+    some(callback) {
+        return Object.entries(this.state).some(([key, value]) => {
+            return callback(value, key, this.state);
+        });
+    }
+
+    /**
+     * Check if all entries match callback
+     */
+    every(callback) {
+        return Object.entries(this.state).every(([key, value]) => {
+            return callback(value, key, this.state);
+        });
     }
 }
+
+// Create and export singleton instance
+export const store = new Store();
