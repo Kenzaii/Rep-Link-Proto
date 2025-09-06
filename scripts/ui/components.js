@@ -7,66 +7,7 @@
 
 import { qs, qsa, ce, addClass, removeClass, show, hide, createIcon } from './dom.js';
 
-/**
- * Header Component
- * Manages header navigation with authentication awareness
- */
-export class Header {
-    constructor(store) {
-        this.store = store;
-        this.header = qs('.header');
-        this.init();
-    }
-
-    init() {
-        if (!this.header) return;
-        
-        this.setupAuthAwareNavigation();
-        this.updateUserInfo();
-    }
-
-    setupAuthAwareNavigation() {
-        const auth = this.store.get('auth');
-        
-        // Update business-only links
-        const businessLinks = qsa('.header a[href*="post-opportunity"], .header a[href*="contracts"]');
-        businessLinks.forEach(link => {
-            if (!auth?.isAuthed || auth.user.role !== 'business') {
-                link.setAttribute('aria-disabled', 'true');
-                addClass(link, 'nav__item--disabled');
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.handleUnauthorizedClick(link);
-                });
-            }
-        });
-    }
-
-    handleUnauthorizedClick(link) {
-        const auth = this.store.get('auth');
-        
-        if (!auth?.isAuthed) {
-            // Not logged in - redirect to login
-            const currentPath = window.location.pathname;
-            window.location.href = `/pages/login.html?next=${encodeURIComponent(currentPath)}`;
-        } else {
-            // Logged in but wrong role - show 403
-            window.location.href = '/pages/403.html';
-        }
-    }
-
-    updateUserInfo() {
-        const auth = this.store.get('auth');
-        const userInfo = qs('.user-info');
-        
-        if (userInfo && auth?.isAuthed) {
-            userInfo.innerHTML = `
-                <span class="user-name">${auth.user.name || 'User'}</span>
-                <span class="user-role">${auth.user.role === 'business' ? 'Business' : 'Sales Rep'}</span>
-            `;
-        }
-    }
-}
+// Header component is now handled centrally in app.js
 
 /**
  * Toast Component
