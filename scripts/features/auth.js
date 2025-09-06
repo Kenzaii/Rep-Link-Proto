@@ -5,19 +5,21 @@
 
 'use strict';
 
-import { Store } from '../data/store.js';
+import { store } from '../data/store.js';
 import { API } from '../data/api.js';
+import { api } from '../data/api.js';
 import { EventBus } from '../ui/event-bus.js';
 import { Toast } from '../ui/components.js';
 import { FormValidator, ValidationRules } from '../ui/forms.js';
+import { dashboardHrefFor } from '../app.js';
 
 /**
  * Authentication Manager
  * Handles login, logout, registration, and session management
  */
 export class Auth {
-    constructor(store, api, eventBus) {
-        this.store = store;
+    constructor(storeInstance, api, eventBus) {
+        this.store = storeInstance;
         this.api = api;
         this.eventBus = eventBus;
         this.toast = new Toast();
@@ -32,10 +34,13 @@ export class Auth {
      */
     async init() {
         try {
-            // Check for existing session
-            const token = localStorage.getItem('auth-token');
-            if (token) {
-                await this.verifyToken(token);
+            // Check for existing session in store
+            const auth = this.store.get('auth');
+            
+            if (auth?.isAuthed && auth.user) {
+                this.currentUser = auth.user;
+                this.isAuthenticated = true;
+                console.log('Restored authentication state for:', auth.user.name);
             }
             
             // Set up event listeners
@@ -46,6 +51,25 @@ export class Auth {
             console.error('Auth initialization failed:', error);
             this.logout();
         }
+    }
+
+    /**
+     * Handle successful login
+     */
+    async handleLoginSuccess(user) {
+        this.store.setAuth({ isAuthed: true, user, token: 'dev' });
+        
+        // Update local state
+        this.currentUser = user;
+        this.isAuthenticated = true;
+        
+        // Emit login event
+        this.eventBus.emit('auth:login', user);
+        
+        // Optional: honor ?next= param, else go to dashboard
+        const params = new URLSearchParams(location.search);
+        const next = params.get('next');
+        location.href = next || dashboardHrefFor(user);
     }
 
     /**
@@ -172,10 +196,8 @@ export class Auth {
         } catch (error) {
             console.warn('Logout API call failed:', error);
         } finally {
-            // Clear local data
-            localStorage.removeItem('auth-token');
-            localStorage.removeItem('user-data');
-            localStorage.removeItem('session-expires');
+            // Clear local data using store
+            this.store.clearAuth();
             
             // Clear session timeout
             if (this.sessionTimeout) {
@@ -186,14 +208,6 @@ export class Auth {
             // Update state
             this.currentUser = null;
             this.isAuthenticated = false;
-            
-            // Update store
-            this.store.set('auth', {
-                token: null,
-                user: null,
-                isAuthenticated: false,
-                lastLogin: null
-            });
             
             // Emit events
             this.eventBus.emit('auth:logout');
@@ -497,3 +511,123 @@ export class Auth {
         return this.currentUser?.ratings || { average: 0, count: 0 };
     }
 }
+
+import { api } from '../data/api.js';
+import { store } from '../data/store.js';
+import { dashboardHrefFor } from '../app.js';
+
+function q(id) { return document.getElementById(id) || document.querySelector(`#${id}, [name="${id}"]`); }
+
+// Debug: Check if form exists when script loads
+console.log('Auth script loaded');
+setTimeout(() => {
+    const form = document.getElementById('loginForm');
+    const emailField = q('loginEmail');
+    const passwordField = q('loginPassword');
+    console.log('Form check:', { form, emailField, passwordField });
+}, 100);
+
+// Test login function for debugging
+async function testLogin() {
+    console.log('Test login function called');
+    try {
+        const user = await api.login('rep@replink.dev', 'RepLink#2025');
+        console.log('Test login successful:', user);
+        store.setAuth({ isAuthed: true, user, token: 'dev' });
+        location.href = dashboardHrefFor(user);
+    } catch (err) {
+        console.error('Test login failed:', err);
+        alert('Test login failed: ' + err.message);
+    }
+}
+
+// Add event listener for test button
+document.addEventListener('click', (e) => {
+    if (e.target.id === 'testLoginBtn') {
+        e.preventDefault();
+        testLogin();
+    }
+});
+
+document.addEventListener('submit', async (e) => {
+    console.log('Form submit event triggered:', e.target);
+    const form = e.target.closest('#loginForm');
+    console.log('Found form:', form);
+    
+    if (!form) {
+        console.log('No loginForm found, ignoring submit');
+        return;
+    }
+    
+    e.preventDefault();
+    console.log('Prevented default form submission');
+
+    const email = q('loginEmail')?.value?.trim() || '';
+    const password = q('loginPassword')?.value || '';
+    
+    console.log('Form data:', { email, password: '***' });
+
+    if (!email || password.length < 3) {
+        console.log('Validation failed');
+        showError(form, 'Enter a valid email and password.');
+        return;
+    }
+
+    console.log('Starting login process...');
+    setBusy(form, true);
+    try {
+        const user = await api.login(email, password);
+        console.log('Login successful, user:', user);
+        store.setAuth({ isAuthed: true, user, token: 'dev' });
+        console.log('Redirecting to:', dashboardHrefFor(user));
+        location.href = dashboardHrefFor(user);
+    } catch (err) {
+        console.error('[login]', err);
+        showError(form, err.message || 'Login failed.');
+    } finally {
+        setBusy(form, false);
+    }
+});
+
+function setBusy(form, busy) {
+    const btn = form.querySelector('#btnLogin') || form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = !!busy; btn.textContent = busy ? 'Logging in…' : 'Log in'; }
+}
+function showError(form, msg) {
+    let el = form.querySelector('.form-error');
+    if (!el) { el = document.createElement('div'); el.className = 'form-error'; form.prepend(el); }
+    el.textContent = msg;
+}
+
+// Quick-fill buttons for mock accounts
+document.addEventListener('click', (e) => {
+    console.log('Click event:', e.target);
+    const btn = e.target.closest('[data-fill-login]');
+    console.log('Fill button found:', btn);
+    
+    if (!btn) return;
+    
+    const email = btn.dataset.email;
+    const pass = btn.dataset.pass;
+    
+    console.log('Quick-fill clicked:', { email, pass: '***' });
+    
+    const emailField = q('loginEmail');
+    const passwordField = q('loginPassword');
+    
+    console.log('Fields found:', { emailField, passwordField });
+    
+    if (emailField) {
+        emailField.value = email;
+        console.log('Email field filled with:', email);
+    } else {
+        console.error('Email field not found');
+    }
+    
+    if (passwordField) {
+        passwordField.value = pass;
+        console.log('Password field filled');
+    } else {
+        console.error('Password field not found');
+    }
+});
