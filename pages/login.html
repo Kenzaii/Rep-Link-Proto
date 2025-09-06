@@ -13,6 +13,55 @@
     <link rel="stylesheet" href="../styles/utilities.css">
     <link rel="stylesheet" href="../styles/animations.css">
     
+    <style>
+        .form-error {
+            margin: 8px 0;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: #fff1f2;
+            color: #b91c1c;
+            font-size: 0.9rem;
+        }
+        
+        .mock-accounts {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--ink-700);
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .mock-accounts ul {
+            margin: 8px 0 0 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .mock-accounts li {
+            margin: 6px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .btn--tiny {
+            margin-left: 6px;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .btn--tiny:hover {
+            background: var(--color-link-hover);
+        }
+    </style>
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
 </head>
@@ -21,7 +70,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- Header -->
-    <header class="header" role="banner">
+    <header class="header" role="banner" data-header>
         <div class="container">
             <div class="header__content">
                 <div class="header__logo">
@@ -67,41 +116,31 @@
                                 <span>This is a prototype. No real authentication is implemented.</span>
                             </div>
                             
-                            <form id="login-form" class="auth-form">
+                            <form id="loginForm" class="auth-form" novalidate>
                                 <div class="form-group">
-                                    <label for="email" class="form-label">Email Address *</label>
+                                    <label for="loginEmail" class="form-label">Email Address *</label>
                                     <input 
                                         type="email" 
-                                        id="email" 
+                                        id="loginEmail" 
                                         name="email" 
                                         class="form-input" 
                                         placeholder="Enter your email address"
-                                        required
                                         autocomplete="email"
                                     >
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="password" class="form-label">Password *</label>
+                                    <label for="loginPassword" class="form-label">Password *</label>
                                     <input 
                                         type="password" 
-                                        id="password" 
+                                        id="loginPassword" 
                                         name="password" 
                                         class="form-input" 
                                         placeholder="Enter your password"
-                                        required
                                         autocomplete="current-password"
                                     >
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label for="role" class="form-label">Account Type *</label>
-                                    <select id="role" name="role" class="form-select" required>
-                                        <option value="">Select account type</option>
-                                        <option value="rep">Sales Rep</option>
-                                        <option value="business">Business</option>
-                                    </select>
-                                </div>
                                 
                                 <div class="form-group">
                                     <label class="checkbox-label">
@@ -111,10 +150,30 @@
                                     </label>
                                 </div>
                                 
-                                <button type="submit" class="btn btn--primary btn--large auth-submit">
-                                    Sign In
+                                <button type="submit" id="btnLogin" class="btn btn--primary btn--large auth-submit">
+                                    Log in
                                 </button>
                             </form>
+                            
+                            <!-- Mock accounts for testing -->
+                                <div class="mock-accounts">
+                                <p><strong>Mock accounts (prototype)</strong></p>
+                                <ul>
+                                    <li>Rep — rep@replink.dev / RepLink#2025
+                                        <button type="button" class="btn btn--tiny" data-fill-login data-email="rep@replink.dev" data-pass="RepLink#2025">Fill</button>
+                                    </li>
+                                    <li>Business — business@replink.dev / RepLink#2025
+                                        <button type="button" class="btn btn--tiny" data-fill-login data-email="business@replink.dev" data-pass="RepLink#2025">Fill</button>
+                                    </li>
+                                </ul>
+                                
+                                <!-- Debug Test Button -->
+                                <div style="margin-top: 10px; padding: 10px; background: #f0f0f0; border-radius: 4px;">
+                                    <button type="button" id="testLoginBtn" style="background: orange; color: white; padding: 5px 10px; border: none; border-radius: 3px;">
+                                        Test Login (Debug)
+                                    </button>
+                                </div>
+                            </div>
                             
                             <div class="auth-divider">
                                 <span>or</span>
@@ -219,53 +278,150 @@
 
     <!-- Scripts -->
     <script type="module" src="../scripts/app.js"></script>
-    <script type="module">
-        import { Auth } from '../scripts/features/auth.js';
-        import { FormValidator, ValidationRules } from '../scripts/ui/forms.js';
-        
-        // Initialize form validation
-        const validator = new FormValidator('#login-form');
-        validator.addRule('email', ValidationRules.email());
-        validator.addRule('password', ValidationRules.minLength(6, 'Password must be at least 6 characters'));
-        validator.addRule('role', ValidationRules.required('Please select an account type'));
-        
-        // Handle form submission
-        document.getElementById('login-form').addEventListener('submit', async (event) => {
-            event.preventDefault();
+    
+    <!-- Inline test script -->
+    <script>
+        console.log('Inline script loaded');
+        // Test if we can access the form
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, checking form...');
+            const form = document.getElementById('loginForm');
+            const emailField = document.getElementById('loginEmail');
+            const passwordField = document.getElementById('loginPassword');
+            console.log('Inline check:', { form, emailField, passwordField });
             
-            if (!validator.validateForm()) {
-                return;
+            // Test quick-fill manually
+            const fillButtons = document.querySelectorAll('[data-fill-login]');
+            console.log('Fill buttons found:', fillButtons.length);
+            
+            fillButtons.forEach((btn, index) => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('Manual fill button clicked:', index);
+                    const email = btn.dataset.email;
+                    const pass = btn.dataset.pass;
+                    
+                    if (emailField) emailField.value = email;
+                    if (passwordField) passwordField.value = pass;
+                    
+                    console.log('Manual fill completed');
+                });
+            });
+            
+            // Test button handler
+            const testBtn = document.getElementById('testLoginBtn');
+            if (testBtn) {
+                testBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('Test login button clicked');
+                    performLogin('rep@replink.dev', 'RepLink#2025');
+                });
             }
             
-            const formData = new FormData(event.target);
-            const loginData = {
-                email: formData.get('email'),
-                password: formData.get('password'),
-                role: formData.get('role')
-            };
-            
-            // Get auth instance from global app
-            const auth = window.app?.auth;
-            if (auth) {
-                const result = await auth.login(loginData.email, loginData.password, loginData.role);
-                if (result.success) {
-                    // Redirect based on role
-                    if (loginData.role === 'rep') {
-                        window.location.href = 'rep-dashboard.html';
-                    } else if (loginData.role === 'business') {
-                        window.location.href = 'business-dashboard.html';
+            // Test form submission manually
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    console.log('Inline form submit handler triggered');
+                    const email = emailField?.value?.trim() || '';
+                    const password = passwordField?.value || '';
+                    console.log('Inline form data:', { email, password: '***' });
+                    
+                    if (!email || password.length < 3) {
+                        console.log('Inline validation failed');
+                        alert('Please enter valid email and password');
+                        return;
                     }
+                    
+                    console.log('Inline validation passed, proceeding with login...');
+                    
+                    // Perform actual login using the API
+                    performLogin(email, password);
+                });
+            }
+            
+            // Login function using direct API calls (no dynamic imports)
+            async function performLogin(email, password) {
+                try {
+                    console.log('Starting login process...');
+                    
+                    // Mock users data (inline to avoid import issues)
+                    const mockUsers = [
+                        {
+                            "id": "u-rep-001",
+                            "name": "Demo Rep",
+                            "email": "rep@replink.dev",
+                            "role": "rep",
+                            "password": "RepLink#2025",
+                            "avatar": "/assets/img/rep1.jpg"
+                        },
+                        {
+                            "id": "u-biz-001",
+                            "name": "Demo Business",
+                            "email": "business@replink.dev",
+                            "role": "business",
+                            "password": "RepLink#2025",
+                            "avatar": "/assets/img/rep2.jpg",
+                            "company": "Rep-Link Demo Co."
+                        }
+                    ];
+                    
+                    // Simulate API delay
+                    await new Promise(r => setTimeout(r, 200));
+                    
+                    // Find user
+                    const user = mockUsers.find(x => 
+                        x.email.toLowerCase() === email.toLowerCase()
+                    );
+                    
+                    if (!user) {
+                        throw new Error('No such user');
+                    }
+                    
+                    if (user.password !== password) {
+                        throw new Error('Incorrect password');
+                    }
+                    
+                    // Remove password from user object
+                    const { password: _pw, ...safeUser } = user;
+                    
+                    console.log('Login successful, user:', safeUser);
+                    
+                    // Set auth in localStorage directly
+                    const authData = {
+                        isAuthed: true,
+                        user: safeUser,
+                        token: 'dev'
+                    };
+                    localStorage.setItem('replink_state_v1', JSON.stringify({
+                        auth: authData,
+                        users: mockUsers,
+                        opportunities: [],
+                        proposals: [],
+                        contracts: [],
+                        messages: []
+                    }));
+                    
+                    console.log('Auth set in localStorage');
+                    
+                    // Determine dashboard URL (relative paths for file system)
+                    const dashboardUrl = safeUser.role === 'business' 
+                        ? 'business-dashboard.html' 
+                        : 'rep-dashboard.html';
+                    
+                    console.log('Redirecting to:', dashboardUrl);
+                    
+                    // Redirect to dashboard
+                    location.href = dashboardUrl;
+                    
+                } catch (err) {
+                    console.error('Login failed:', err);
+                    alert('Login failed: ' + err.message);
                 }
             }
         });
-        
-        // Handle Singpass login
-        document.getElementById('singpass-login').addEventListener('click', async () => {
-            const auth = window.app?.auth;
-            if (auth) {
-                await auth.signInWithSingpass();
-            }
-        });
     </script>
+    
+    <script type="module" src="../scripts/features/auth.js"></script>
 </body>
 </html>

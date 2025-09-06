@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Dashboard - Rep-Link</title>
-    <meta name="description" content="Manage your business opportunities, proposals, and contracts on Rep-Link.">
+    <meta name="description" content="Manage your sales representatives, products, and business opportunities on Rep-Link.">
     
     <!-- CSS -->
     <link rel="stylesheet" href="../styles/base.css">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../styles/components.css">
     <link rel="stylesheet" href="../styles/utilities.css">
     <link rel="stylesheet" href="../styles/animations.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
@@ -21,27 +22,28 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- Header -->
-    <header class="header" role="banner">
+    <header class="header" role="banner" data-header>
         <div class="container">
             <div class="header__content">
                 <div class="header__logo">
                     <a href="../index.html" aria-label="Rep-Link Home">
                         <svg class="logo" width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="0" y="8" width="24" height="16" rx="2" fill="var(--brand)"/>
-                            <path d="M8 12h8v8H8z" fill="var(--surface)"/>
-                            <text x="32" y="20" font-family="system-ui" font-size="16" font-weight="700" fill="var(--ink)">Rep-Link</text>
+                            <rect x="0" y="8" width="24" height="16" rx="2" fill="var(--color-primary)"/>
+                            <path d="M8 12h8v8H8z" fill="var(--surface-0)"/>
+                            <text x="32" y="20" font-family="system-ui" font-size="16" font-weight="700" fill="var(--brand-navy-900)">Rep-Link</text>
                         </svg>
                     </a>
                 </div>
                 
                 <nav class="header__nav" role="navigation" aria-label="Main navigation">
                     <div class="header__ctas">
-                        <a href="post-opportunity.html" class="btn btn--primary">Post Opportunity</a>
-                        <a href="messages.html" class="btn btn--secondary">Messages</a>
+                        <a href="post-opportunity.html" class="btn btn--primary">Create Project</a>
+                        <a href="contracts.html" class="btn btn--secondary">Contracts</a>
                         <div class="user-info">
-                            <span class="user-name">TechCorp</span>
+                            <span class="user-name">Loading...</span>
                             <span class="user-role">Business</span>
                         </div>
+                        <button class="btn btn--tertiary" id="logout-btn">Logout</button>
                     </div>
                 </nav>
             </div>
@@ -49,213 +51,59 @@
     </header>
 
     <!-- Main Content -->
-    <main id="main-content" role="main">
-        <div class="page">
-            <div class="page__header">
-                <div class="container">
-                    <h1 class="page__title">Business Dashboard</h1>
-                    <p class="page__subtitle">Welcome back, TechCorp! Here's your business overview.</p>
+    <main id="main-content" role="main" class="dash container">
+        <!-- Sales Reps and Products -->
+        <section class="grid three-two">
+            <article class="card" id="salesReps">
+                <header class="card__header">
+                    <h3>Sales Reps</h3>
+                </header>
+                <div class="grid reps" id="repsGrid">
+                    <!-- Sales reps will be populated by JavaScript -->
                 </div>
-            </div>
-            
-            <div class="page__main">
-                <div class="container">
-                    <div class="dashboard-content">
-                        <!-- Dashboard Stats -->
-                        <div class="dashboard-stats">
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                        <polyline points="14,2 14,8 20,8"></polyline>
-                                    </svg>
-                                </div>
-                                <div class="stat-content">
-                                    <h3>8</h3>
-                                    <p>Active Listings</p>
-                                    <span class="stat-change positive">+2 this month</span>
-                                </div>
-                            </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="9" cy="7" r="4"></circle>
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                    </svg>
-                                </div>
-                                <div class="stat-content">
-                                    <h3>24</h3>
-                                    <p>Total Applicants</p>
-                                    <span class="stat-change positive">+5 this week</span>
-                                </div>
-                            </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                    </svg>
-                                </div>
-                                <div class="stat-content">
-                                    <h3>$18,500</h3>
-                                    <p>Total Spent</p>
-                                    <span class="stat-change neutral">This month</span>
-                                </div>
-                            </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                    </svg>
-                                </div>
-                                <div class="stat-content">
-                                    <h3>12</h3>
-                                    <p>Unread Messages</p>
-                                    <span class="stat-change neutral">3 urgent</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Dashboard Widgets -->
-                        <div class="dashboard-widgets">
-                            <!-- Recent Proposals -->
-                            <div class="widget">
-                                <div class="widget-header">
-                                    <h3>Recent Proposals</h3>
-                                    <a href="proposals.html" class="btn btn--tertiary btn--small">View All</a>
-                                </div>
-                                <div class="widget-content">
-                                    <div class="proposal-item">
-                                        <div class="proposal-info">
-                                            <h4>B2B Sales for SaaS Platform</h4>
-                                            <p>by John Doe • 2 hours ago</p>
-                                        </div>
-                                        <span class="proposal-status status--pending">Pending</span>
-                                    </div>
-                                    <div class="proposal-item">
-                                        <div class="proposal-info">
-                                            <h4>Enterprise Software Sales</h4>
-                                            <p>by Sarah Lee • 1 day ago</p>
-                                        </div>
-                                        <span class="proposal-status status--accepted">Accepted</span>
-                                    </div>
-                                    <div class="proposal-item">
-                                        <div class="proposal-info">
-                                            <h4>Digital Marketing Sales</h4>
-                                            <p>by Mike Chen • 2 days ago</p>
-                                        </div>
-                                        <span class="proposal-status status--rejected">Rejected</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Active Contracts -->
-                            <div class="widget">
-                                <div class="widget-header">
-                                    <h3>Active Contracts</h3>
-                                    <a href="contracts.html" class="btn btn--tertiary btn--small">View All</a>
-                                </div>
-                                <div class="widget-content">
-                                    <div class="contract-item">
-                                        <div class="contract-info">
-                                            <h4>SaaS Platform Sales</h4>
-                                            <p>John Doe</p>
-                                        </div>
-                                        <div class="contract-progress">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 75%"></div>
-                                            </div>
-                                            <span>3/4 milestones</span>
-                                        </div>
-                                    </div>
-                                    <div class="contract-item">
-                                        <div class="contract-info">
-                                            <h4>Enterprise Software</h4>
-                                            <p>Sarah Lee</p>
-                                        </div>
-                                        <div class="contract-progress">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 50%"></div>
-                                            </div>
-                                            <span>2/4 milestones</span>
-                                        </div>
-                                    </div>
-                                    <div class="contract-item">
-                                        <div class="contract-info">
-                                            <h4>Digital Marketing</h4>
-                                            <p>Mike Chen</p>
-                                        </div>
-                                        <div class="contract-progress">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 100%"></div>
-                                            </div>
-                                            <span>4/4 milestones</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Quick Actions -->
-                        <div class="quick-actions">
-                            <h3>Quick Actions</h3>
-                            <div class="action-buttons">
-                                <a href="post-opportunity.html" class="btn btn--primary">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg>
-                                    Post New Opportunity
-                                </a>
-                                <a href="proposals.html" class="btn btn--secondary">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="9" cy="7" r="4"></circle>
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                    </svg>
-                                    View All Proposals
-                                </a>
-                                <a href="contracts.html" class="btn btn--secondary">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                        <polyline points="14,2 14,8 20,8"></polyline>
-                                    </svg>
-                                    Manage Contracts
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Business Insights -->
-                        <div class="business-insights">
-                            <h3>Business Insights</h3>
-                            <div class="insights-grid">
-                                <div class="insight-card">
-                                    <h4>Top Performing Rep</h4>
-                                    <p>John Doe has completed 3 projects with an average rating of 4.9/5</p>
-                                </div>
-                                <div class="insight-card">
-                                    <h4>Most Popular Category</h4>
-                                    <p>Technology opportunities receive 40% more applications</p>
-                                </div>
-                                <div class="insight-card">
-                                    <h4>Average Project Duration</h4>
-                                    <p>2.3 months for milestone-based projects</p>
-                                </div>
-                                <div class="insight-card">
-                                    <h4>Success Rate</h4>
-                                    <p>85% of accepted proposals result in successful completion</p>
-                                </div>
-                            </div>
-                        </div>
+            </article>
+
+            <aside class="card" id="productsPanel">
+                <header class="card__header">
+                    <h3>Products</h3>
+                    <div class="actions">
+                        <button class="btn btn--primary" id="btnUpload">Upload</button>
+                        <button class="btn btn--secondary" id="btnEdit">Edit</button>
                     </div>
+                </header>
+                <ul class="list list--products" id="productList">
+                    <!-- Products will be populated by JavaScript -->
+                </ul>
+            </aside>
+        </section>
+
+        <!-- Requests and Approvals -->
+        <section class="grid two">
+            <article class="card" id="requests">
+                <header class="card__header">
+                    <h3>Requests</h3>
+                </header>
+                <div class="cards" id="requestList">
+                    <!-- Requests will be populated by JavaScript -->
                 </div>
-            </div>
-        </div>
+            </article>
+
+            <article class="card" id="productApprovals">
+                <header class="card__header">
+                    <h3>Product Approvals</h3>
+                </header>
+                <div class="cards" id="approvalList">
+                    <!-- Approvals will be populated by JavaScript -->
+                </div>
+            </article>
+        </section>
+
+        <!-- Floating Chat Button -->
+        <button class="fab-chat" aria-label="Open chat">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
     </main>
 
     <!-- Footer -->
@@ -301,38 +149,40 @@
 
     <!-- Scripts -->
     <script type="module" src="../scripts/app.js"></script>
-    <script type="module">
-        import { DashboardManager } from '../scripts/features/dashboard.js';
-        import { API } from '../scripts/data/api.js';
-        
-        // Check authentication and role
-        if (window.app) {
-            if (!window.app.requireAuthRole('business')) {
-                // Redirect will happen automatically
-                throw new Error('Authentication required');
-            }
-        }
-        
-        class BusinessDashboardPage {
-            constructor() {
-                this.init();
-            }
-            
-            async init() {
-                // Initialize dashboard with mock data
-                this.updateDashboard();
-            }
-            
-            updateDashboard() {
-                // This would typically load real data from the API
-                // For now, we're using the static content in the HTML
-                console.log('Business dashboard initialized');
-            }
-        }
-        
-        // Initialize when DOM is loaded
+    <script type="module" src="../scripts/features/dashboardBusiness.js"></script>
+    
+    <!-- Simple auth check and logout handler -->
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-            new BusinessDashboardPage();
+            // Check auth status
+            const authData = localStorage.getItem('replink_state_v1');
+            if (!authData) {
+                location.href = 'login.html';
+                return;
+            }
+            
+            const state = JSON.parse(authData);
+            const auth = state.auth;
+            
+            if (!auth?.isAuthed || auth.user?.role !== 'business') {
+                location.href = 'login.html';
+                return;
+            }
+            
+            // Update user info in header
+            const userName = document.querySelector('.user-name');
+            if (userName) {
+                userName.textContent = auth.user.name || 'User';
+            }
+            
+            // Handle logout
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('replink_state_v1');
+                    location.href = '../index.html';
+                });
+            }
         });
     </script>
 </body>
