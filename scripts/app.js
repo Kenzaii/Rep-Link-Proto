@@ -1,25 +1,86 @@
 /**
  * Rep-Link Application Bootstrap
- * Main entry point for the application
+ * Main entry point for the application with centralized auth management
  */
 
 'use strict';
 
+import { store } from './data/store.js';
 import { Router } from './ui/router.js';
-import { Store } from './data/store.js';
 import { API } from './data/api.js';
 import { EventBus } from './ui/event-bus.js';
 import { Toast } from './ui/components.js';
 import { Auth } from './features/auth.js';
 
+// Global authentication functions
+export function currentUser() {
+    return store.get('auth')?.user || null;
+}
+
+export function isAuthed() {
+    return !!store.get('auth')?.isAuthed;
+}
+
+export function siteRoot() {
+    const p = location.pathname;
+    const i = p.indexOf('/pages/');
+    return i >= 0 ? p.slice(0, i) : '';
+}
+
+export function hrefFromRoot(path) {
+    return `${siteRoot()}${path}`;
+}
+
+export function guardPage(requiredRole, redirect = '/pages/login.html') {
+    const auth = store.get('auth');
+    if (!auth?.isAuthed) {
+        location.href = `${hrefFromRoot(redirect)}?next=${encodeURIComponent(location.pathname)}`;
+        return false;
+    }
+    if (requiredRole && auth.user?.role !== requiredRole) {
+        location.href = hrefFromRoot('/pages/403.html');
+        return false;
+    }
+    return true;
+}
+
+export function dashboardHrefFor(user) {
+    if (!user) return hrefFromRoot('/pages/login.html');
+    return hrefFromRoot(user.role === 'business' ? '/pages/business-dashboard.html' : '/pages/rep-dashboard.html');
+}
+
+// Header rendering
+export function renderHeader() {
+    const el = document.querySelector('[data-header]');
+    if (!el) return;
+    const a = store.get('auth');
+    const user = a?.user;
+    el.innerHTML = `
+        <div class="header__inner">
+            <a class="logo" href="${hrefFromRoot('/index.html')}">Rep-Link</a>
+            ${a?.isAuthed ? `
+                <nav class="nav">
+                    <a class="nav__link" href="${hrefFromRoot('/index.html')}">Home</a>
+                    <a class="nav__link" href="${dashboardHrefFor(user)}">Dashboard</a>
+                    <button class="nav__link" data-action="logout">Logout</button>
+                </nav>
+            ` : `
+                <nav class="nav">
+                    <a class="nav__link" href="${hrefFromRoot('/index.html')}">Home</a>
+                    <a class="nav__link" href="${hrefFromRoot('/pages/login.html')}">Log in</a>
+                    <a class="nav__link btn btn--primary" href="${hrefFromRoot('/pages/signup.html')}">Sign up</a>
+                </nav>
+            `}
+        </div>`;
+}
+
 class App {
     constructor() {
         this.router = new Router();
-        this.store = new Store();
         this.api = new API();
         this.eventBus = new EventBus();
         this.toast = new Toast();
-        this.auth = new Auth(this.store, this.api, this.eventBus);
+        this.auth = new Auth(store, this.api, this.eventBus);
         
         this.init();
     }
@@ -30,7 +91,6 @@ class App {
     async init() {
         try {
             // Initialize core systems
-            await this.store.init();
             await this.api.init();
             
             // Set up global event listeners
@@ -88,34 +148,6 @@ class App {
     }
 
     /**
-     * Handle AJAX form submissions
-     */
-    async handleAjaxForm(form) {
-        const formData = new FormData(form);
-        const action = form.dataset.action;
-        
-        try {
-            const response = await this.api.request(action, {
-                method: 'POST',
-                body: formData
-            });
-            
-            if (response.success) {
-                this.toast.show(response.message || 'Success!', 'success');
-                form.reset();
-                
-                // Trigger custom event
-                this.eventBus.emit('form:success', { form, response });
-            } else {
-                this.toast.show(response.message || 'An error occurred', 'error');
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            this.toast.show('An error occurred while submitting the form', 'error');
-        }
-    }
-
-    /**
      * Handle navigation clicks
      */
     handleNavigationClick(event) {
@@ -123,17 +155,10 @@ class App {
         if (!link) return;
         
         const href = link.getAttribute('href');
-        
-        // Handle internal navigation
-        if (href.startsWith('/') || href.startsWith('./') || href.startsWith('../')) {
+        if (href && href.startsWith('/') && !href.startsWith('//')) {
+            // Handle internal navigation
             event.preventDefault();
             this.router.navigate(href);
-        }
-        
-        // Handle external links
-        if (href.startsWith('http') && !href.includes(window.location.hostname)) {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener noreferrer');
         }
     }
 
@@ -154,45 +179,23 @@ class App {
     }
 
     /**
-     * Focus search input
-     */
-    focusSearch() {
-        const searchInput = document.querySelector('.search-bar__input');
-        if (searchInput) {
-            searchInput.focus();
-        }
-    }
-
-    /**
-     * Close all open modals
-     */
-    closeModals() {
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-            if (modal.style.display !== 'none') {
-                modal.style.display = 'none';
-            }
-        });
-    }
-
-    /**
      * Handle before unload
      */
     handleBeforeUnload(event) {
         // Save any pending data
-        this.store.save();
+        this.savePendingData();
     }
 
     /**
-     * Handle online status
+     * Handle online event
      */
     handleOnline() {
-        this.toast.show('Connection restored', 'success');
+        this.toast.show('You are back online', 'success');
         this.eventBus.emit('app:online');
     }
 
     /**
-     * Handle offline status
+     * Handle offline event
      */
     handleOffline() {
         this.toast.show('You are offline', 'warning');
@@ -219,11 +222,73 @@ class App {
      * Handle authentication errors
      */
     handleAuthError(error) {
-        this.toast.show(error.message || 'Authentication error', 'error');
+        this.toast.show(`Authentication error: ${error.message}`, 'error');
+        this.eventBus.emit('app:auth-error', error);
     }
 
     /**
-     * Check if this is the user's first visit
+     * Handle AJAX form submission
+     */
+    async handleAjaxForm(form) {
+        try {
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            const response = await this.api.request(form.action, {
+                method: form.method || 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            if (response.success) {
+                this.toast.show('Form submitted successfully', 'success');
+                form.reset();
+            } else {
+                this.toast.show('Form submission failed', 'error');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            this.toast.show('Form submission failed', 'error');
+        }
+    }
+
+    /**
+     * Focus search input
+     */
+    focusSearch() {
+        const searchInput = document.querySelector('input[type="search"]');
+        if (searchInput) {
+            searchInput.focus();
+        }
+    }
+
+    /**
+     * Close all modals
+     */
+    closeModals() {
+        const modals = document.querySelectorAll('.modal[aria-hidden="false"]');
+        modals.forEach(modal => {
+            modal.setAttribute('aria-hidden', 'true');
+        });
+    }
+
+    /**
+     * Save pending data
+     */
+    savePendingData() {
+        // Save any unsaved form data
+        const forms = document.querySelectorAll('form[data-autosave]');
+        forms.forEach(form => {
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            localStorage.setItem(`form-${form.id}`, JSON.stringify(data));
+        });
+    }
+
+    /**
+     * Check if this is the first visit
      */
     checkFirstVisit() {
         const hasVisited = localStorage.getItem('rep-link-visited');
@@ -235,27 +300,34 @@ class App {
 
     /**
      * Require authentication and specific role
-     * @param {string} role - Required role ('rep' or 'business')
-     * @param {string} redirect - Redirect URL if not authenticated
-     * @returns {boolean} True if authenticated and has required role
      */
     requireAuthRole(role = null, redirect = '/pages/login.html') {
-        const auth = this.store.get('auth');
+        const auth = store.get('auth');
         
         if (!auth?.isAuthed) {
-            // Store the current page as the redirect target after login
             const currentPath = window.location.pathname;
             window.location.href = `${redirect}?next=${encodeURIComponent(currentPath)}`;
             return false;
         }
         
         if (role && auth.user.role !== role) {
-            // User is authenticated but doesn't have the required role
             window.location.href = '/pages/403.html';
             return false;
         }
         
         return true;
+    }
+
+    /**
+     * Guard page with role-based access control
+     */
+    guardPage(role) {
+        const auth = store.get('auth');
+        if (!auth?.isAuthed) {
+            window.location.href = `/pages/login.html?next=${encodeURIComponent(window.location.pathname)}`;
+        } else if (role && auth.user.role !== role) {
+            window.location.href = '/pages/403.html';
+        }
     }
 
     /**
@@ -269,7 +341,7 @@ class App {
     }
 }
 
-// Initialize the application when DOM is ready
+// Initialize app when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         window.app = App.getInstance();
@@ -277,6 +349,24 @@ if (document.readyState === 'loading') {
 } else {
     window.app = App.getInstance();
 }
+
+// Initialize header on every page
+document.addEventListener('DOMContentLoaded', () => {
+    renderHeader();
+});
+
+// Re-render header when auth changes
+window.addEventListener('auth:changed', renderHeader);
+
+// Global event delegation for logout (works after router swaps too)
+document.addEventListener('click', (e) => {
+    const out = e.target.closest('[data-action="logout"]');
+    if (!out) return;
+    e.preventDefault();
+    store.clearAuth();
+    renderHeader();
+    location.href = hrefFromRoot('/index.html');
+});
 
 // Export for module usage
 export { App };
