@@ -1,0 +1,98 @@
+{
+  "kpis": {
+    "totalSalesThisMonth": "$8,850",
+    "totalCommissions": "1,200",
+    "dealsClosed": 15,
+    "activeCampaigns": 4
+  },
+  "salesByCategory": {
+    "percent": 45,
+    "fnb": 45,
+    "retail": 35,
+    "other": 20
+  },
+  "opportunities": [
+    {
+      "id": "opp1",
+      "name": "Acme Corp",
+      "product": "Premium Widgets",
+      "commission": 12,
+      "enrolled": false,
+      "logoSvg": "◼︎"
+    },
+    {
+      "id": "opp2",
+      "name": "Globex Solutions",
+      "product": "Cloud Solutions",
+      "commission": 10,
+      "enrolled": false,
+      "logoSvg": "◼︎"
+    },
+    {
+      "id": "opp3",
+      "name": "Initech Systems",
+      "product": "Data Services",
+      "commission": 8,
+      "enrolled": true,
+      "logoSvg": "◼︎"
+    },
+    {
+      "id": "opp4",
+      "name": "TechFlow Inc",
+      "product": "Enterprise Software",
+      "commission": 15,
+      "enrolled": false,
+      "logoSvg": "◼︎"
+    },
+    {
+      "id": "opp5",
+      "name": "DataCore Ltd",
+      "product": "Analytics Platform",
+      "commission": 11,
+      "enrolled": true,
+      "logoSvg": "◼︎"
+    },
+    {
+      "id": "opp6",
+      "name": "CloudVault",
+      "product": "Storage Solutions",
+      "commission": 9,
+      "enrolled": false,
+      "logoSvg": "◼︎"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "camp1",
+      "name": "Stellar Software",
+      "subtitle": "Software Suite",
+      "status": "Active",
+      "progress": 72,
+      "iconSvg": "⬛"
+    },
+    {
+      "id": "camp2",
+      "name": "Initech Systems",
+      "subtitle": "Business Tools",
+      "status": "Active",
+      "progress": 48,
+      "iconSvg": "⬛"
+    },
+    {
+      "id": "camp3",
+      "name": "Globex Solutions",
+      "subtitle": "Data Services",
+      "status": "Pending",
+      "progress": 12,
+      "iconSvg": "⬛"
+    },
+    {
+      "id": "camp4",
+      "name": "TechFlow Inc",
+      "subtitle": "Enterprise Platform",
+      "status": "Active",
+      "progress": 89,
+      "iconSvg": "⬛"
+    }
+  ]
+}
