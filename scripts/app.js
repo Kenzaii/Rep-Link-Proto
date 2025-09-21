@@ -44,7 +44,7 @@ function renderHeader(){
   const auth = store?.get?.('auth') || { isAuthed:false };
   const user = auth.user;
 
-  const navAuthed = `
+  const desktopNav = auth.isAuthed ? `
     <nav class="nav nav--desktop">
       <a class="nav__link" href="${href('/pages/opportunities.html')}">Browse Opportunities</a>
       <a class="nav__link" href="${dashboardFor(user)}">Dashboard</a>
@@ -54,22 +54,17 @@ function renderHeader(){
         <span class="user-role">${user?.role === 'business' ? 'Business' : 'Sales Rep'}</span>
       </div>
       <button class="nav__link" data-action="logout" type="button">Logout</button>
-      <button class="header__burger" type="button" data-action="nav-toggle" aria-controls="siteNav" aria-expanded="false" aria-label="Open menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-      </button>
-    </nav>`;
-
-  const navAnon = `
+    </nav>` : `
     <nav class="nav nav--desktop">
       <a class="nav__link btn btn--secondary" href="${href('/pages/opportunities.html')}">For Reps – Start Selling</a>
       <a class="nav__link btn btn--primary" href="${href('/pages/signup.html?role=business')}">For Business Partners – Start Listing</a>
       <a class="nav__link" href="${href('/pages/login.html')}">Log in / Sign up</a>
-      <button class="header__burger" type="button" data-action="nav-toggle" aria-controls="siteNav" aria-expanded="false" aria-label="Open menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-      </button>
     </nav>`;
 
-  const selectedNav = auth.isAuthed ? navAuthed : navAnon;
+  const burger = `
+    <button class="header__burger" type="button" data-action="nav-toggle" aria-controls="siteNav" aria-expanded="false" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    </button>`;
   
   const headerHTML = `
     <div class="site-header">
@@ -77,7 +72,8 @@ function renderHeader(){
         <div class="brand">
           <a class="logo" href="${href('/index.html')}">RepLink</a>
         </div>
-        ${selectedNav}
+        ${desktopNav}
+        ${burger}
       </div>
 
       <!-- mobile overlay/panel live outside container for full-width click target -->

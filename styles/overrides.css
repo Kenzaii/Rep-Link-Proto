@@ -1,11 +1,9 @@
-/* Navy header */
+/* Navy header + visibility rules */
 .site-header{
   background: linear-gradient(180deg,#0A1E32 0%, #0F1E32 100%) !important;
   color:#E6F0FA !important;
   border-bottom:1px solid rgba(255,255,255,.10) !important;
 }
-
-/* Mobile-first: burger visible, desktop links hidden */
 .nav--desktop{ display:none; }
 .header__burger{ display:inline-flex; }
 
@@ -15,7 +13,7 @@
   .header__burger{ display:none !important; }
 }
 
-/* Hide any legacy nav bars that might still exist in static HTML */
+/* Hide any old static nav bars */
 .has-modern-header .navbar,
 .has-modern-header header.navbar,
 .has-modern-header nav.navbar,
