@@ -21,3 +21,45 @@
 
 /* Safety: truly hide hidden panels */
 .nav__panel[hidden], .nav__overlay[hidden]{ display:none !important; }
+
+/* --- Mobile panel layout --- */
+.nav__panel{
+  max-width: 88vw;
+  width: 360px;
+  background: var(--surface-0);
+  border-left: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+.nav__panel .nav--mobile{ overflow: auto; max-height: calc(100dvh - 64px); }
+
+/* Stacked list */
+.menu-list{ list-style:none; margin:0; padding:12px; display:grid; gap:8px; }
+.menu-item{
+  display:block;
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--color-border);
+  border-radius:12px;
+  background: transparent;
+  color: var(--color-text);
+  text-decoration:none;
+  text-align:left;
+  font-weight:600;
+}
+.menu-item:hover{ background: rgba(255,255,255,.05); }
+.menu-item:focus-visible{
+  outline: 2px solid var(--brand-blue-500,#05AADC);
+  outline-offset: 2px;
+}
+.menu-item.is-action{ cursor:pointer; }
+
+/* CTA at bottom */
+.menu-cta{ padding:12px; border-top:1px solid var(--color-border); }
+.btn--block{ display:block; width:100%; }
+
+/* Only affect mobile panel; desktop nav remains inline */
+@media (min-width:1024px){
+  .nav__panel{ display:none !important; } /* panel never visible on desktop */
+}

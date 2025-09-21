@@ -83,17 +83,26 @@ function renderHeader(){
           <span>Menu</span>
           <button class="nav__close" data-nav-close type="button" aria-label="Close menu">✕</button>
         </header>
-        <nav class="nav nav--mobile">
-          ${auth.isAuthed ? `
-            <a class="nav__link" href="${href('/pages/opportunities.html')}">Browse Opportunities</a>
-            <a class="nav__link" href="${dashboardFor(user)}">Dashboard</a>
-            <a class="nav__link" href="${profileHref(user)}">Profile</a>
-            <button class="nav__link" data-action="logout" type="button">Logout</button>
-          ` : `
-            <a class="nav__link btn btn--secondary" href="${href('/pages/opportunities.html')}">For Reps – Start Selling</a>
-            <a class="nav__link btn btn--primary" href="${href('/pages/signup.html?role=business')}">For Business Partners – Start Listing</a>
-            <a class="nav__link" href="${href('/pages/login.html')}">Log in / Sign up</a>
-          `}
+        <nav class="nav nav--mobile" aria-label="Mobile menu">
+          <ul class="menu-list" role="menu">
+            <li role="none"><a role="menuitem" class="menu-item" href="${href('/index.html')}">Home</a></li>
+            ${auth.isAuthed ? `
+              <li role="none"><a role="menuitem" class="menu-item" href="${dashboardFor(user)}">Dashboard</a></li>
+              <li role="none"><a role="menuitem" class="menu-item" href="${profileHref(user)}">Profile</a></li>
+              <li role="none"><a role="menuitem" class="menu-item" href="${href('/pages/opportunities.html')}">Opportunities</a></li>
+              <li role="none"><a role="menuitem" class="menu-item" href="${href('/pages/help/index.html')}">Help Center</a></li>
+              <li role="none"><button role="menuitem" class="menu-item is-action" data-action="logout" type="button">Logout</button></li>
+            ` : `
+              <li role="none"><a role="menuitem" class="menu-item" href="${href('/pages/login.html')}">Log in</a></li>
+              <li role="none"><a role="menuitem" class="menu-item" href="${href('/pages/signup.html')}">Sign up</a></li>
+              <li role="none"><a role="menuitem" class="menu-item" href="${href('/pages/help/index.html')}">Help Center</a></li>
+            `}
+          </ul>
+          ${!auth.isAuthed ? `
+          <div class="menu-cta">
+            <a class="btn btn--primary btn--block" href="${href('/pages/signup.html')}">Create free account</a>
+          </div>
+          ` : ``}
         </nav>
       </aside>
     </div>
