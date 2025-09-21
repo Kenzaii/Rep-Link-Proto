@@ -12,6 +12,10 @@
     document.body.insertBefore(h, document.body.firstChild);
   }
 
+  // Tag the document so we can suppress any legacy nav
+  document.documentElement.classList.add('has-modern-header');
+  document.body.classList.add('has-modern-header');
+
   // 2) Ensure header.css is loaded (for spacing/visibility)
   const needHeaderCss = ![...document.styleSheets].some(s => {
     try { return (s.href||'').endsWith('/styles/header.css'); } catch { return false; }

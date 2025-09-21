@@ -1,0 +1,48 @@
+/* ==== Rep-Link header hard overrides (wins last) ==== */
+:root{
+  --brand-blue-500:#05AADC;
+  --brand-navy-900:#0F1E32;
+  --brand-navy-800:#0A1E32;
+  --header-border: rgba(255,255,255,.10);
+  --header-text: #E6F0FA;
+}
+
+/* Our modern header look (navy — no red) */
+.site-header{
+  background: linear-gradient(180deg,var(--brand-navy-800) 0%, var(--brand-navy-900) 100%) !important;
+  color: var(--header-text) !important;
+  border-bottom: 1px solid var(--header-border) !important;
+}
+
+/* Desktop nav visible, burger hidden at ≥1024px */
+@media (min-width:1024px){
+  .nav--desktop{ display:flex !important; }
+  .header__burger{ display:none !important; }
+}
+
+/* Mobile burger neutral (remove any red/yellow button theme) */
+.header__burger{
+  background: transparent !important;
+  color: var(--header-text) !important;
+  border: 1px solid var(--header-border) !important;
+  box-shadow: none !important;
+}
+
+/* Absolutely hide any legacy navbars if present */
+.has-modern-header .navbar,
+.has-modern-header .top-nav,
+.has-modern-header header.navbar,
+.has-modern-header nav.navbar,
+.has-modern-header #navbar {
+  display: none !important;
+}
+
+/* Ensure hidden panels are invisible */
+.nav__panel[hidden], .nav__overlay[hidden]{ display:none !important; }
+
+/* CTA accent in-header primary button */
+.site-header .btn--primary{
+  background: var(--brand-blue-500) !important;
+  border-color: transparent !important;
+  color: #07131f !important;
+}

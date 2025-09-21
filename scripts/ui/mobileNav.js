@@ -38,3 +38,19 @@ function closeOnDesktop(){
 mql.addEventListener?.('change', closeOnDesktop);
 window.addEventListener('resize', closeOnDesktop);
 closeOnDesktop();
+
+// Enhanced desktop auto-close (prevents overlay sticking)
+const mqDesktop = window.matchMedia('(min-width:1024px)');
+function closeIfDesktop(){
+  if (!mqDesktop.matches) return;
+  const panel = document.querySelector('[data-nav-panel]');
+  const overlay = document.querySelector('[data-nav-overlay]');
+  const burger = document.querySelector('[data-action="nav-toggle"]');
+  if (panel) panel.setAttribute('hidden','');
+  if (overlay) overlay.setAttribute('hidden','');
+  document.documentElement.style.overflow = '';
+  if (burger) burger.setAttribute('aria-expanded','false');
+}
+mqDesktop.addEventListener?.('change', closeIfDesktop);
+window.addEventListener('resize', closeIfDesktop);
+closeIfDesktop();
