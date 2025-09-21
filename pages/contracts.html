@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contracts - Rep-Link</title>
+    <meta name="description" content="Manage your contracts, track milestones, and monitor payments on Rep-Link.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <a href="../index.html" aria-label="Rep-Link Home">
+                        <svg class="logo" width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="8" width="24" height="16" rx="2" fill="var(--brand)"/>
+                            <path d="M8 12h8v8H8z" fill="var(--surface)"/>
+                            <text x="32" y="20" font-family="system-ui" font-size="16" font-weight="700" fill="var(--ink)">Rep-Link</text>
+                        </svg>
+                    </a>
+                </div>
+                
+                <nav class="header__nav" role="navigation" aria-label="Main navigation">
+                    <div class="header__ctas">
+                        <a href="opportunities.html" class="btn btn--secondary">Browse Opportunities</a>
+                        <a href="login.html" class="btn btn--tertiary">Log in</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <div class="page">
+            <div class="page__header">
+                <div class="container">
+                    <h1 class="page__title">Contracts</h1>
+                    <p class="page__subtitle">Manage your contracts and track milestone progress</p>
+                </div>
+            </div>
+            
+            <div class="page__main">
+                <div class="container">
+                    <div class="contracts-container">
+                        <!-- Contract Stats -->
+                        <div class="contracts-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14,2 14,8 20,8"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 id="total-contracts">0</h3>
+                                    <p>Total Contracts</p>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12,6 12,12 16,14"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 id="active-contracts">0</h3>
+                                    <p>Active Contracts</p>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 id="total-earnings">$0</h3>
+                                    <p>Total Earnings</p>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 id="pending-payments">$0</h3>
+                                    <p>Pending Payments</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contract Filters -->
+                        <div class="contracts-filters">
+                            <div class="filter-group">
+                                <label class="filter-label">Status</label>
+                                <select id="status-filter" class="filter-select">
+                                    <option value="">All Status</option>
+                                    <option value="active">Active</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="paused">Paused</option>
+                                    <option value="disputed">Disputed</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label class="filter-label">Type</label>
+                                <select id="type-filter" class="filter-select">
+                                    <option value="">All Types</option>
+                                    <option value="fixed">Fixed Price</option>
+                                    <option value="milestone">Milestone-based</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn--secondary" id="clear-filters">Clear Filters</button>
+                        </div>
+                        
+                        <!-- Contracts List -->
+                        <div class="contracts-list" id="contracts-list">
+                            <!-- Contracts will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <div class="footer__contact">
+                        <p>📱 +65 9123 4567</p>
+                        <p>✉️ hello@rep-link.sg</p>
+                        <p>📷 @replinksg</p>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Support</h3>
+                    <nav class="footer__nav">
+                        <a href="help/index.html">Help Center</a>
+                        <a href="help/index.html?topic=faq">FAQ</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </nav>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">About</h3>
+                    <p class="footer__description">
+                        Rep-Link connects freelance sales representatives with businesses in Singapore, 
+                        providing secure, milestone-based commission opportunities.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2024 Rep-Link. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/app.js"></script>
+    <script type="module">
+        import { ContractsManager } from '../scripts/features/contracts.js';
+        import { API } from '../scripts/data/api.js';
+        import { Toast } from '../scripts/ui/components.js';
+        
+        // Check authentication and role
+        if (window.app) {
+            if (!window.app.requireAuthRole('business')) {
+                // Redirect will happen automatically
+                throw new Error('Authentication required');
+            }
+        }
+        
+        class ContractsPage {
+            constructor() {
+                this.contracts = [];
+                this.filteredContracts = [];
+                this.currentFilters = {};
+                this.toast = new Toast();
+                this.init();
+            }
+            
+            async init() {
+                await this.loadContracts();
+                this.setupEventListeners();
+                this.renderContracts();
+                this.updateStats();
+            }
+            
+            async loadContracts() {
+                try {
+                    const api = new API();
+                    await api.init();
+                    
+                    const response = await api.request('contracts/list');
+                    if (response.success) {
+                        this.contracts = response.data;
+                        this.filteredContracts = [...this.contracts];
+                    }
+                } catch (error) {
+                    console.error('Failed to load contracts:', error);
+                }
+            }
+            
+            setupEventListeners() {
+                // Filter changes
+                document.getElementById('status-filter').addEventListener('change', (e) => {
+                    this.updateFilter('status', e.target.value);
+                });
+                
+                document.getElementById('type-filter').addEventListener('change', (e) => {
+                    this.updateFilter('type', e.target.value);
+                });
+                
+                document.getElementById('clear-filters').addEventListener('click', () => {
+                    this.clearFilters();
+                });
+                
+                // Contract actions
+                document.addEventListener('click', (e) => {
+                    if (e.target.matches('.btn--submit-milestone')) {
+                        const milestoneId = e.target.dataset.milestoneId;
+                        this.showMilestoneSubmissionModal(milestoneId);
+                    }
+                    
+                    if (e.target.matches('.btn--approve-milestone')) {
+                        const milestoneId = e.target.dataset.milestoneId;
+                        this.approveMilestone(milestoneId);
+                    }
+                    
+                    if (e.target.matches('.btn--dispute')) {
+                        const contractId = e.target.dataset.contractId;
+                        this.showDisputeModal(contractId);
+                    }
+                });
+            }
+            
+            updateFilter(filterName, filterValue) {
+                if (filterValue === '') {
+                    delete this.currentFilters[filterName];
+                } else {
+                    this.currentFilters[filterName] = filterValue;
+                }
+                this.applyFilters();
+            }
+            
+            applyFilters() {
+                this.filteredContracts = this.contracts.filter(contract => {
+                    if (this.currentFilters.status && contract.status !== this.currentFilters.status) {
+                        return false;
+                    }
+                    if (this.currentFilters.type && contract.type !== this.currentFilters.type) {
+                        return false;
+                    }
+                    return true;
+                });
+                
+                this.renderContracts();
+            }
+            
+            clearFilters() {
+                this.currentFilters = {};
+                document.getElementById('status-filter').value = '';
+                document.getElementById('type-filter').value = '';
+                this.applyFilters();
+            }
+            
+            renderContracts() {
+                const container = document.getElementById('contracts-list');
+                
+                if (this.filteredContracts.length === 0) {
+                    container.innerHTML = this.renderNoContracts();
+                    return;
+                }
+                
+                container.innerHTML = this.filteredContracts.map(contract => 
+                    this.renderContractCard(contract)
+                ).join('');
+            }
+            
+            renderContractCard(contract) {
+                const totalValue = this.calculateTotalValue(contract);
+                const completedMilestones = contract.milestones.filter(m => m.status === 'completed').length;
+                const totalMilestones = contract.milestones.length;
+                const progress = totalMilestones > 0 ? (completedMilestones / totalMilestones) * 100 : 0;
+                
+                return `
+                    <div class="contract-card">
+                        <div class="contract-header">
+                            <div class="contract-info">
+                                <h3 class="contract-title">${contract.title}</h3>
+                                <div class="contract-meta">
+                                    <span class="contract-type">${this.formatContractType(contract.type)}</span>
+                                    <span class="contract-value">$${totalValue.toLocaleString()}</span>
+                                </div>
+                            </div>
+                            <div class="contract-status">
+                                <span class="badge badge--${this.getStatusBadgeClass(contract.status)}">
+                                    ${this.formatStatus(contract.status)}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="contract-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${progress}%"></div>
+                            </div>
+                            <span class="progress-text">${completedMilestones}/${totalMilestones} milestones completed</span>
+                        </div>
+                        
+                        <div class="contract-milestones">
+                            ${contract.milestones.map(milestone => this.renderMilestone(milestone, contract.id)).join('')}
+                        </div>
+                        
+                        <div class="contract-actions">
+                            <button class="btn btn--secondary btn--dispute" data-contract-id="${contract.id}">
+                                Raise Dispute
+                            </button>
+                            <a href="messages.html" class="btn btn--primary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Message
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            renderMilestone(milestone, contractId) {
+                const statusClass = `milestone--${milestone.status}`;
+                const statusText = this.formatMilestoneStatus(milestone.status);
+                const autoReleaseText = milestone.autoReleaseAt ? 
+                    `Auto-releases: ${this.formatDate(milestone.autoReleaseAt)}` : '';
+                
+                return `
+                    <div class="milestone ${statusClass}">
+                        <div class="milestone-header">
+                            <h4 class="milestone-title">${milestone.title}</h4>
+                            <span class="milestone-amount">$${milestone.amount.toLocaleString()}</span>
+                        </div>
+                        
+                        <p class="milestone-description">${milestone.description}</p>
+                        
+                        <div class="milestone-status">
+                            <span class="badge badge--${this.getMilestoneStatusClass(milestone.status)}">
+                                ${statusText}
+                            </span>
+                            ${autoReleaseText ? `<span class="auto-release">${autoReleaseText}</span>` : ''}
+                        </div>
+                        
+                        ${milestone.status === 'pending' ? `
+                            <button class="btn btn--primary btn--small btn--submit-milestone" data-milestone-id="${milestone.id}">
+                                Submit Milestone
+                            </button>
+                        ` : ''}
+                        
+                        ${milestone.status === 'submitted' ? `
+                            <button class="btn btn--success btn--small btn--approve-milestone" data-milestone-id="${milestone.id}">
+                                Approve
+                            </button>
+                        ` : ''}
+                    </div>
+                `;
+            }
+            
+            renderNoContracts() {
+                return `
+                    <div class="no-contracts">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                        </svg>
+                        <h3>No contracts found</h3>
+                        <p>Contracts will appear here once proposals are accepted.</p>
+                        <a href="opportunities.html" class="btn btn--primary">Browse Opportunities</a>
+                    </div>
+                `;
+            }
+            
+            updateStats() {
+                const totalContracts = this.contracts.length;
+                const activeContracts = this.contracts.filter(c => c.status === 'active').length;
+                const totalEarnings = this.contracts.reduce((sum, contract) => {
+                    return sum + contract.milestones
+                        .filter(m => m.status === 'completed')
+                        .reduce((milestoneSum, milestone) => milestoneSum + milestone.amount, 0);
+                }, 0);
+                const pendingPayments = this.contracts.reduce((sum, contract) => {
+                    return sum + contract.milestones
+                        .filter(m => m.status === 'submitted')
+                        .reduce((milestoneSum, milestone) => milestoneSum + milestone.amount, 0);
+                }, 0);
+                
+                document.getElementById('total-contracts').textContent = totalContracts;
+                document.getElementById('active-contracts').textContent = activeContracts;
+                document.getElementById('total-earnings').textContent = `$${totalEarnings.toLocaleString()}`;
+                document.getElementById('pending-payments').textContent = `$${pendingPayments.toLocaleString()}`;
+            }
+            
+            calculateTotalValue(contract) {
+                if (contract.type === 'fixed') {
+                    return contract.totalValue || 0;
+                } else if (contract.type === 'milestone') {
+                    return contract.milestones.reduce((sum, milestone) => sum + milestone.amount, 0);
+                }
+                return 0;
+            }
+            
+            formatContractType(type) {
+                const types = {
+                    'fixed': 'Fixed Price',
+                    'milestone': 'Milestone-based'
+                };
+                return types[type] || type;
+            }
+            
+            formatStatus(status) {
+                return status.charAt(0).toUpperCase() + status.slice(1);
+            }
+            
+            getStatusBadgeClass(status) {
+                const classes = {
+                    'active': 'success',
+                    'completed': 'success',
+                    'paused': 'warning',
+                    'disputed': 'danger'
+                };
+                return classes[status] || 'neutral';
+            }
+            
+            formatMilestoneStatus(status) {
+                const statuses = {
+                    'pending': 'Pending',
+                    'submitted': 'Under Review',
+                    'approved': 'Approved',
+                    'completed': 'Completed',
+                    'rejected': 'Rejected'
+                };
+                return statuses[status] || status;
+            }
+            
+            getMilestoneStatusClass(status) {
+                const classes = {
+                    'pending': 'warning',
+                    'submitted': 'info',
+                    'approved': 'success',
+                    'completed': 'success',
+                    'rejected': 'danger'
+                };
+                return classes[status] || 'neutral';
+            }
+            
+            formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-SG', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            }
+            
+            showMilestoneSubmissionModal(milestoneId) {
+                // This would show the milestone submission modal
+                this.toast.show('Milestone submission feature coming soon!', 'info');
+            }
+            
+            approveMilestone(milestoneId) {
+                // This would approve the milestone
+                this.toast.show('Milestone approved!', 'success');
+            }
+            
+            showDisputeModal(contractId) {
+                // This would show the dispute modal
+                this.toast.show('Dispute resolution feature coming soon!', 'info');
+            }
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new ContractsPage();
+        });
+    </script>
+</body>
+</html>

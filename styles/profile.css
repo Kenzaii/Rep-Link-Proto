@@ -1,0 +1,55 @@
+/* ---- Profile shell ---- */
+.profile-shell{display:grid;gap:24px;background:#0b1220;min-height:100vh;padding:20px 0}
+@media(min-width:1024px){
+  .profile-shell{grid-template-columns:minmax(300px,340px) minmax(620px,1fr); align-items:start}
+}
+
+/* ---- Cards ---- */
+.profile-card{
+  background:#0b1220;
+  border:1px solid #1f2a3a;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  color:#e6edf5;
+}
+.profile-card h2{margin:0 0 8px}
+
+/* ---- Aside (avatar + meter) ---- */
+.profile-aside .avatar-wrap{display:grid;place-items:center;margin-block:14px}
+.profile-aside .avatar{
+  width:132px;height:132px;border-radius:50%;object-fit:cover;
+  border:2px solid #1f2a3a;background:linear-gradient(180deg,#0A1E32 0%,#12283f 100%)
+}
+.profile-aside .avatar--placeholder{display:grid;place-items:center;color:#cbe7f4;font-weight:700}
+.profile-aside .meter{height:8px;border-radius:999px;background:#1f2a3a;overflow:hidden}
+.profile-aside .meter>div{height:100%;background:#05aadc;transition:width .18s ease}
+.badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:6px 10px;border:1px solid #1f2a3a;font-size:0.875rem;color:#e6edf5}
+.badge--ok{background:rgba(34, 197, 94, 0.12);color:#22c55e}
+
+/* ---- Form base ---- */
+.form-grid{display:grid;gap:14px;max-width:920px}
+.form-row{display:grid;gap:10px}
+.form-row .label{font-weight:600;color:#e6edf5}
+
+/* Desktop: two-column rows with aligned labels */
+@media(min-width:900px){
+  .form-row{grid-template-columns:200px 1fr; align-items:center}
+  .form-row .label{margin:0}
+}
+
+/* Inputs */
+.input,.textarea{width:100%;padding:12px 14px;border:1px solid #1f2a3a;border-radius:12px;background:#0e1729;color:#e6edf5;font-size:0.875rem}
+.input:focus,.textarea:focus{outline:none;border-color:#05aadc;box-shadow:0 0 0 3px rgba(5,170,220,0.1)}
+.textarea{min-height:120px}
+.help{font-size:0.875rem;color:#b8c3d1}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* File inputs */
+input[type="file"]{width:100%;padding:8px;border:1px solid #1f2a3a;border-radius:8px;background:#0e1729;color:#e6edf5;font-size:0.875rem}
+
+/* Checkboxes */
+input[type="checkbox"]{accent-color:#05aadc;margin-right:8px}
+
+/* Remove any rogue rules that un-hide [hidden] */
+[hidden]{display:none !important}

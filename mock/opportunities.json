@@ -1,0 +1,60 @@
+[
+  {
+    "id": "opp-clean-001",
+    "title": "TechCorp Solutions — SME office services",
+    "company": "TechCorp Solutions",
+    "type": "Service",
+    "sector": "B2B",
+    "commissionType": "Milestone",
+    "commission": [
+      {"name": "Lead Accepted", "amount": 80},
+      {"name": "Contract Signed", "amount": 420}
+    ],
+    "short": "Recurring/Single options; payment before/after supported.",
+    "requirements": ["Basic sales exp", "English", "On-site visit"],
+    "status": "open"
+  },
+  {
+    "id": "opp-carwrap-001",
+    "title": "Car Wrapping — Premium package",
+    "company": "Pro Wrap",
+    "type": "Service",
+    "sector": "B2C",
+    "commissionType": "Fixed",
+    "commission": [
+      {"name": "Closed Deal", "amount": 300}
+    ],
+    "short": "One-time job; photo verification post-service.",
+    "requirements": ["Automotive interest"],
+    "status": "open"
+  },
+  {
+    "id": "opp-fish-001",
+    "title": "Fresh Salmon (5kg) — Premium seafood",
+    "company": "Fish n Meat",
+    "type": "Product",
+    "sector": "B2C",
+    "commissionType": "Fixed",
+    "commission": [
+      {"name": "Sale Completed", "amount": 25}
+    ],
+    "short": "Premium sashimi grade salmon, cold chain delivery.",
+    "requirements": ["Food safety knowledge"],
+    "status": "open"
+  },
+  {
+    "id": "opp-yacht-001",
+    "title": "Yacht Rental — Luxury experience",
+    "company": "Yacht Marina",
+    "type": "Service",
+    "sector": "B2C",
+    "commissionType": "Milestone",
+    "commission": [
+      {"name": "Booking Confirmed", "amount": 150},
+      {"name": "Trip Completed", "amount": 350}
+    ],
+    "short": "Luxury yacht rentals for corporate events and celebrations.",
+    "requirements": ["Hospitality experience", "English"],
+    "status": "open"
+  }
+]

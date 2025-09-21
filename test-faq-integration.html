@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Integration Test - Rep-Link</title>
+    
+    <!-- Theme & shared CSS -->
+    <link rel="stylesheet" href="/styles/theme.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/sections.css">
+    <link rel="stylesheet" href="/styles/utilities.css">
+    <link rel="stylesheet" href="/styles/mobile-nav.css">
+    <link rel="stylesheet" href="/styles/help.css">
+</head>
+<body>
+    <header data-header></header>
+
+    <main class="section">
+        <div class="container">
+            <div class="prose">
+                <h1>FAQ Integration Test</h1>
+                <p class="lead">Testing the unified Help Center with FAQ integration</p>
+            </div>
+
+            <div class="card">
+                <h2>Test Links</h2>
+                <div class="cluster">
+                    <a href="/pages/help/index.html" class="btn btn--primary">Help Center Home</a>
+                    <a href="/pages/help/index.html?topic=faq" class="btn">FAQ Topic</a>
+                    <a href="/pages/help/index.html?q=payment" class="btn">Search "payment"</a>
+                    <a href="/pages/faq.html" class="btn">Old FAQ (Redirect)</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Sample FAQ Articles</h2>
+                <div class="cluster">
+                    <a href="/pages/help/article.html?id=what-is-replink" class="btn">What is Rep-Link?</a>
+                    <a href="/pages/help/article.html?id=how-to-get-paid" class="btn">How do I get paid?</a>
+                    <a href="/pages/help/article.html?id=payment-security" class="btn">Payment Security</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Expected Behavior</h2>
+                <ul>
+                    <li>Help Center should show FAQ topic card</li>
+                    <li>FAQ articles should appear in search results</li>
+                    <li>Popular articles should show based on view tracking</li>
+                    <li>Old FAQ page should redirect to Help Center</li>
+                    <li>Mobile hamburger should work on all pages</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/scripts/app.js"></script>
+    <script type="module" src="/scripts/ui/mobileNav.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "u-rep-001",
+    "name": "Demo Rep",
+    "email": "rep@replink.dev",
+    "role": "rep",
+    "password": "RepLink#2025",
+    "avatar": "/assets/img/rep1.svg",
+    "phone": "+65 9123 4567",
+    "nric": "S1234567A",
+    "address": "123 Main Street, Singapore 123456",
+    "bio": "Experienced sales representative with 5+ years in B2B sales",
+    "singpassLinked": true,
+    "createdAt": "2024-01-15T08:00:00.000Z"
+  },
+  {
+    "id": "u-biz-001",
+    "name": "Demo Business",
+    "email": "business@replink.dev",
+    "role": "business",
+    "password": "RepLink#2025",
+    "avatar": "/assets/img/rep2.svg",
+    "company": "Rep-Link Demo Co.",
+    "phone": "+65 9876 5432",
+    "address": "456 Business Ave, Singapore 654321",
+    "bio": "Business owner with 10+ years in technology sector",
+    "singpassLinked": true,
+    "createdAt": "2024-01-10T09:00:00.000Z"
+  }
+]

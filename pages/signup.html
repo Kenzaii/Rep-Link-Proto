@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Rep-Link</title>
+    <meta name="description" content="Join Rep-Link to start your freelance sales career or find talented sales representatives for your business.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+</head>
+<body>
+    <script src="../scripts/boot/ensureHeader.js"></script>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header data-header></header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <div class="page">
+            <div class="page__header">
+                <div class="container">
+                    <h1 class="page__title">Create Account</h1>
+                    <p class="page__subtitle">Join Rep-Link and start your sales journey today.</p>
+                </div>
+            </div>
+            
+            <div class="page__main">
+                <div class="container">
+                    <div class="auth-container">
+                        <div class="auth-card">
+                            <!-- Prototype Notice -->
+                            <div class="prototype-notice">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                                <span>This is a prototype. No real authentication is implemented.</span>
+                            </div>
+
+                            <!-- Stepper -->
+                            <div class="stepper">
+                                <div class="stepper__progress">
+                                    <div class="stepper__progress-bar" style="width: 50%"></div>
+                                </div>
+                                <div class="stepper__steps">
+                                    <div class="stepper__step stepper__step--active">
+                                        <div class="stepper__step-number">1</div>
+                                        <div class="stepper__step-label">Account Details</div>
+                                    </div>
+                                    <div class="stepper__step">
+                                        <div class="stepper__step-number">2</div>
+                                        <div class="stepper__step-label">Singpass Link</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Error/Success Messages -->
+                            <div id="error-message" class="form-error hidden"></div>
+                            <div id="success-message" class="form-success hidden"></div>
+                            
+                            <!-- Step 1: Account Details -->
+                            <div id="step1">
+                                <form id="step1-form" class="auth-form">
+                                    <div class="form-group">
+                                        <label for="fullName" class="form-label">Full Name *</label>
+                                        <input 
+                                            type="text" 
+                                            id="fullName" 
+                                            name="fullName" 
+                                            class="form-input" 
+                                            placeholder="Enter your full name"
+                                            required
+                                            autocomplete="name"
+                                        >
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input 
+                                            type="email" 
+                                            id="email" 
+                                            name="email" 
+                                            class="form-input" 
+                                            placeholder="Enter your email address"
+                                            required
+                                            autocomplete="email"
+                                        >
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone Number *</label>
+                                        <input 
+                                            type="tel" 
+                                            id="phone" 
+                                            name="phone" 
+                                            class="form-input" 
+                                            placeholder="+65 9123 4567"
+                                            required
+                                            autocomplete="tel"
+                                        >
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Account Type *</label>
+                                        <div class="radio-group">
+                                            <label class="radio-label">
+                                                <input type="radio" name="role" value="rep" required>
+                                                <span class="radio-custom"></span>
+                                                Sales Rep
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="role" value="business" required>
+                                                <span class="radio-custom"></span>
+                                                Business
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="password" class="form-label">Password *</label>
+                                        <input 
+                                            type="password" 
+                                            id="password" 
+                                            name="password" 
+                                            class="form-input" 
+                                            placeholder="Create a strong password"
+                                            required
+                                            autocomplete="new-password"
+                                        >
+                                        <div class="form-help">Password must be at least 8 characters long</div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn--primary btn--large auth-submit">
+                                        Continue to Singpass
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Step 2: Singpass Link -->
+                            <div id="step2" class="hidden">
+                                <div class="singpass-section">
+                                    <h3>Link Your Singpass (Mock)</h3>
+                                    <p>Click the button below to link your Singpass account and auto-fill your details.</p>
+                                    
+                                    <button id="singpass-btn" class="btn btn--secondary btn--large">
+                                        🔗 Link Singpass (Mock)
+                                    </button>
+                                </div>
+
+                                <form id="step2-form" class="auth-form">
+                                    <div id="rep-fields">
+                                        <div class="form-group">
+                                            <label for="address" class="form-label">Address *</label>
+                                            <input 
+                                                type="text" 
+                                                id="address" 
+                                                name="address" 
+                                                class="form-input" 
+                                                placeholder="Your address"
+                                                data-singpass
+                                                required
+                                            >
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="nationalId" class="form-label">NRIC *</label>
+                                            <input 
+                                                type="text" 
+                                                id="nationalId" 
+                                                name="nationalId" 
+                                                class="form-input" 
+                                                placeholder="S1234567A"
+                                                data-singpass
+                                                required
+                                            >
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="bankAccount" class="form-label">Bank Account *</label>
+                                            <input 
+                                                type="text" 
+                                                id="bankAccount" 
+                                                name="bankAccount" 
+                                                class="form-input" 
+                                                placeholder="123-456-789-0"
+                                                data-singpass
+                                                required
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div id="business-fields" class="hidden">
+                                        <div class="form-group">
+                                            <label for="company" class="form-label">Company Name *</label>
+                                            <input 
+                                                type="text" 
+                                                id="company" 
+                                                name="company" 
+                                                class="form-input" 
+                                                placeholder="Your company name"
+                                                data-singpass
+                                                required
+                                            >
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="uen" class="form-label">UEN *</label>
+                                            <input 
+                                                type="text" 
+                                                id="uen" 
+                                                name="uen" 
+                                                class="form-input" 
+                                                placeholder="201912345A"
+                                                data-singpass
+                                                required
+                                            >
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="billingEmail" class="form-label">Billing Email *</label>
+                                            <input 
+                                                type="email" 
+                                                id="billingEmail" 
+                                                name="billingEmail" 
+                                                class="form-input" 
+                                                placeholder="accounts@company.com"
+                                                data-singpass
+                                                required
+                                            >
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="contact" class="form-label">Contact Number *</label>
+                                            <input 
+                                                type="tel" 
+                                                id="contact" 
+                                                name="contact" 
+                                                class="form-input" 
+                                                placeholder="+65 6234 5678"
+                                                data-singpass
+                                                required
+                                            >
+                                        </div>
+                                    </div>
+                                    
+                                    <button id="continue-btn" type="button" class="btn btn--primary btn--large auth-submit">
+                                        Accept & Continue
+                                    </button>
+                                </form>
+                            </div>
+                            
+                            <div class="auth-footer">
+                                <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="auth-info">
+                            <h3>Join thousands of successful sales professionals</h3>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-number">500+</div>
+                                    <div class="stat-label">Active Sales Reps</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">200+</div>
+                                    <div class="stat-label">Verified Businesses</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">$2M+</div>
+                                    <div class="stat-label">Commission Paid</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">4.8★</div>
+                                    <div class="stat-label">Average Rating</div>
+                                </div>
+                            </div>
+                            
+                            <div class="benefits-section">
+                                <h4>For Sales Reps:</h4>
+                                <ul class="benefit-list">
+                                    <li>Access to exclusive sales opportunities</li>
+                                    <li>Secure milestone-based payments</li>
+                                    <li>Build your professional reputation</li>
+                                    <li>Connect with top Singapore businesses</li>
+                                </ul>
+                                
+                                <h4>For Businesses:</h4>
+                                <ul class="benefit-list">
+                                    <li>Find qualified sales professionals</li>
+                                    <li>Pay only for results achieved</li>
+                                    <li>Flexible engagement models</li>
+                                    <li>Built-in dispute resolution</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <div class="footer__contact">
+                        <p>📱 +65 9123 4567</p>
+                        <p>✉️ hello@rep-link.sg</p>
+                        <p>📷 @replinksg</p>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Support</h3>
+                    <nav class="footer__nav">
+                        <a href="help/index.html">Help Center</a>
+                        <a href="help/index.html?topic=faq">FAQ</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </nav>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">About</h3>
+                    <p class="footer__description">
+                        Rep-Link connects freelance sales representatives with businesses in Singapore, 
+                        providing secure, milestone-based commission opportunities.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2024 Rep-Link. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Scripts -->
+    <script src="../scripts/app.js"></script>
+    <script type="module" src="../scripts/features/signup.js"></script>
+    <script type="module" src="../scripts/ui/mobileNav.js"></script>
+</body>
+</html>

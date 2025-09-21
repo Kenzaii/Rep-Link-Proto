@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help Center • Rep-Link</title>
+  
+  <!-- Theme & shared CSS -->
+  <link rel="stylesheet" href="../../styles/base.css?v=2">
+  <link rel="stylesheet" href="../../styles/layout.css?v=2">
+  <link rel="stylesheet" href="../../styles/components.css?v=2">
+  <link rel="stylesheet" href="../../styles/utilities.css?v=2">
+  <link rel="stylesheet" href="../../styles/animations.css?v=2">
+  <link rel="stylesheet" href="../../styles/header.css?v=2">
+  <link rel="stylesheet" href="../../styles/mobile-nav.css?v=2">
+  <link rel="stylesheet" href="../../styles/help.css?v=2">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+</head>
+<body>
+  <script src="../../scripts/boot/ensureHeader.js?v=2"></script>
+  <header data-header></header>
+
+  <main class="section">
+    <div class="container">
+      <nav class="help-breadcrumb" aria-label="Breadcrumb">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+      </nav>
+      
+      <header class="help-hero">
+        <h1>Help Center</h1>
+        <p class="lead">Search guides, FAQs, and policies.</p>
+        <form id="helpSearch" class="help-search" role="search" aria-label="Help Center Search">
+          <input id="q" name="q" type="search" placeholder="Search help…" autocomplete="off" aria-label="Search help">
+          <button class="btn btn--primary" type="submit">Search</button>
+        </form>
+      </header>
+
+      <section class="help-topics grid three" id="topicGrid">
+        <article class="topic card card--link" data-topic="getting-started" tabindex="0" role="button" aria-pressed="false" onclick="showTopicResults('getting-started')" onkeydown="handleTopicKeydown(event, 'getting-started')">
+          <h3 class="t__title">Getting Started</h3>
+          <p class="t__desc muted">Create an account and set up your profile.</p>
+        </article>
+        <article class="topic card card--link" data-topic="for-reps" tabindex="0" role="button" aria-pressed="false" onclick="showTopicResults('for-reps')">
+          <h3 class="t__title">For Sales Reps</h3>
+          <p class="t__desc muted">Apply, close deals, earn commissions.</p>
+        </article>
+        <article class="topic card card--link" data-topic="for-business" tabindex="0" role="button" aria-pressed="false" onclick="showTopicResults('for-business')">
+          <h3 class="t__title">For Businesses</h3>
+          <p class="t__desc muted">Post opportunities and manage campaigns.</p>
+        </article>
+        <article class="topic card card--link" data-topic="account-security" tabindex="0" role="button" aria-pressed="false" onclick="showTopicResults('account-security')">
+          <h3 class="t__title">Account & Security</h3>
+          <p class="t__desc muted">Login, verification, and safety.</p>
+        </article>
+        <article class="topic card card--link" data-topic="payments" tabindex="0" role="button" aria-pressed="false" onclick="showTopicResults('payments')">
+          <h3 class="t__title">Payments & Commissions</h3>
+          <p class="t__desc muted">Milestones, payouts, fees.</p>
+        </article>
+        <article class="topic card card--link" data-topic="policies" tabindex="0" role="button" aria-pressed="false" onclick="showTopicResults('policies')">
+          <h3 class="t__title">Policies & Legal</h3>
+          <p class="t__desc muted">Terms, privacy, data.</p>
+        </article>
+        <article class="topic card card--link" data-topic="troubleshooting" tabindex="0" role="button" aria-pressed="false" onclick="showTopicResults('troubleshooting')">
+          <h3 class="t__title">Troubleshooting</h3>
+          <p class="t__desc muted">Fix common problems.</p>
+        </article>
+        <article class="topic card card--link" data-topic="faq" tabindex="0" role="button" aria-pressed="false" onclick="showTopicResults('faq')">
+          <h3 class="t__title">FAQ</h3>
+          <p class="t__desc muted">Quick answers to common questions.</p>
+        </article>
+      </section>
+
+      <section class="section--tight">
+        <h2 class="section__title">Popular</h2>
+        <div id="popularList">
+          <div class="result-card">
+            <a href="article.html?id=what-is-replink">What is Rep-Link?</a>
+            <p class="muted">Rep-Link connects freelance sales reps with businesses using fixed or milestone commissions (no hourly).</p>
+          </div>
+          <div class="result-card">
+            <a href="article.html?id=how-does-replink-work">How does Rep-Link work?</a>
+            <p class="muted">Businesses post sales opportunities with clear commission structures. Sales reps browse opportunities, submit proposals, and get matched with businesses.</p>
+          </div>
+          <div class="result-card">
+            <a href="article.html?id=how-do-i-get-paid">How do I get paid?</a>
+            <p class="muted">Rep-Link uses milestone-based payments with escrow protection. You get paid when milestones are completed and approved.</p>
+          </div>
+          <div class="result-card">
+            <a href="article.html?id=what-is-the-rep-link-success-score">What is the Rep-Link Success Score (RSS)?</a>
+            <p class="muted">The RSS is a rating system that helps businesses identify top-performing sales reps based on their track record.</p>
+          </div>
+          <div class="result-card">
+            <a href="article.html?id=how-secure-are-payments">How secure are payments?</a>
+            <p class="muted">All payments are processed through secure escrow systems with milestone-based releases and fraud protection.</p>
+          </div>
+          <div class="result-card">
+            <a href="article.html?id=how-do-i-contact-support">How do I contact support?</a>
+            <p class="muted">You can contact our support team through the Help Center, email, or live chat during business hours.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="help-results" id="results" hidden>
+        <h2 id="resultsTitle" class="section__title">Results</h2>
+        <div id="resultList" class="result-list"></div>
+        <nav id="pager" class="pager" aria-label="Pagination"></nav>
+      </section>
+    </div>
+  </main>
+
+  <!-- Chatbot -->
+  <link rel="stylesheet" href="../../styles/chat.css">
+  <script type="module" src="../../scripts/ui/chatbot.js"></script>
+
+  <script src="../../scripts/app.js?v=2"></script>
+  <script type="module" src="../../scripts/ui/mobileNav.js?v=2"></script>
+  <script type="module" src="../../scripts/features/help.js?v=2"></script>
+  
+  <script>
+    // Simple topic click handler
+    function showTopicResults(topicId) {
+      const resultsSection = document.getElementById('results');
+      const resultsTitle = document.getElementById('resultsTitle');
+      const resultList = document.getElementById('resultList');
+      
+      // Topic data mapping
+      const topicData = {
+        'getting-started': {
+          title: 'Getting Started',
+          articles: [
+            { id: 'what-is-replink', title: 'What is Rep-Link?', excerpt: 'Learn about our marketplace connecting freelance sales reps with businesses.' },
+            { id: 'how-does-replink-work', title: 'How does Rep-Link work?', excerpt: 'Understand the process from opportunity posting to payment.' },
+            { id: 'create-account', title: 'Create your Rep-Link account', excerpt: 'Step-by-step guide to signing up as a Rep or Business.' },
+            { id: 'complete-profile', title: 'Complete your profile', excerpt: 'Add your skills, experience, and verification details.' }
+          ]
+        },
+        'for-reps': {
+          title: 'For Sales Reps',
+          articles: [
+            { id: 'apply-opportunities', title: 'Apply to opportunities', excerpt: 'How to find and apply to sales opportunities that match your skills.' },
+            { id: 'manage-campaigns', title: 'Manage your campaigns', excerpt: 'Track your progress and communicate with businesses.' },
+            { id: 'what-is-the-rep-link-success-score', title: 'What is the Rep-Link Success Score (RSS)?', excerpt: 'Learn about our rating system for sales reps.' },
+            { id: 'how-do-i-get-paid', title: 'How do I get paid?', excerpt: 'Understand milestone-based payments and escrow protection.' }
+          ]
+        },
+        'for-business': {
+          title: 'For Businesses',
+          articles: [
+            { id: 'post-opportunity', title: 'Post a sales opportunity', excerpt: 'Create and publish sales opportunities to attract top reps.' },
+            { id: 'manage-reps', title: 'Manage your sales reps', excerpt: 'Review applications and manage your sales team.' },
+            { id: 'business-dashboard', title: 'Using your business dashboard', excerpt: 'Navigate and utilize your business dashboard effectively.' },
+            { id: 'commission-structures', title: 'Setting commission structures', excerpt: 'Learn about fixed and milestone commission options.' }
+          ]
+        },
+        'account-security': {
+          title: 'Account & Security',
+          articles: [
+            { id: 'login-help', title: 'Login and password help', excerpt: 'Troubleshoot login issues and reset your password.' },
+            { id: 'account-verification', title: 'Account verification', excerpt: 'Complete your account verification process.' },
+            { id: 'two-factor-auth', title: 'Two-factor authentication', excerpt: 'Secure your account with 2FA protection.' },
+            { id: 'privacy-settings', title: 'Privacy and security settings', excerpt: 'Manage your privacy and security preferences.' }
+          ]
+        },
+        'payments': {
+          title: 'Payments & Commissions',
+          articles: [
+            { id: 'how-do-i-get-paid', title: 'How do I get paid?', excerpt: 'Rep-Link uses milestone-based payments with escrow protection.' },
+            { id: 'how-secure-are-payments', title: 'How secure are payments?', excerpt: 'All payments are processed through secure escrow systems.' },
+            { id: 'milestone-payments', title: 'Milestone payments & commissions', excerpt: 'Understand milestone creation, approvals, and payout timing.' },
+            { id: 'payment-methods', title: 'Payment methods and processing', excerpt: 'Learn about supported payment methods and processing times.' }
+          ]
+        },
+        'policies': {
+          title: 'Policies & Legal',
+          articles: [
+            { id: 'privacy-overview', title: 'Privacy Policy summary', excerpt: 'A human-readable summary of our PDPA-aligned privacy practices.' },
+            { id: 'terms-overview', title: 'Terms of Service summary', excerpt: 'Key points from our terms of service agreement.' },
+            { id: 'data-protection', title: 'Data protection and GDPR', excerpt: 'How we protect your personal data and comply with regulations.' },
+            { id: 'dispute-resolution', title: 'Dispute resolution process', excerpt: 'How we handle disputes between reps and businesses.' }
+          ]
+        },
+        'troubleshooting': {
+          title: 'Troubleshooting',
+          articles: [
+            { id: 'common-issues', title: 'Common issues and solutions', excerpt: 'Solutions to frequently encountered problems.' },
+            { id: 'how-do-i-contact-support', title: 'How do I contact support?', excerpt: 'You can contact our support team through the Help Center, email, or live chat.' },
+            { id: 'technical-problems', title: 'Technical problems', excerpt: 'Resolve technical issues with the platform.' },
+            { id: 'account-issues', title: 'Account and access issues', excerpt: 'Troubleshoot account-related problems.' }
+          ]
+        },
+        'faq': {
+          title: 'FAQ',
+          articles: [
+            { id: 'what-is-replink', title: 'What is Rep-Link?', excerpt: 'Rep-Link connects freelance sales reps with businesses using fixed or milestone commissions.' },
+            { id: 'how-does-replink-work', title: 'How does Rep-Link work?', excerpt: 'Businesses post sales opportunities with clear commission structures.' },
+            { id: 'how-do-i-get-paid', title: 'How do I get paid?', excerpt: 'Rep-Link uses milestone-based payments with escrow protection.' },
+            { id: 'how-secure-are-payments', title: 'How secure are payments?', excerpt: 'All payments are processed through secure escrow systems.' },
+            { id: 'what-is-the-rep-link-success-score', title: 'What is the Rep-Link Success Score (RSS)?', excerpt: 'The RSS is a rating system that helps businesses identify top-performing sales reps.' },
+            { id: 'how-do-i-contact-support', title: 'How do I contact support?', excerpt: 'You can contact our support team through the Help Center, email, or live chat.' }
+          ]
+        }
+      };
+      
+      const topic = topicData[topicId];
+      if (topic) {
+        resultsTitle.textContent = topic.title;
+        resultList.innerHTML = topic.articles.map(article => `
+          <div class="result-card">
+            <a href="article.html?id=${article.id}">${article.title}</a>
+            <p class="muted">${article.excerpt}</p>
+          </div>
+        `).join('');
+        
+        resultsSection.hidden = false;
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    
+    // Keyboard handler for topic cards
+    function handleTopicKeydown(event, topicId) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        showTopicResults(topicId);
+      }
+    }
+    
+    // Search form handler
+    document.getElementById('helpSearch').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = document.getElementById('q').value.trim();
+      if (query) {
+        // Simple search - show FAQ results for now
+        showTopicResults('faq');
+      }
+    });
+  </script>
+</body>
+</html>

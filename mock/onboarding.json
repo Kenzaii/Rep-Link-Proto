@@ -1,0 +1,38 @@
+[
+  {
+    "id": "onb-001",
+    "businessId": "u-biz-001",
+    "client": {
+      "name": "Yacht Marina",
+      "address": "Sentosa Cove",
+      "phone": "+65 6000 0000"
+    },
+    "offering": {
+      "kind": "Service",
+      "name": "Yacht Rental",
+      "billing": "Before/After",
+      "recurrence": "Single",
+      "segment": "B2C"
+    },
+    "status": "ongoing",
+    "comms": ["Rep notified business partner", "Invoice sent to Rep-Link"]
+  },
+  {
+    "id": "onb-002",
+    "businessId": "u-biz-001",
+    "client": {
+      "name": "Tech Startup Inc",
+      "address": "Marina Bay",
+      "phone": "+65 7000 0000"
+    },
+    "offering": {
+      "kind": "Service",
+      "name": "Office Services",
+      "billing": "After",
+      "recurrence": "Monthly",
+      "segment": "B2B"
+    },
+    "status": "completed",
+    "comms": ["Contract signed", "Payment processed", "Service delivered"]
+  }
+]

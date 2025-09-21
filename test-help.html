@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center Test - Rep-Link</title>
+    
+    <!-- Theme & shared CSS -->
+    <link rel="stylesheet" href="/styles/theme.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/sections.css">
+    <link rel="stylesheet" href="/styles/utilities.css">
+    <link rel="stylesheet" href="/styles/mobile-nav.css">
+    <link rel="stylesheet" href="/styles/help.css">
+</head>
+<body>
+    <header data-header></header>
+
+    <main class="section">
+        <div class="container">
+            <div class="prose">
+                <h1>Help Center Test</h1>
+                <p class="lead">Testing the Help Center functionality</p>
+            </div>
+
+            <div class="card">
+                <h2>Test Links</h2>
+                <div class="cluster">
+                    <a href="/pages/help/index.html" class="btn btn--primary">Help Center Home</a>
+                    <a href="/pages/help/article.html?id=create-account" class="btn">Sample Article</a>
+                    <a href="/pages/privacy.html" class="btn">Privacy Policy</a>
+                    <a href="/pages/terms.html" class="btn">Terms of Service</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Mobile Navigation Test</h2>
+                <p>Test the hamburger menu on mobile devices. The menu should:</p>
+                <ul>
+                    <li>Open when clicking the hamburger button</li>
+                    <li>Close when clicking the overlay or ESC key</li>
+                    <li>Close when clicking a navigation link</li>
+                    <li>Lock body scroll when open</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/scripts/app.js"></script>
+    <script type="module" src="/scripts/ui/mobileNav.js"></script>
+</body>
+</html>

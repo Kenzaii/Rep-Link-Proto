@@ -1,0 +1,24 @@
+[
+  {
+    "id": "prod-fish-001",
+    "businessId": "u-biz-001",
+    "name": "Fresh Salmon (5kg)",
+    "price": 180,
+    "commission": 25,
+    "specs": "Sashimi grade, chilled",
+    "photos": ["/assets/img/prod-salmon.jpg"],
+    "delivery": "Cold chain; POD required",
+    "status": "approved"
+  },
+  {
+    "id": "prod-clean-001",
+    "businessId": "u-biz-001",
+    "name": "Office Services",
+    "price": 500,
+    "commission": 80,
+    "specs": "Monthly recurring service",
+    "photos": ["/assets/img/prod-office.jpg"],
+    "delivery": "On-site service",
+    "status": "approved"
+  }
+]

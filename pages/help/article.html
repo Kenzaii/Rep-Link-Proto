@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="docTitle">Article • Rep-Link Help</title>
+  
+  <!-- Theme & shared CSS -->
+  <link rel="stylesheet" href="../../styles/base.css?v=2">
+  <link rel="stylesheet" href="../../styles/layout.css?v=2">
+  <link rel="stylesheet" href="../../styles/components.css?v=2">
+  <link rel="stylesheet" href="../../styles/utilities.css?v=2">
+  <link rel="stylesheet" href="../../styles/animations.css?v=2">
+  <link rel="stylesheet" href="../../styles/header.css?v=2">
+  <link rel="stylesheet" href="../../styles/mobile-nav.css?v=2">
+  <link rel="stylesheet" href="../../styles/help.css?v=2">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+</head>
+<body>
+  <script src="../../scripts/boot/ensureHeader.js?v=2"></script>
+  <header data-header></header>
+  <main class="section">
+    <div class="container help-article">
+      <nav class="help-breadcrumb" aria-label="Breadcrumb">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+      </nav>
+      
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Help Center</a> <span>/</span>
+        <a id="bcCat" href="#">Category</a> <span>/</span>
+        <span id="bcTitle" aria-current="page">Loading…</span>
+      </nav>
+
+      <article>
+        <h1 id="title">Article Title</h1>
+        <p class="muted" id="meta">Updated 2025-01-15</p>
+        <aside id="toc" class="toc" aria-label="On this page">
+          <div class="toc-label">On this page:</div>
+          <a href="#overview">Overview</a>
+          <a href="#details">Details</a>
+          <a href="#next-steps">Next Steps</a>
+        </aside>
+        <div id="body" class="prose">
+          <h2 id="overview">Overview</h2>
+          <p>This is a sample article that demonstrates the Help Center functionality. The content will be dynamically loaded based on the article ID in the URL.</p>
+          
+          <h2 id="details">Details</h2>
+          <p>Here you'll find detailed information about the topic. The content is structured with clear headings and easy-to-read paragraphs.</p>
+          
+          <h2 id="next-steps">Next Steps</h2>
+          <p>This section provides actionable steps you can take to resolve your issue or learn more about the topic.</p>
+        </div>
+      </article>
+
+      <section class="feedback">
+        <p>Was this helpful?</p>
+        <div class="cluster">
+          <button class="btn" data-fb="yes">Yes</button>
+          <button class="btn" data-fb="no">No</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Chatbot -->
+  <link rel="stylesheet" href="../../styles/chat.css">
+  <script type="module" src="../../scripts/ui/chatbot.js"></script>
+
+  <script src="../../scripts/app.js?v=2"></script>
+  <script type="module" src="../../scripts/ui/mobileNav.js?v=2"></script>
+  <script type="module" src="../../scripts/features/help.js?v=2"></script>
+  
+  <script>
+    // Article content data
+    const articleData = {
+      'what-is-replink': {
+        title: 'What is Rep-Link?',
+        category: 'FAQ',
+        updated: '2025-01-15',
+        content: `
+          <h2 id="overview">Overview</h2>
+          <p>Rep-Link is a marketplace connecting freelance sales representatives with businesses in Singapore. We provide a platform where businesses can post sales opportunities and sales reps can apply to work on commission-based projects.</p>
+          
+          <h2 id="how-it-works">How it works</h2>
+          <p>Businesses post sales opportunities with clear commission structures. Sales reps browse opportunities, submit proposals, and get matched with businesses. Once selected, reps work on commission-based projects with milestone-based payments and escrow protection.</p>
+          
+          <h2 id="key-features">Key Features</h2>
+          <ul>
+            <li>No hourly rates - only fixed and milestone commissions</li>
+            <li>Secure escrow payment system</li>
+            <li>Rep-Link Success Score (RSS) for quality assurance</li>
+            <li>Direct communication between reps and businesses</li>
+          </ul>
+        `
+      },
+      'how-does-replink-work': {
+        title: 'How does Rep-Link work?',
+        category: 'FAQ',
+        updated: '2025-01-15',
+        content: `
+          <h2 id="for-businesses">For Businesses</h2>
+          <p>Post your sales opportunities with clear commission structures. Review applications from qualified sales reps and select the best match for your needs.</p>
+          
+          <h2 id="for-reps">For Sales Reps</h2>
+          <p>Browse available opportunities, submit proposals, and get matched with businesses. Work on commission-based projects with milestone-based payments.</p>
+          
+          <h2 id="process">The Process</h2>
+          <ol>
+            <li>Business posts opportunity with commission details</li>
+            <li>Sales reps apply with proposals</li>
+            <li>Business selects best rep(s)</li>
+            <li>Work begins with milestone tracking</li>
+            <li>Payments released upon milestone completion</li>
+          </ol>
+        `
+      },
+      'how-do-i-get-paid': {
+        title: 'How do I get paid?',
+        category: 'Payments',
+        updated: '2025-01-15',
+        content: `
+          <h2 id="payment-system">Payment System</h2>
+          <p>Rep-Link uses milestone-based payments with escrow protection. You get paid when milestones are completed and approved by the business.</p>
+          
+          <h2 id="milestone-process">Milestone Process</h2>
+          <ol>
+            <li>Complete the agreed milestone</li>
+            <li>Submit for business approval</li>
+            <li>Business reviews and approves</li>
+            <li>Payment is released from escrow</li>
+            <li>Funds transferred to your account</li>
+          </ol>
+          
+          <h2 id="payment-timeline">Payment Timeline</h2>
+          <p>Payments are typically processed within 2-3 business days after milestone approval. All payments are secure and protected by our escrow system.</p>
+        `
+      },
+      'how-secure-are-payments': {
+        title: 'How secure are payments?',
+        category: 'Payments',
+        updated: '2025-01-15',
+        content: `
+          <h2 id="security-measures">Security Measures</h2>
+          <p>All payments are processed through secure escrow systems with milestone-based releases and fraud protection.</p>
+          
+          <h2 id="escrow-protection">Escrow Protection</h2>
+          <ul>
+            <li>Funds held securely until milestone completion</li>
+            <li>Automatic release upon business approval</li>
+            <li>Dispute resolution process available</li>
+            <li>Fraud detection and prevention</li>
+          </ul>
+          
+          <h2 id="compliance">Compliance</h2>
+          <p>We comply with all Singapore financial regulations and use industry-standard security protocols to protect your payments.</p>
+        `
+      },
+      'how-do-i-contact-support': {
+        title: 'How do I contact support?',
+        category: 'Support',
+        updated: '2025-01-15',
+        content: `
+          <h2 id="contact-methods">Contact Methods</h2>
+          <p>You can contact our support team through multiple channels:</p>
+          
+          <h2 id="help-center">Help Center</h2>
+          <p>Browse our comprehensive help articles and FAQ section for instant answers to common questions.</p>
+          
+          <h2 id="email-support">Email Support</h2>
+          <p>Send us an email at support@replink.sg and we'll respond within 24 hours during business days.</p>
+          
+          <h2 id="live-chat">Live Chat</h2>
+          <p>Available during business hours (9 AM - 6 PM SGT) for immediate assistance with urgent issues.</p>
+        `
+      },
+      'what-is-the-rep-link-success-score': {
+        title: 'What is the Rep-Link Success Score (RSS)?',
+        category: 'FAQ',
+        updated: '2025-01-15',
+        content: `
+          <h2 id="rss-overview">RSS Overview</h2>
+          <p>The RSS is a rating system that helps businesses identify top-performing sales reps based on their track record.</p>
+          
+          <h2 id="how-calculated">How is RSS Calculated?</h2>
+          <ul>
+            <li>Project completion rate</li>
+            <li>Client satisfaction ratings</li>
+            <li>Payment history</li>
+            <li>Communication quality</li>
+            <li>On-time delivery</li>
+          </ul>
+          
+          <h2 id="rss-benefits">Benefits of High RSS</h2>
+          <p>Higher RSS scores give you priority in opportunity matching and help businesses trust your capabilities.</p>
+        `
+      }
+    };
+    
+    // Load article content based on URL parameter
+    function loadArticle() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const articleId = urlParams.get('id');
+      
+      if (articleId && articleData[articleId]) {
+        const article = articleData[articleId];
+        
+        // Update page title
+        document.getElementById('docTitle').textContent = `${article.title} • Rep-Link Help`;
+        
+        // Update breadcrumb
+        document.getElementById('bcCat').textContent = article.category;
+        document.getElementById('bcCat').href = `index.html?topic=${article.category.toLowerCase()}`;
+        document.getElementById('bcTitle').textContent = article.title;
+        
+        // Update article content
+        document.getElementById('title').textContent = article.title;
+        document.getElementById('meta').textContent = `Updated ${article.updated}`;
+        document.getElementById('body').innerHTML = article.content;
+        
+        // Update TOC
+        const headings = document.querySelectorAll('#body h2');
+        const toc = document.getElementById('toc');
+        if (headings.length > 0) {
+          toc.innerHTML = '<div class="toc-label">On this page:</div>' + 
+            Array.from(headings).map(h => {
+              const id = h.id || h.textContent.toLowerCase().replace(/\s+/g, '-');
+              h.id = id;
+              return `<a href="#${id}">${h.textContent}</a>`;
+            }).join('');
+        }
+      } else {
+        // Show default content for unknown articles
+        document.getElementById('title').textContent = 'Article Not Found';
+        document.getElementById('body').innerHTML = '<p>Sorry, the requested article could not be found. Please return to the <a href="index.html">Help Center</a> to browse our available articles.</p>';
+      }
+    }
+    
+    // Load article when page loads
+    document.addEventListener('DOMContentLoaded', loadArticle);
+    
+    // Feedback button handler
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('[data-fb]')) {
+        e.target.disabled = true;
+        e.target.textContent = 'Thanks!';
+      }
+    });
+  </script>
+</body>
+</html>

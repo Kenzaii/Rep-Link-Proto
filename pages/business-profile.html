@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Business Profile • Rep-Link</title>
+
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/utilities.css">
+  <link rel="stylesheet" href="../styles/mobile-nav.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/profile.css">
+</head>
+<body>
+  <script src="../scripts/boot/ensureHeader.js"></script>
+  <header data-header></header>
+
+  <main class="section">
+    <div class="container profile-shell">
+      <aside class="profile-card profile-aside">
+        <h2>Company</h2>
+        <div class="avatar-wrap">
+          <img id="logoPreview" class="avatar" alt="Company logo" src="" style="display: none;" />
+          <div id="logoPlaceholder" class="avatar avatar--placeholder">Upload Logo</div>
+        </div>
+        <div class="form-row">
+          <label class="label" for="logoFile">Logo</label>
+          <input id="logoFile" type="file" accept="image/*" />
+        </div>
+        <div class="actions">
+          <button id="saveBiz" class="btn btn--primary">Save changes</button>
+        </div>
+      </aside>
+
+      <section class="profile-card">
+        <h2>Details</h2>
+        <div class="form-grid" id="bizForm">
+          <div class="form-row">
+            <label class="label" for="company">Company</label>
+            <input class="input" id="company" />
+          </div>
+          <div class="form-row">
+            <span class="label">Account email</span>
+            <span id="bizEmail"></span>
+          </div>
+          <div class="form-row">
+            <label class="label" for="uen">UEN</label>
+            <input class="input" id="uen" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="address">Registered Address</label>
+            <input class="input" id="address" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="contact">Contact Number</label>
+            <input class="input" id="contact" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="billingEmail">Billing Email</label>
+            <input class="input" id="billingEmail" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="bank">Bank Account</label>
+            <input class="input" id="bank" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="delivery">Delivery / Verification</label>
+            <textarea class="textarea" id="delivery" rows="4" placeholder="Cold chain, POD, photo verification…"></textarea>
+          </div>
+          <div class="form-row">
+            <label class="label" for="categories">Product Categories</label>
+            <input class="input" id="categories" placeholder="F&B, Automotive, SaaS" />
+          </div>
+          <div class="form-row">
+            <span class="label"></span>
+            <label class="cluster"><input type="checkbox" id="verified"> Verified partner (mock)</label>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer data-footer></footer>
+
+  <!-- Chatbot -->
+  <link rel="stylesheet" href="../styles/chat.css">
+  <script type="module" src="../scripts/ui/chatbot.js"></script>
+
+  <script src="../scripts/app.js"></script>
+  <script type="module" src="../scripts/ui/mobileNav.js"></script>
+  <script type="module" src="../scripts/features/businessProfile.js"></script>
+</body>
+</html>

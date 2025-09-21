@@ -1,0 +1,23 @@
+[
+  {
+    "id": "camp-001",
+    "opportunityId": "opp-clean-001",
+    "repId": "u-rep-001",
+    "businessId": "u-biz-001",
+    "milestones": [
+      {"id": "m1", "name": "Lead Accepted", "amount": 80, "status": "released"},
+      {"id": "m2", "name": "Contract Signed", "amount": 420, "status": "pending"}
+    ],
+    "status": "active"
+  },
+  {
+    "id": "camp-002",
+    "opportunityId": "opp-carwrap-001",
+    "repId": "u-rep-001",
+    "businessId": "u-biz-001",
+    "milestones": [
+      {"id": "m1", "name": "Closed Deal", "amount": 300, "status": "pending"}
+    ],
+    "status": "active"
+  }
+]

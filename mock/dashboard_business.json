@@ -1,0 +1,94 @@
+{
+  "reps": [
+    {
+      "id": "r1",
+      "name": "Emily Chen",
+      "productLine": "Premium Widgets",
+      "sales": "$3,200",
+      "avatar": "/assets/img/rep1.svg",
+      "star": true
+    },
+    {
+      "id": "r2",
+      "name": "Mark Lee",
+      "productLine": "Cloud Solutions",
+      "sales": "$5,100",
+      "avatar": "/assets/img/rep2.svg",
+      "star": true
+    },
+    {
+      "id": "r3",
+      "name": "Sarah Tan",
+      "productLine": "Data Services",
+      "sales": "$2,750",
+      "avatar": "/assets/img/rep3.svg",
+      "star": false
+    },
+    {
+      "id": "r4",
+      "name": "James Ng",
+      "productLine": "Premium Widgets",
+      "sales": "$4,600",
+      "avatar": "/assets/img/rep4.svg",
+      "star": true
+    }
+  ],
+  "products": [
+    {
+      "id": "prod1",
+      "name": "Premium Widgets",
+      "commission": 12,
+      "price": 250,
+      "status": "Active",
+      "delta": 17
+    },
+    {
+      "id": "prod2",
+      "name": "Cloud Solutions",
+      "commission": 10,
+      "price": 125,
+      "status": "Paused",
+      "delta": -3
+    },
+    {
+      "id": "prod3",
+      "name": "Data Services",
+      "commission": 8,
+      "price": 180,
+      "status": "Active",
+      "delta": 8
+    },
+    {
+      "id": "prod4",
+      "name": "Enterprise Software",
+      "commission": 15,
+      "price": 500,
+      "status": "Active",
+      "delta": 22
+    }
+  ],
+  "requests": [
+    {
+      "id": "req1",
+      "name": "Amanda Lim",
+      "avatar": "/assets/img/rep5.svg"
+    },
+    {
+      "id": "req2",
+      "name": "David Wong",
+      "avatar": "/assets/img/rep6.svg"
+    }
+  ],
+  "productApprovals": [
+    {
+      "id": "app1",
+      "name": "Accpud Systems",
+      "avatar": "/assets/img/rep7.svg"
+    },
+    {
+      "id": "app2",
+      "name": "TechStart Co",
+      "avatar": "/assets/img/rep8.svg"
+    }
+  ]
+}

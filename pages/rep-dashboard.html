@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Rep Dashboard - Rep-Link</title>
+    <meta name="description" content="Track your sales performance, earnings, and opportunities on Rep-Link.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+</head>
+<body>
+    <script src="../scripts/boot/ensureHeader.js"></script>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header data-header></header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main" class="dash container">
+        <!-- Error/Success Messages -->
+        <div id="error-message" class="form-error hidden"></div>
+        <div id="success-message" class="form-success hidden"></div>
+        
+        <!-- Performance KPIs -->
+        <div id="kpi-cards" class="grid kpis" data-anim="fade-lift">
+            <!-- KPI cards will be loaded by JavaScript -->
+        </div>
+
+        <!-- Sales Chart and Opportunities -->
+        <section class="grid two">
+            <article class="card" id="cardDonut">
+                <header class="card__header">
+                    <h3>Sales by Category</h3>
+                </header>
+                <canvas id="salesDonut" width="300" height="300" aria-label="Sales by category chart"></canvas>
+                <ul class="legend">
+                    <li><span class="dot dot--blue"></span>F&B</li>
+                    <li><span class="dot dot--green"></span>Retail</li>
+                    <li><span class="dot"></span>Other</li>
+                </ul>
+            </article>
+
+            <article class="card" id="cardOpportunities">
+                <header class="card__header">
+                    <h3>Current Opportunities</h3>
+                </header>
+                <div id="current-opportunities" class="cards cards--partners">
+                    <!-- Opportunities will be populated by JavaScript -->
+                </div>
+            </article>
+        </section>
+
+        <!-- Signed Campaigns -->
+        <section class="grid">
+            <article class="card" id="cardCampaigns">
+                <header class="card__header">
+                    <h3>Your Signed Campaigns</h3>
+                </header>
+                <div id="signed-campaigns" class="list list--campaigns">
+                    <!-- Campaigns will be populated by JavaScript -->
+                </div>
+            </article>
+        </section>
+
+        <!-- Sales Tracker -->
+        <section class="grid">
+            <article class="card">
+                <header class="card__header">
+                    <h3>Sales Tracker</h3>
+                </header>
+                <div id="sales-tracker" class="card__body">
+                    <!-- Sales items will be populated by JavaScript -->
+                </div>
+            </article>
+        </section>
+
+        <!-- Quick Links -->
+        <section class="grid">
+            <article class="card">
+                <header class="card__header">
+                    <h3>Quick Links</h3>
+                </header>
+                <div class="card__body">
+                    <div class="quick-links">
+                        <a id="training-link" href="#" class="btn btn--secondary">Training Material</a>
+                        <a id="agreements-link" href="#" class="btn btn--secondary">Agreements</a>
+                        <a id="profile-link" href="#" class="btn btn--secondary">Profile</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Floating Chat Button -->
+        <button class="fab-chat" aria-label="Open chat">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <div class="footer__contact">
+                        <p>📱 +65 9123 4567</p>
+                        <p>✉️ hello@rep-link.sg</p>
+                        <p>📷 @replinksg</p>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Support</h3>
+                    <nav class="footer__nav">
+                        <a href="help/index.html">Help Center</a>
+                        <a href="help/index.html?topic=faq">FAQ</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </nav>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">About</h3>
+                    <p class="footer__description">
+                        Rep-Link connects freelance sales representatives with businesses in Singapore, 
+                        providing secure, milestone-based commission opportunities.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2024 Rep-Link. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Chatbot -->
+    <link rel="stylesheet" href="../styles/chat.css">
+    <script type="module" src="../scripts/ui/chatbot.js"></script>
+
+    <!-- Scripts -->
+    <script src="../scripts/app.js"></script>
+    <script type="module" src="../scripts/features/repDashboard.js"></script>
+    <script type="module" src="../scripts/ui/mobileNav.js"></script>
+    
+    <!-- Simple auth check and logout handler -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check auth status
+            const authData = localStorage.getItem('replink_state_v1');
+            if (!authData) {
+                location.href = 'login.html';
+                return;
+            }
+            
+            const state = JSON.parse(authData);
+            const auth = state.auth;
+            
+            if (!auth?.isAuthed || auth.user?.role !== 'rep') {
+                location.href = 'login.html';
+                return;
+            }
+            
+            // Update user info in header
+            const userName = document.querySelector('.user-name');
+            if (userName) {
+                userName.textContent = auth.user.name || 'User';
+            }
+            
+            // Handle logout
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('replink_state_v1');
+                    location.href = '../index.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

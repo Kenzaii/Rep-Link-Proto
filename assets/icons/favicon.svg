@@ -1,0 +1,5 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="8" width="24" height="16" rx="2" fill="#05AADC"/>
+  <path d="M12 16h8v4H12z" fill="white"/>
+  <text x="8" y="28" font-family="system-ui" font-size="8" font-weight="700" fill="#05AADC">RL</text>
+</svg>

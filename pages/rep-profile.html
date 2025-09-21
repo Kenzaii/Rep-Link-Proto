@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rep Profile • Rep-Link</title>
+
+  <!-- CSS (subpage paths) -->
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/utilities.css">
+  <link rel="stylesheet" href="../styles/mobile-nav.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/profile.css">
+</head>
+<body>
+  <!-- Self-heal header -->
+  <script src="../scripts/boot/ensureHeader.js"></script>
+  <header data-header></header>
+
+  <main class="section">
+    <div class="container profile-shell">
+      <!-- Left: Card -->
+      <aside class="profile-card profile-aside">
+        <h2>Your Profile</h2>
+        <div class="avatar-wrap">
+          <img id="avatarPreview" class="avatar" alt="Your avatar" src="" style="display: none;" />
+          <div id="avatarPlaceholder" class="avatar avatar--placeholder">Upload Avatar</div>
+        </div>
+        <div class="form-row">
+          <label class="label" for="avatarFile">Avatar</label>
+          <input id="avatarFile" type="file" accept="image/*" />
+        </div>
+        <p class="help">Recommended: square image, ≤ 1MB.</p>
+        <div class="form-row">
+          <label class="label">Completion</label>
+          <div class="meter"><div id="meterFill" style="width:0%"></div></div>
+        </div>
+        <p class="help" id="meterText">0% complete</p>
+        <div class="actions">
+          <button id="saveBtn" class="btn btn--primary">Save changes</button>
+        </div>
+      </aside>
+
+      <!-- Right: Form -->
+      <section class="profile-card">
+        <h2>Details</h2>
+        <div class="form-grid" id="repForm">
+          <div class="form-row">
+            <label class="label" for="name">Full name</label>
+            <input class="input" id="name" />
+          </div>
+          <div class="form-row">
+            <span class="label">Email</span>
+            <span id="email"></span>
+          </div>
+          <div class="form-row">
+            <label class="label" for="phone">Phone</label>
+            <input class="input" id="phone" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="address">Address</label>
+            <input class="input" id="address" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="nationalId">National ID (masked)</label>
+            <input class="input" id="nationalId" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="bank">Bank Account</label>
+            <input class="input" id="bank" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="experience">Experience</label>
+            <textarea class="textarea" id="experience" rows="4"></textarea>
+          </div>
+          <div class="form-row">
+            <label class="label" for="skills">Skills (comma-separated)</label>
+            <input class="input" id="skills" placeholder="B2B sales, cold outreach, CRM" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="links">Portfolio / Links</label>
+            <input class="input" id="links" placeholder="https://…" />
+          </div>
+          <div class="form-row">
+            <span class="label"></span>
+            <label class="cluster"><input type="checkbox" id="publicProfile"> Make my profile visible to businesses</label>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer data-footer></footer>
+
+  <!-- Chatbot -->
+  <link rel="stylesheet" href="../styles/chat.css">
+  <script type="module" src="../scripts/ui/chatbot.js"></script>
+
+  <!-- JS -->
+  <script src="../scripts/app.js"></script>
+  <script type="module" src="../scripts/ui/mobileNav.js"></script>
+  <script type="module" src="../scripts/features/repProfile.js"></script>
+</body>
+</html>

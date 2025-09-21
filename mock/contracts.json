@@ -1,0 +1,314 @@
+[
+  {
+    "id": "1",
+    "oppId": "1",
+    "repId": "2",
+    "businessId": "1",
+    "type": "milestone",
+    "title": "Enterprise Software Sales Representative",
+    "status": "active",
+    "startDate": "2024-02-01",
+    "endDate": "2024-08-01",
+    "totalValue": 10000,
+    "currency": "SGD",
+    "milestones": [
+      {
+        "id": "m1",
+        "title": "Lead Generation",
+        "description": "Generate 50 qualified leads per month",
+        "amount": 2000,
+        "status": "completed",
+        "submittedAt": "2024-02-15T10:30:00Z",
+        "approvedAt": "2024-02-16T14:20:00Z",
+        "autoReleaseAt": "2024-03-02T14:20:00Z"
+      },
+      {
+        "id": "m2",
+        "title": "Product Demo",
+        "description": "Conduct 20 product demonstrations per month",
+        "amount": 3000,
+        "status": "submitted",
+        "submittedAt": "2024-02-28T16:45:00Z",
+        "approvedAt": null,
+        "autoReleaseAt": "2024-03-14T16:45:00Z"
+      },
+      {
+        "id": "m3",
+        "title": "Sales Closure",
+        "description": "Close 3 deals per quarter",
+        "amount": 5000,
+        "status": "pending",
+        "submittedAt": null,
+        "approvedAt": null,
+        "autoReleaseAt": null
+      }
+    ],
+    "createdAt": "2024-01-22T09:45:00Z",
+    "updatedAt": "2024-02-28T16:45:00Z"
+  },
+  {
+    "id": "2",
+    "oppId": "4",
+    "repId": "2",
+    "businessId": "4",
+    "type": "milestone",
+    "title": "Enterprise Account Manager",
+    "status": "active",
+    "startDate": "2024-02-01",
+    "endDate": "2025-02-01",
+    "totalValue": 12000,
+    "currency": "SGD",
+    "milestones": [
+      {
+        "id": "m1",
+        "title": "Account Retention",
+        "description": "Maintain 95% account retention rate",
+        "amount": 4000,
+        "status": "completed",
+        "submittedAt": "2024-02-20T11:15:00Z",
+        "approvedAt": "2024-02-21T09:30:00Z",
+        "autoReleaseAt": "2024-03-07T09:30:00Z"
+      },
+      {
+        "id": "m2",
+        "title": "Upselling",
+        "description": "Achieve 20% revenue growth from existing accounts",
+        "amount": 6000,
+        "status": "in_progress",
+        "submittedAt": null,
+        "approvedAt": null,
+        "autoReleaseAt": null
+      },
+      {
+        "id": "m3",
+        "title": "Client Satisfaction",
+        "description": "Maintain 4.5+ client satisfaction score",
+        "amount": 2000,
+        "status": "pending",
+        "submittedAt": null,
+        "approvedAt": null,
+        "autoReleaseAt": null
+      }
+    ],
+    "createdAt": "2024-01-19T10:15:00Z",
+    "updatedAt": "2024-02-21T09:30:00Z"
+  },
+  {
+    "id": "3",
+    "oppId": "7",
+    "repId": "5",
+    "businessId": "7",
+    "type": "milestone",
+    "title": "CRM Implementation Specialist",
+    "status": "active",
+    "startDate": "2024-02-01",
+    "endDate": "2024-05-01",
+    "totalValue": 7500,
+    "currency": "SGD",
+    "milestones": [
+      {
+        "id": "m1",
+        "title": "Week 1-2: Discovery & Planning",
+        "description": "Complete client discovery and implementation planning",
+        "amount": 3000,
+        "status": "completed",
+        "submittedAt": "2024-02-14T17:00:00Z",
+        "approvedAt": "2024-02-15T10:00:00Z",
+        "autoReleaseAt": "2024-03-01T10:00:00Z"
+      },
+      {
+        "id": "m2",
+        "title": "Week 3-4: System Configuration",
+        "description": "Configure CRM system according to client requirements",
+        "amount": 3000,
+        "status": "completed",
+        "submittedAt": "2024-02-28T17:00:00Z",
+        "approvedAt": "2024-02-29T09:00:00Z",
+        "autoReleaseAt": "2024-03-15T09:00:00Z"
+      },
+      {
+        "id": "m3",
+        "title": "Week 5-6: Data Migration",
+        "description": "Migrate existing data to new CRM system",
+        "amount": 3000,
+        "status": "submitted",
+        "submittedAt": "2024-03-14T17:00:00Z",
+        "approvedAt": null,
+        "autoReleaseAt": "2024-03-28T17:00:00Z"
+      },
+      {
+        "id": "m4",
+        "title": "Week 7-8: Training & Go-Live",
+        "description": "Train users and launch the system",
+        "amount": 3000,
+        "status": "pending",
+        "submittedAt": null,
+        "approvedAt": null,
+        "autoReleaseAt": null
+      }
+    ],
+    "createdAt": "2024-01-16T14:20:00Z",
+    "updatedAt": "2024-03-14T17:00:00Z"
+  },
+  {
+    "id": "4",
+    "oppId": "2",
+    "repId": "1",
+    "businessId": "2",
+    "type": "fixed",
+    "title": "Business Development Consultant",
+    "status": "completed",
+    "startDate": "2024-01-15",
+    "endDate": "2024-04-15",
+    "totalValue": 8000,
+    "currency": "SGD",
+    "milestones": [
+      {
+        "id": "m1",
+        "title": "Market Research & Analysis",
+        "description": "Complete comprehensive market research for Southeast Asian expansion",
+        "amount": 2000,
+        "status": "completed",
+        "submittedAt": "2024-02-01T12:00:00Z",
+        "approvedAt": "2024-02-02T10:00:00Z",
+        "autoReleaseAt": "2024-02-16T10:00:00Z"
+      },
+      {
+        "id": "m2",
+        "title": "Strategy Development",
+        "description": "Develop market entry strategy and business plan",
+        "amount": 3000,
+        "status": "completed",
+        "submittedAt": "2024-03-01T12:00:00Z",
+        "approvedAt": "2024-03-02T10:00:00Z",
+        "autoReleaseAt": "2024-03-16T10:00:00Z"
+      },
+      {
+        "id": "m3",
+        "title": "Implementation Support",
+        "description": "Provide ongoing support during initial market entry",
+        "amount": 3000,
+        "status": "completed",
+        "submittedAt": "2024-04-15T12:00:00Z",
+        "approvedAt": "2024-04-16T10:00:00Z",
+        "autoReleaseAt": "2024-04-30T10:00:00Z"
+      }
+    ],
+    "createdAt": "2024-01-15T00:00:00Z",
+    "updatedAt": "2024-04-16T10:00:00Z"
+  },
+  {
+    "id": "5",
+    "oppId": "3",
+    "repId": "5",
+    "businessId": "3",
+    "type": "fixed",
+    "title": "Digital Marketing Sales Specialist",
+    "status": "active",
+    "startDate": "2024-02-01",
+    "endDate": "2024-06-01",
+    "totalValue": 5000,
+    "currency": "SGD",
+    "milestones": [
+      {
+        "id": "m1",
+        "title": "Month 1: Lead Generation",
+        "description": "Generate 100 qualified leads for digital marketing services",
+        "amount": 2000,
+        "status": "completed",
+        "submittedAt": "2024-02-29T17:00:00Z",
+        "approvedAt": "2024-03-01T10:00:00Z",
+        "autoReleaseAt": "2024-03-15T10:00:00Z"
+      },
+      {
+        "id": "m2",
+        "title": "Month 2: Client Acquisition",
+        "description": "Acquire 5 new clients for digital marketing services",
+        "amount": 2000,
+        "status": "submitted",
+        "submittedAt": "2024-03-31T17:00:00Z",
+        "approvedAt": null,
+        "autoReleaseAt": "2024-04-14T17:00:00Z"
+      },
+      {
+        "id": "m3",
+        "title": "Month 3: Revenue Growth",
+        "description": "Achieve $50,000 in new revenue from digital marketing services",
+        "amount": 2000,
+        "status": "pending",
+        "submittedAt": null,
+        "approvedAt": null,
+        "autoReleaseAt": null
+      },
+      {
+        "id": "m4",
+        "title": "Month 4: Client Retention",
+        "description": "Maintain 90% client retention rate",
+        "amount": 2000,
+        "status": "pending",
+        "submittedAt": null,
+        "approvedAt": null,
+        "autoReleaseAt": null
+      }
+    ],
+    "createdAt": "2024-01-18T11:45:00Z",
+    "updatedAt": "2024-03-31T17:00:00Z"
+  },
+  {
+    "id": "6",
+    "oppId": "5",
+    "repId": "1",
+    "businessId": "5",
+    "type": "fixed",
+    "title": "Startup Sales Representative",
+    "status": "active",
+    "startDate": "2024-02-01",
+    "endDate": "2024-08-01",
+    "totalValue": 6000,
+    "currency": "SGD",
+    "milestones": [
+      {
+        "id": "m1",
+        "title": "Portfolio Analysis",
+        "description": "Analyze portfolio companies and identify sales opportunities",
+        "amount": 1500,
+        "status": "completed",
+        "submittedAt": "2024-02-15T12:00:00Z",
+        "approvedAt": "2024-02-16T09:00:00Z",
+        "autoReleaseAt": "2024-03-02T09:00:00Z"
+      },
+      {
+        "id": "m2",
+        "title": "Sales Strategy Development",
+        "description": "Develop customized sales strategies for each portfolio company",
+        "amount": 1500,
+        "status": "completed",
+        "submittedAt": "2024-03-01T12:00:00Z",
+        "approvedAt": "2024-03-02T09:00:00Z",
+        "autoReleaseAt": "2024-03-16T09:00:00Z"
+      },
+      {
+        "id": "m3",
+        "title": "Implementation Support",
+        "description": "Provide hands-on sales support to portfolio companies",
+        "amount": 1500,
+        "status": "in_progress",
+        "submittedAt": null,
+        "approvedAt": null,
+        "autoReleaseAt": null
+      },
+      {
+        "id": "m4",
+        "title": "Results & Optimization",
+        "description": "Analyze results and optimize sales processes",
+        "amount": 1500,
+        "status": "pending",
+        "submittedAt": null,
+        "approvedAt": null,
+        "autoReleaseAt": null
+      }
+    ],
+    "createdAt": "2024-01-16T15:20:00Z",
+    "updatedAt": "2024-03-02T09:00:00Z"
+  }
+]
