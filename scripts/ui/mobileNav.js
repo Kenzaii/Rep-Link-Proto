@@ -21,36 +21,15 @@ document.addEventListener('click',(e)=>{
 document.addEventListener('keydown',(e)=>{ if(!open) return; if(e.key==='Escape'){e.preventDefault();off();} else if(e.key==='Tab'){ const p=els().panel, f=first(p), l=last(p); if(!f||!l) return; if(e.shiftKey&&document.activeElement===f){e.preventDefault();l.focus();} else if(!e.shiftKey&&document.activeElement===l){e.preventDefault();f.focus();} }});
 window.addEventListener('auth:changed',()=>off(false));
 
-// Close mobile nav when switching to desktop
-const mql = window.matchMedia('(min-width: 1024px)');
+// Auto-close drawer on desktop
+const mq = matchMedia('(min-width:1024px)');
 function closeOnDesktop(){
-  const panel = document.querySelector('[data-nav-panel]');
-  const overlay = document.querySelector('[data-nav-overlay]');
-  const burger = document.querySelector('[data-action="nav-toggle"]');
-  if (!panel || !overlay) return;
-  if (mql.matches){
-    panel.setAttribute('hidden','');
-    overlay.setAttribute('hidden','');
-    document.documentElement.style.overflow = '';  // unlock scroll
-    if (burger) burger.setAttribute('aria-expanded','false');
-  }
+  if(!mq.matches) return;
+  document.querySelector('[data-nav-panel]')?.setAttribute('hidden','');
+  document.querySelector('[data-nav-overlay]')?.setAttribute('hidden','');
+  document.documentElement.style.overflow='';
+  document.querySelector('[data-action="nav-toggle"]')?.setAttribute('aria-expanded','false');
 }
-mql.addEventListener?.('change', closeOnDesktop);
+mq.addEventListener?.('change', closeOnDesktop);
 window.addEventListener('resize', closeOnDesktop);
 closeOnDesktop();
-
-// Enhanced desktop auto-close (prevents overlay sticking)
-const mqDesktop = window.matchMedia('(min-width:1024px)');
-function closeIfDesktop(){
-  if (!mqDesktop.matches) return;
-  const panel = document.querySelector('[data-nav-panel]');
-  const overlay = document.querySelector('[data-nav-overlay]');
-  const burger = document.querySelector('[data-action="nav-toggle"]');
-  if (panel) panel.setAttribute('hidden','');
-  if (overlay) overlay.setAttribute('hidden','');
-  document.documentElement.style.overflow = '';
-  if (burger) burger.setAttribute('aria-expanded','false');
-}
-mqDesktop.addEventListener?.('change', closeIfDesktop);
-window.addEventListener('resize', closeIfDesktop);
-closeIfDesktop();
