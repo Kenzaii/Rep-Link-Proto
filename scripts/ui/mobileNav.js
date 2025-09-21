@@ -20,4 +20,21 @@ document.addEventListener('click',(e)=>{
 });
 document.addEventListener('keydown',(e)=>{ if(!open) return; if(e.key==='Escape'){e.preventDefault();off();} else if(e.key==='Tab'){ const p=els().panel, f=first(p), l=last(p); if(!f||!l) return; if(e.shiftKey&&document.activeElement===f){e.preventDefault();l.focus();} else if(!e.shiftKey&&document.activeElement===l){e.preventDefault();f.focus();} }});
 window.addEventListener('auth:changed',()=>off(false));
-window.addEventListener('resize',()=>{ if(matchMedia('(min-width:1024px)').matches) off(false); });
+
+// Close mobile nav when switching to desktop
+const mql = window.matchMedia('(min-width: 1024px)');
+function closeOnDesktop(){
+  const panel = document.querySelector('[data-nav-panel]');
+  const overlay = document.querySelector('[data-nav-overlay]');
+  const burger = document.querySelector('[data-action="nav-toggle"]');
+  if (!panel || !overlay) return;
+  if (mql.matches){
+    panel.setAttribute('hidden','');
+    overlay.setAttribute('hidden','');
+    document.documentElement.style.overflow = '';  // unlock scroll
+    if (burger) burger.setAttribute('aria-expanded','false');
+  }
+}
+mql.addEventListener?.('change', closeOnDesktop);
+window.addEventListener('resize', closeOnDesktop);
+closeOnDesktop();
