@@ -26,6 +26,7 @@
   }
   addCss('/styles/header.css');
   addCss('/styles/overrides.css');
+  addCss('/styles/mobile-menu.css?v=4');
 
   // 4) Paint an immediate, minimal fallback header (so user sees a nav instantly)
   var host = document.querySelector('[data-header]');
