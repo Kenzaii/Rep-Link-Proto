@@ -1,31 +1,30 @@
 /* ===== Rep-Link Mobile Drawer (final) ===== */
 @media (max-width: 1023.98px){
 
-  /* Overlay covers viewport and sits above page */
+  /* Overlay above page */
   .nav__overlay{
     position: fixed; inset: 0; z-index: 1099;
-    background: rgba(7, 19, 31, .55);
+    background: rgba(7,19,31,.55);
     backdrop-filter: blur(1px);
   }
   .nav__overlay[hidden]{ display:none !important; }
 
-  /* Off-canvas panel on top of overlay */
+  /* Drawer above overlay */
   .nav__panel{
-    position: fixed; top:0; right:0; bottom:0;
-    z-index: 1100;  /* critical */
+    position: fixed; top:0; right:0; bottom:0; z-index: 1100;
     width: min(88vw, 380px);
     display: flex; flex-direction: column;
-    background: linear-gradient(180deg, #0A1E32 0%, #0F1E32 100%);
+    background: linear-gradient(180deg,#0A1E32 0%, #0F1E32 100%);
     color:#E6F0FA;
     border-left: 1px solid rgba(255,255,255,.10);
     box-shadow: 0 10px 30px rgba(0,0,0,.35);
   }
   .nav__panel[hidden]{ display:none !important; }
 
-  /* Header inside the drawer */
+  /* Drawer header */
   .nav__panel__hdr{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 16px; gap:12px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px 16px;
     border-bottom:1px solid rgba(255,255,255,.10);
     color:#E6F0FA; font-weight:700;
   }
@@ -36,7 +35,7 @@
     background:transparent; color:#E6F0FA;
   }
 
-  /* Scrollable menu body */
+  /* Scrollable body */
   .nav__panel .nav--mobile{
     display:block !important;
     padding:12px !important;
@@ -44,32 +43,23 @@
     max-height: calc(100dvh - 64px);
   }
 
-  /* FORCE 1 link per row with good contrast */
+  /* FORCE 1 item per row */
   .nav__panel .nav--mobile a,
   .nav__panel .nav--mobile button{
-    display:block !important;
-    width:100% !important;
-    text-align:left !important;
-    white-space:normal !important;
-    margin:8px 0 !important;
-    padding:14px 16px !important;
-    color:#E6F0FA !important;
-    text-decoration:none !important;
-    font-weight:600;
+    display:block !important; width:100% !important; text-align:left !important;
+    white-space:normal !important; margin:8px 0 !important; padding:14px 16px !important;
+    color:#E6F0FA !important; text-decoration:none !important; font-weight:600;
     background: rgba(255,255,255,.04) !important;
-    border:1px solid rgba(255,255,255,.12) !important;
-    border-radius:12px !important;
+    border:1px solid rgba(255,255,255,.12) !important; border-radius:12px !important;
     box-shadow:none !important;
   }
   .nav__panel .nav--mobile a:hover,
-  .nav__panel .nav--mobile button:hover{
-    background: rgba(255,255,255,.10) !important;
-  }
+  .nav__panel .nav--mobile button:hover{ background: rgba(255,255,255,.10) !important; }
   .nav__panel .nav--mobile .btn--primary{
     background:#05AADC !important; color:#07131f !important; border-color:transparent !important;
   }
 
-  /* Neutralize any tab/pill rows that fight the stacking */
+  /* Neutralize any chip/tab rows that fight stacking */
   .nav__panel .nav--mobile .tabs,
   .nav__panel .nav--mobile .tab-row,
   .nav__panel .nav--mobile .chip-row,
