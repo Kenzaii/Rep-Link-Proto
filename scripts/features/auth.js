@@ -6,7 +6,6 @@
 'use strict';
 
 import { store } from '../data/store.js';
-import { API } from '../data/api.js';
 import { api } from '../data/api.js';
 import { EventBus } from '../ui/event-bus.js';
 import { Toast } from '../ui/components.js';
@@ -511,10 +510,6 @@ export class Auth {
         return this.currentUser?.ratings || { average: 0, count: 0 };
     }
 }
-
-import { api } from '../data/api.js';
-import { store } from '../data/store.js';
-import { dashboardHrefFor } from '../app.js';
 
 function q(id) { return document.getElementById(id) || document.querySelector(`#${id}, [name="${id}"]`); }
 
