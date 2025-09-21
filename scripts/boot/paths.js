@@ -1,10 +1,4 @@
-export function rootPrefix() {
-  const isSub = location.pathname.toLowerCase().includes('/pages/');
-  if (location.protocol === 'file:') return isSub ? '..' : '.';
-  return isSub ? '..' : '.';
-}
+import { hrefAbs } from './siteBase.js';
 
-export function resolve(pathFromRoot) {
-  const base = rootPrefix();
-  return `${base}${pathFromRoot}`;
-}
+export function rootPrefix(){ return ''; } // no longer needed when using absolute
+export function resolve(pathFromRoot){ return hrefAbs(pathFromRoot); } // absolute JSON/assets

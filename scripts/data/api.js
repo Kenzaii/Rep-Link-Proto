@@ -1,27 +1,11 @@
 import { resolve } from '../boot/paths.js';
 
-async function tryJson(url){
-  const r = await fetch(url, {cache:'no-store'});
-  if(!r.ok) throw new Error(`HTTP ${r.status}`);
-  return r.json();
-}
-
-async function getResilient(rootPath){ // rootPath like "/mock/users.json"
-  const candidates = [
-    resolve(rootPath),        // "../mock/users.json" or "./mock/users.json"
-    `.${rootPath}`,           // "./mock/users.json"
-    `..${rootPath}`           // "../mock/users.json"
-  ].filter((v,i,a)=>a.indexOf(v)===i);
-
-  const errors = [];
-  for(const c of candidates){
-    try { return await tryJson(c); } catch(e){ errors.push(`${c} → ${e.message}`); }
-  }
-  throw new Error(`Fetch failed for ${rootPath}. Tried:\n- ${errors.join('\n- ')}`);
-}
-
 export const api = {
-  async get(p){ return getResilient(p); },
+  async get(p) {
+    const r = await fetch(resolve(p), { cache: 'no-store' });
+    if (!r.ok) throw new Error(`Fetch ${p} failed (${r.status})`);
+    return r.json();
+  },
 
   async users(){ return this.get('/mock/users.json'); },
   async opportunities(){ return this.get('/mock/opportunities.json'); },

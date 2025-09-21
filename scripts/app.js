@@ -1,23 +1,6 @@
 // Import path helpers
-import { rootPrefix, resolve } from './boot/paths.js';
-
-const ABS_RE = /^(?:[a-z]+:)?\/\//i; // http:, https:, //cdn
-const REL_RE = /^(\.\/|\.\.\/|#|mailto:|tel:)/i;
-
-export function href(p){
-  if (!p) return '';
-  // If already absolute or explicitly relative, return as-is
-  if (ABS_RE.test(p) || REL_RE.test(p)) return p;
-  // If caller accidentally passed a full URL *inside* p (dup bug), keep the last absolute
-  if (p.includes('://')) {
-    const lastAbs = p.lastIndexOf('http');
-    return p.slice(lastAbs);
-  }
-  // If starts with "/", prefix for GH Pages project site
-  if (p.startsWith('/')) return `${rootPrefix()}${p}`;
-  // Otherwise treat as already page-relative
-  return p;
-}
+import { siteBase, hrefAbs } from './boot/siteBase.js';
+export function href(p){ return hrefAbs(p); } // use absolute URL everywhere
 
 // Store implementation
 export const store = {
