@@ -1,58 +1,76 @@
-/* ===== Mobile Menu: force stacked rows ===== */
-@media (max-width: 1023.98px) {
-  /* Panel shell */
-  .nav__panel {
-    max-width: 88vw;
-    width: 360px;
-    background: var(--surface-0);
-    border-left: 1px solid var(--color-border);
-    box-shadow: var(--shadow-md);
-  }
-  .nav__overlay[hidden], .nav__panel[hidden] { display: none !important; }
+/* ===== Rep-Link Mobile Drawer (theme + layout) ===== */
 
-  /* Make the mobile nav a block container */
-  .nav__panel .nav--mobile {
-    display: block !important;
-    padding: 12px !important;
-    overflow: auto;
-    max-height: calc(100dvh - 64px);
+@media (max-width:1023.98px){
+
+  /* Overlay covers viewport with subtle dim */
+  .nav__overlay{
+    position: fixed; inset: 0;
+    background: rgba(7, 19, 31, .55); /* deep navy tint */
+    backdrop-filter: blur(1px);
+  }
+  .nav__overlay[hidden]{ display:none !important; }
+
+  /* Off-canvas panel */
+  .nav__panel{
+    position: fixed; top:0; right:0; bottom:0;
+    width: min(88vw, 380px);
+    background: linear-gradient(180deg, #0A1E32 0%, #0F1E32 100%); /* NAVY */
+    color: #E6F0FA; /* high contrast */
+    border-left: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    display: flex; flex-direction: column;
+  }
+  .nav__panel[hidden]{ display:none !important; }
+
+  /* Panel header: "Menu" + close btn aligned */
+  .nav__panel__hdr{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; padding:14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    color:#E6F0FA; font-weight:700;
+  }
+  .nav__panel__hdr .nav__close{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:40px; height:40px; border-radius:12px;
+    border:1px solid rgba(255,255,255,.10);
+    background: transparent; color:#E6F0FA;
   }
 
-  /* This is the key: force every interactive item to block/row */
+  /* Body scroll area */
+  .nav__panel .nav--mobile{
+    overflow:auto; padding:12px; max-height: calc(100dvh - 64px);
+  }
+
+  /* One item per row with strong contrast */
   .nav__panel .nav--mobile a,
-  .nav__panel .nav--mobile button {
-    display: block !important;
-    width: 100% !important;
-    text-align: left !important;
-    white-space: normal !important;
-    margin: 8px 0 !important;
-    padding: 14px 16px !important;
-    border: 1px solid var(--color-border) !important;
-    border-radius: 12px !important;
-    background: transparent !important;
-    color: var(--color-text, #E6F0FA) !important;
-    box-shadow: none !important;
+  .nav__panel .nav--mobile button{
+    display:block !important; width:100% !important; text-align:left !important;
+    margin:8px 0 !important; padding:14px 16px !important;
+    color:#E6F0FA !important; text-decoration:none !important; font-weight:600;
+    background: rgba(255,255,255,.02) !important;
+    border:1px solid rgba(255,255,255,.10) !important;
+    border-radius:12px !important; box-shadow:none !important;
+    white-space:normal !important;
+  }
+  .nav__panel .nav--mobile a:hover,
+  .nav__panel .nav--mobile button:hover{
+    background: rgba(255,255,255,.07) !important;
   }
 
-  /* Kill any pill/tabs/chip rows that were applying inline layout */
+  /* Primary CTA style */
+  .nav__panel .nav--mobile .btn--primary{
+    background:#05AADC !important; color:#07131f !important; border-color:transparent !important;
+  }
+
+  /* Silence any legacy pill/tab/chip rows */
   .nav__panel .nav--mobile .tabs,
   .nav__panel .nav--mobile .tab-row,
   .nav__panel .nav--mobile .chip-row,
-  .nav__panel .nav--mobile .cluster {
-    display: block !important;
-    gap: 0 !important;
-  }
-
-  /* Optional: primary CTA style */
-  .nav__panel .nav--mobile .btn--primary {
-    background: var(--brand-blue-500, #05AADC) !important;
-    color: #07131f !important;
-    border-color: transparent !important;
-  }
+  .nav__panel .nav--mobile .cluster{ display:block !important; gap:0 !important; }
 }
 
-/* Desktop behavior unchanged */
-@media (min-width: 1024px) {
-  .nav--desktop { display: flex !important; }
-  .header__burger { display: none !important; }
+/* Desktop stays as-is */
+@media (min-width:1024px){
+  .nav--desktop{ display:flex !important; }
+  .header__burger{ display:none !important; }
 }
