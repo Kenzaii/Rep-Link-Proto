@@ -1,5 +1,8 @@
-// Simple store implementation (non-module)
-var store = window.store || {
+// Import path helpers
+import { rootPrefix, resolve } from './boot/paths.js';
+
+// Store implementation
+export const store = {
   get: (path) => {
     if (path === 'auth') {
       const state = localStorage.getItem('replink_state_v1');
@@ -21,31 +24,6 @@ var store = window.store || {
     window.dispatchEvent(new Event('auth:changed'));
   }
 };
-window.store = store;
-
-// Simple path resolution (non-module)
-function rootPrefix() {
-  const path = location.pathname;
-  const pathParts = path.split('/').filter(Boolean);
-  
-  // If we're on the root index page, return empty string
-  if (path === '/' || path === '/index.html' || pathParts.length === 0) {
-    return '';
-  }
-  
-  // If we're in a pages subdirectory, return the path up to pages
-  const pagesIndex = path.indexOf('/pages/');
-  if (pagesIndex >= 0) {
-    return path.slice(0, pagesIndex);
-  }
-  
-  // For other cases, return empty string (root)
-  return '';
-}
-
-function resolve(pathFromRoot) {
-  return `${rootPrefix()}${pathFromRoot}`;
-}
 
 function href(path){
   // If path is already absolute (starts with /), use it as-is

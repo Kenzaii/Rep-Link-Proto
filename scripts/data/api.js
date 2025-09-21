@@ -5,12 +5,7 @@
 
 'use strict';
 
-function rootPrefix() {
-    // If we're on /pages/*.html, root is everything before "/pages/"
-    const p = location.pathname;
-    const i = p.indexOf('/pages/');
-    return i >= 0 ? p.slice(0, i) : '';
-}
+import { resolve } from '../boot/paths.js';
 
 async function getJSONWithFallback(paths) {
     for (const url of paths) {
@@ -53,29 +48,21 @@ const FALLBACK_USERS = [
 ];
 
 export const api = {
-    async get(path) {
-        const root = rootPrefix();
-        const candidates = [
-            `${root}${path}`,
-            path,
-            `../${path.replace(/^\//, '')}`,
-            `./${path.replace(/^\//, '')}`
-        ];
-        const r = await getJSONWithFallback(candidates);
-        if (!r) throw new Error(`Fetch ${path} failed`);
-        return r;
+    async get(p) { 
+        const r = await fetch(p, {cache:'no-store'}); 
+        if(!r.ok) throw new Error(`Fetch ${p} failed`); 
+        return r.json(); 
     },
-
-    async users() { return this.get('/mock/users.json'); },
-    async opportunities() { return this.get('/mock/opportunities.json'); },
-    async products() { return this.get('/mock/products.json'); },
-    async campaigns() { return this.get('/mock/campaigns.json'); },
-    async onboarding() { return this.get('/mock/onboarding.json'); },
-    async partners() { return this.get('/mock/partners.json'); },
-    async singpassRep() { return this.get('/mock/singpass/rep.json'); },
-    async singpassBiz() { return this.get('/mock/singpass/business.json'); },
-    async helpIndex() { return this.get('/mock/help/articles.json'); },
-    async helpFAQ() { return this.get('/mock/help/faq.json'); },
+    async users() { return this.get(resolve('/mock/users.json')); },
+    async opportunities() { return this.get(resolve('/mock/opportunities.json')); },
+    async products() { return this.get(resolve('/mock/products.json')); },
+    async campaigns() { return this.get(resolve('/mock/campaigns.json')); },
+    async onboarding() { return this.get(resolve('/mock/onboarding.json')); },
+    async partners() { return this.get(resolve('/mock/partners.json')); },
+    async singpassRep() { return this.get(resolve('/mock/singpass/rep.json')); },
+    async singpassBiz() { return this.get(resolve('/mock/singpass/business.json')); },
+    async helpIndex() { return this.get(resolve('/mock/help/articles.json')); },
+    async helpFAQ() { return this.get(resolve('/mock/help/faq.json')); },
 
     async login(email, password) {
         const users = await this.users().catch(() => [
