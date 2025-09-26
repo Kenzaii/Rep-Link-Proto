@@ -99,7 +99,7 @@
       if(anchors.length === 0) anchors = [...doc.querySelectorAll('nav.nav--desktop a, header .nav a')];
 
       if(anchors.length === 0){
-        // fallback list if nothing found
+        // fallback list if nothing found - matches index.html style
         anchors = [
           {text:'Home', href: abs('/index.html')},
           {text:'Log in', href: abs('/pages/login.html')},
